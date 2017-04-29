@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<view class="news">
+    <view class="list" wx:for="{{lists}}" wx:for-item="list">
+        <view class="title">
+            <text>{{list.title}}</text>
+            <image src="{{list.icon}}"></image>
+        </view>
+        <view class="content">{{list.content}}</view>
+        <view class="time">{{list.time}}</view>
+    </view>
+</view>
