@@ -1,0 +1,32 @@
+.info{
+  padding:0;
+  width : 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.info .img {
+  width : 100%;
+  height : 180px;
+  background : #fe9900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info .img image {
+  width :100px;
+  height : 80px;
+}
+.info .content {
+  width : 90%;
+  padding : 10px 20px;
+  display: flex;
+}
+.info .content .key {
+  flex-grow : 3;
+}
+.info .content .value {
+  flex-grow : 7;
+  text-align: right;
+}
+

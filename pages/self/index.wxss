@@ -1,0 +1,32 @@
+.self{
+  width : 100%;
+  padding:20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.self .list{
+  width : 100%;
+  margin-bottom:20px;
+  display: flex;
+}
+.self .list image {
+  width : 20px;
+  height : 20px;
+}
+.self .list .text {
+  width :70%;
+  height : 20px;
+  line-height : 20px;
+  margin-left : 20px;
+}
+.self .list .arrow {
+  width : 30px;
+  height : 30px;
+  float : right;
+}
+.self .logout{
+  width : 90%;
+  background:#fe9900;
+  margin: 40px 0;
+}

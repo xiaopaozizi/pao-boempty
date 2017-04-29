@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view class="info">
+    <view class="img">
+        <image src="../../images/user-ok.png"></image>
+    </view>
+    <view class="content" wx:for="{{infos}}" wx:for-item="info">
+        <text class="key">{{info.key}}：</text>
+        <text class="value">{{info.value}}</text>
+    </view>
+</view>

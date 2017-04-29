@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="his-pre-enter">
+    <view class="list" wx:for="{{lists}}" wx:for-item="list">
+        <image src="{{list.image}}"></image>
+        <view class="info">
+            <view class="line first">
+                <text>{{list.user}}</text>
+                <view class="status doing" wx:if="{{list.status === 1}}">进行中</view>
+                <view class="status success" wx:if="{{list.status === 2}}">已成功</view>
+                <view class="status void" wx:if="{{list.status === 3}}">已作废</view>
+            </view>
+            <text class="line">{{list.tel}}</text>
+            <text class="line time">{{list.time}}</text>
+        </view>
+    </view>
+</view>
