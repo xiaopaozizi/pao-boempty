@@ -1,11 +1,12 @@
 {
   "pages":[
+    "pages/index/index",
     "pages/news/index",
+    "pages/news/detail",
     "pages/self/index",
     "pages/self/his-pre-enter",
     "pages/self/mod-pass",
-    "pages/self/info",
-    "pages/index/index"
+    "pages/self/info"
   ],
   "window":{
     "backgroundTextStyle":"light",
