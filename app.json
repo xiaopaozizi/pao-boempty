@@ -1,5 +1,7 @@
 {
   "pages":[
+    
+    "pages/self/his-list",
     "pages/index/index",
     "pages/news/index",
     "pages/news/detail",
