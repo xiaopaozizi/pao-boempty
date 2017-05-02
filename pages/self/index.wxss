@@ -5,22 +5,22 @@
   flex-direction: column;
   justify-content: flex-start;
 }
-.self .list{
+.self .my-list{
   width : 100%;
   margin-bottom:20px;
   display: flex;
 }
-.self .list image {
+.self .my-list image {
   width : 20px;
   height : 20px;
 }
-.self .list .text {
+.self .my-list .text {
   width :70%;
   height : 20px;
   line-height : 20px;
   margin-left : 20px;
 }
-.self .list .arrow {
+.self .my-list .arrow {
   width : 30px;
   height : 30px;
   float : right;

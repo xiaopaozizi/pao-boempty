@@ -1,36 +1,14 @@
 <!--index.wxml-->
+<import src="../template/list.wxml" />
 <view class="his-list">
     <view class="title">
         <text class="num">10</text>
         <text class="text">累计单量</text>
     </view>
-    <view class="list" wx:for="{{address}}" wx:for-item="address">
-        <view class="top">
-            <image src="{{address.icon}}" class="public"></image>
-            <text>{{address.start}}</text>
-            <image src="../../images/arrow-left.png" class="arrow-left"></image>
-            <text>{{address.end}}</text>
-            <text 
-                wx-if="address.price" class="price">{{address.price}}</text>
-        </view>
-        <view class="middle">
-            <view class="main">
-                <view class="content" wx:for="{{content}}" wx:for-item="item" wx:for-index="index" wx:if="{{index < 2}}">
-                    <image src="{{item.icon}}"></image>
-                    <text class="key">{{item.key}}：</text>
-                    <text class="value">{{item.value}}</text>
-                </view>
-            </view>
-            <view class="status">
-                <image src="../../images/already-over.png"></image>
-            </view>
-        </view>
-        <view class="bottom">
-            <view class="content" wx:for="{{content}}" wx:for-item="item" wx:for-index="index" wx:if="{{index > 1}}">
-                <image src="{{item.icon}}"></image>
-                <text class="key">{{item.key}}：</text>
-                <text class="value">{{item.value}}</text>
-            </view>
-        </view>
-    </view>
+    <block wx:for="{{lists}}" wx:for-item="list">
+        <template is="list" data="{{...list}}"></template>
+    </block>
 </view>
+
+        
+           

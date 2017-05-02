@@ -1,13 +1,13 @@
 {
   "pages":[
-    
-    "pages/self/his-list",
     "pages/index/index",
     "pages/news/index",
     "pages/news/detail",
+    "pages/fly/index",
     "pages/self/index",
     "pages/self/his-pre-enter",
     "pages/self/mod-pass",
+    "pages/self/his-list",
     "pages/self/info"
   ],
   "window":{
@@ -33,7 +33,7 @@
    }, {  
      "selectedIconPath": "images/list-active.png",  
      "iconPath": "images/list.png",  
-     "pagePath": "pages/list/index",  
+     "pagePath": "pages/fly/index",  
      "text": "飞单"  
    }, {  
      "selectedIconPath": "images/user-active.png",  

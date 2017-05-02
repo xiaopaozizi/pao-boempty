@@ -1,0 +1,91 @@
+
+<!-- list.wxml -->
+<!-- 
+  publicImg : String --- 公共图标 <可选>
+  addrStart : String --- 提箱点
+  addrEnd   : String --- 落箱点
+  price      : Int    --- 价格 <可选>
+  progress   : Int    --- 还剩多少单子 <可选>
+  order      : String --- 预约号
+  boxType   : String --- 箱型
+  boxNum    : Int    --- 箱量 <可选>
+  statusImg : String --- 右侧已结束/电话的图标 <2选1>
+             --- over 已结束
+             --- phone 电话
+  ship       : String --- 船名航次
+  time       : String --- 计划提箱时间
+  remark     : String --- 备注
+  page       : Int 
+             --- 1 历史单子 灰色的查看预约单
+             --- 2 首页     高亮的产看预约单
+             --- 3 飞单     抢单
+
+
+-->
+<template name="list">
+    <view class="list">
+        <view class="top">
+            <image wx:if="{{publicImg}}" src="{{publicImg}}" class="public"></image>
+            <text>{{addrStart}}</text>
+            <image src="../../images/arrow-left.png" class="arrow-left"></image>
+            <text>{{addrEnd}}</text>
+            <text class="price" wx:if="{{price}}">￥{{price}}</text>
+            
+            <view class="progress" wx:if="{{progress}}">
+                <progress percent="80"stroke-width="5"color="red" active/>
+                <text class="text">剩余{{progress}}</text>
+            </view>
+        </view>
+        
+        <view class="middle">
+            <view class="m-top">
+                <view wx:if="{{order}}" class="content">
+                    <image src="../../images/order.png"></image>
+                    <text class="key">预约号：</text>
+                    <text class="value">{{order}}</text>
+                </view>
+                <view class="type-num">
+                    <view class="content box-type">
+                        <image src="../../images/box.png"></image>
+                        <text class="key">箱型：</text>
+                        <text class="value">{{boxType}}</text>
+                    </view>
+                    <view class="content box-num" wx:if="{{boxNum}}">
+                        <text class="key">箱量：</text>
+                        <text class="value">{{boxNum}}箱</text>
+                    </view>
+                </view>
+            </view>
+            <view class="status">
+                <image wx:if="{{statusImg === 'over'}}" class="already-over" src="../../images/already-over.png"></image>
+                
+                <image wx:if="{{statusImg === 'phone'}}"  class="phone" src="../../images/phone.png"></image>
+      
+            </view>
+        </view>
+        <view class="bottom">
+            <view class="content">
+                <image src="../../images/ship.png"></image>
+                <text class="key">船名/航次：</text>
+                <text class="value">{{ship}}</text>
+            </view>
+            <view class="content">
+                <image src="../../images/clock.png"></image>
+                <text class="key">计划提箱时间：</text>
+                <text class="value">{{time}}</text>
+            </view>
+            <view class="content">
+                <image src="../../images/flag.png"></image>
+                <text class="key">备注：</text>
+                <text class="value">{{remark}}</text>
+            </view>
+            <view class="bottom-btn">
+                <button wx-if="{{page === 1}}" size="mini" class="look-over">查看预约单</button>
+                <button wx-if="{{page === 2}}" size="mini" class="look-active">查看预约单</button>
+            </view>
+            <view wx-if="{{page === 3}}" class="bottom-btn rob">
+                <button>抢单</button>
+            </view>
+        </view>
+    </view>
+</template>

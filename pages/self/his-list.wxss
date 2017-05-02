@@ -1,10 +1,13 @@
+@import "../template/list.wxss";
+
+
 .his-list{
   width : 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   background:#f5f5f5;
-  height:500px;
+  height:auto;
 }
 .his-list .title {
   width : 100%;
@@ -27,79 +30,3 @@
 .his-list .title text.text{
   font-size:12px;
 }
-.his-list .list{
-  width : 100%;
-  display: flex;
-  flex-direction: column;
-  align-items:flex-start;
-  margin-top:10px;
-  background:#fff;
-}
-.his-list .list .top {
-  padding-top:10px;
-}
-.his-list .list .top text{
-  color:#fe9900;
-  font-weight:bold;
-}
-.his-list .list .top .price{
-  color : #fe4800;
-  text-align: center;
-  font-weight: bold;
-  margin-left:20px;
-}
-.his-list .list .top image{
-  width:20px;
-  height:20px;
-  vertical-align: top;
-}
-.his-list .list .top image.arrow-left{
-  margin-right:5px;
-}
-.his-list .list .main{
-  display: flex;
-}
-.his-list .list .middle{
-  width:100%;
-  padding:10px;
-  display: flex;
-}
-
-.his-list .list .middle .main{
-  flex-grow: 7;
-  display: flex;
-  flex-direction: column;
-  align-items:flex-start;
-}
-.content {
-  margin-top:5px;
-}
-.content text{
-  font-size:14px;
-  font-weight: bold;
-  color:#999;
-  height:20px;
-  line-height: 20px;
-  margin-right:10px;
-}
-.content image {
-  width:20px;
-  height:20px;
-  vertical-align: top;
-  margin-right:10px;
-}
-.his-list .list .middle .status{
-  flex-grow: 3;
-}
-.his-list .list .middle .status image {
-  width : 120px;
-  height:60px;
-}
-.his-list .list .bottom{
-  margin-top:-32px;
-  width:100%;
-  padding:10px;
-}
-
-
-

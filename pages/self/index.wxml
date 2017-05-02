@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="self">
-    <view class="list" wx:for="{{lists}}" wx:for-item="list">
+    <view class="my-list" wx:for="{{lists}}" wx:for-item="list">
         <image class="icon" src="{{list.icon}}"></image>
         <navigator class="text" url="{{list.url}}">{{list.text}}</navigator>
         <image class="arrow" src="../../images/arrow-right.png"></image>
