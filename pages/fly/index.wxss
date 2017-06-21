@@ -1,4 +1,4 @@
-@import "../template/list.wxss";
+@import "../template/list2.wxss";
 
 
 .his-list{
@@ -37,6 +37,35 @@
   height: 20px;
   line-height: 20px;
 }
+
+
+
+.his-list .address {
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  font-weight:bold;
+}
+.his-list .address .choice{
+  width:100%;
+  display: flex;
+  justify-content: space-around;
+}
+.his-list .address .choice view {
+  margin-top:10px;
+  width:100px;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+}
+.his-list .address .choice view.active{
+  border-radius:20px;
+  background:#ffe7c3;
+  color:orange;
+}
+
+
+
 .his-list .list .bottom{
   margin-top:-20px;
 }

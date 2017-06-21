@@ -41,86 +41,83 @@
 .list .top image.arrow-left{
   margin-right:5px;
 }
-.list .main{
+
+
+.list .middle {
   display: flex;
-}
-.list .middle{
   width:100%;
+}
+.list .middle .main{
   padding:10px;
   display: flex;
-}
-
-.list .middle .m-top{
-  flex-grow: 7;
-  display: flex;
+  width:80%;
   flex-direction: column;
-  align-items:flex-start;
 }
-.list .middle .m-top .type-num{
+.list .middle .main .content {
   display: flex;
+  width:100%;
 }
-.list .middle .m-top .type-num .box-type{
-  margin-right:20px;
-}
-.content {
-  margin-top:5px;
-}
-.content text{
-  font-size:14px;
-  font-weight: bold;
+.list .middle .main .content text{
+  font: bold 12px/20px Arial, Helvetica, sans-serif ;
   color:#999;
-  height:20px;
-  line-height: 20px;
 }
-.content image {
+.list .middle .main .content image {
   width:20px;
   height:20px;
-  vertical-align: top;
+  vertical-align: middle;
   margin-right:10px;
 }
+.list .middle .main .content .case{
+  margin-right:20px;
+}
 
-.list .middle .status{
-  flex-grow: 3;
+
+.list .middle .picture{
+  width:20%;
 }
-.list .middle .status image{
-  text-align: center;
-  vertical-align: middle;
+.list .middle .picture image {
+  margin-top:20px;
+  margin-left:-10px;
 }
-.list .middle .status wx-image.already-over {
-  width : 80px;
+.list .middle .picture wx-image.already-over {
+  width : 60px;
   height:40px;
 }
-.list .middle .status wx-image.phone {
+.list .middle .picture wx-image.phone {
   width : 40px;
   height:40px;
 }
+
+
 .list .bottom{
-  margin-top:-20px;
   width:100%;
-  padding:10px;
-}
-.list .bottom-btn {
   text-align: right;
-  padding-right:20px;
 }
+
+.list .bottom button {
+  background : #838383;
+  color:#fff;
+  font-weight: bold;
+}
+
+
 .list .bottom-btn .look-over{
   background : #838383;
   color:#fff;
   font-weight: bold;
 }
-.list .bottom-btn .look-active{
+.list .bottom .look-active{
   background : #fe4800;
   color:#fff;
   font-weight: bold;
 }
-.list .rob {
+.list .bottom .rob {
+  margin-top:20px;
   text-align: center;
-}
-.list .rob button {
   background : #fff;
   color:#fe9900;
   font-weight: bold;
 }
-.list .rob button:after{
+.list .bottom .rob:after{
   border:none;
 }

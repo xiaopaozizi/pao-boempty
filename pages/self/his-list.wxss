@@ -1,4 +1,4 @@
-@import "../template/list.wxss";
+@import "../template/list2.wxss";
 
 
 .his-list{

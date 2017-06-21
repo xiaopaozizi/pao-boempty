@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<import src="../template/list.wxml" />
+<import src="../template/list2.wxml" />
 <view class="his-list">
     <view class="title">
         <text class="num">10</text>
