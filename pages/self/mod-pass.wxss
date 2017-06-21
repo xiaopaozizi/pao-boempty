@@ -1,7 +1,9 @@
+
 .mod-pass{
   padding:0;
   width : 100%;
   background : #f5f5f5;
+  font:normal normal 38rpx/38rpx '黑体';
 }
 .mod-pass .form {
   margin:20px 0 50px 0;
@@ -18,7 +20,6 @@
   width : 120px;
   height : 26px;
   line-height: 26px;
-  font-weight: bold;
 }
 .mod-pass .save-btn{
   width : 90%;

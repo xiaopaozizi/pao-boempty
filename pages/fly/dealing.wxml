@@ -62,7 +62,16 @@
       <text>操作记录</text>
     </view>
     <view class="content">
-    
+      <view class="record">
+        <text>箱号：8976546778</text>
+        <text>作业时间：2017-09-12 17:00:00</text>
+        <text>支付状态：已支付</text>
+      </view>
+      <view class="record">
+        <text>箱号：8976546778</text>
+        <text>作业时间：2017-09-12 17:00:00</text>
+        <text>支付状态：已支付</text>
+      </view>
     </view>
   </view>
 </view>

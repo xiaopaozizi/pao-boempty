@@ -1,4 +1,5 @@
 .info{
+  font:normal normal 35rpx/35rpx '黑体';
   padding:0;
   width : 100%;
   display: flex;
