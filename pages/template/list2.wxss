@@ -9,8 +9,10 @@
 
 
 .list .top {
-  padding-top:10px;
+  font-size:14px;
+  padding:10px 0 0 10px;
   display: flex;
+
 }
 .list .top text{
   color:#fe9900;
@@ -58,14 +60,18 @@
   width:100%;
 }
 .list .middle .main .content text{
-  font: bold 12px/20px Arial, Helvetica, sans-serif ;
+  font: bold 12px/25px Arial, Helvetica, sans-serif;
   color:#999;
 }
+.list .middle .main .content text.value{
+  font-weight: normal;
+}
 .list .middle .main .content image {
-  width:20px;
-  height:20px;
-  vertical-align: middle;
+  width:18px;
+  height:18px;
   margin-right:10px;
+  margin-top:3px;
+  vertical-align: middle;
 }
 .list .middle .main .content .case{
   margin-right:20px;
@@ -80,8 +86,9 @@
   margin-left:-10px;
 }
 .list .middle .picture wx-image.already-over {
-  width : 60px;
-  height:40px;
+  width : 120px;
+  height:60px;
+  margin-left:-50px;
 }
 .list .middle .picture wx-image.phone {
   width : 40px;
@@ -97,19 +104,17 @@
 .list .bottom button {
   background : #838383;
   color:#fff;
-  font-weight: bold;
+  margin-right:10px;
 }
 
 
 .list .bottom-btn .look-over{
   background : #838383;
   color:#fff;
-  font-weight: bold;
 }
 .list .bottom .look-active{
   background : #fe4800;
   color:#fff;
-  font-weight: bold;
 }
 .list .bottom .rob {
   margin-top:20px;

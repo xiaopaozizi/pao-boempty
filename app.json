@@ -1,16 +1,16 @@
 {
   "pages":[
-    "pages/self/mod-pass",
-    "pages/self/info",
     "pages/index/index",
     "pages/fly/index",
     "pages/fly/detail",
     "pages/fly/dealing",
-    "pages/news/index",
     "pages/news/detail",
+    "pages/news/index",
     "pages/self/index",
     "pages/self/his-pre-enter",
-    "pages/self/his-list"
+    "pages/self/his-list",
+    "pages/self/mod-pass",
+    "pages/self/info"
   ],
   "window":{
     "backgroundTextStyle":"light",

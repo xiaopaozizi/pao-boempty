@@ -1,6 +1,6 @@
 <!--index.wxml-->
 
-<import src="../template/list.wxml" />
+<import src="../template/list2.wxml" />
 <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">    
   <block wx:for="{{movies}}" wx:for-index="index">    
     <swiper-item>    

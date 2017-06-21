@@ -1,5 +1,5 @@
 
-@import "../template/list.wxss";
+@import "../template/list2.wxss";
 .swiper {
   height: 400rpx;
   width: 100%;
@@ -10,6 +10,7 @@
 }
 .nav {
   display: flex;
+  font-family:'黑体';
 }
 .nav .nav-item {
   display: flex;
@@ -23,19 +24,21 @@
 }
 .nav .nav-item text {
   font-size : 14px;
-  font-weight: bold;
-  color : #999;
+  color : #666;
 }
 .nav-text {
   font-size:14px;
   color : #999;
-  font-weight: bold;
   background : #f5f5f5;
   padding-top:5px;
 }
 .nav-text text {
   height : 20px;
   line-height: 20px;
+  padding-left:10px;
+  font-size:12px;
+  color:#999;
+  font-weight: normal;
 }
 .his-list{
   width : 100%;

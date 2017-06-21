@@ -53,7 +53,7 @@
       </view>
     </view>
   </view>
-  <view class="bottom">
+  <view class="bottom2">
     <button>马上抢单</button>
   </view>
 </view>
