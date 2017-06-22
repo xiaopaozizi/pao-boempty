@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字典维护—驳空箱车队管理系统—www.jhlm8.com—</title>
+    <link rel="stylesheet" href="../../css/libs/calendar.css">
+    <link rel="stylesheet" href="../../css/libs/GridManager.min.css">
+    <link rel="stylesheet" href="../../css/public/reset.css">
+    <link rel="stylesheet" href="../../css/search/search.css">
+    <link rel="stylesheet" href="../../css/system/system.css">
+    <script src="../../js/libs/jquery.min.js"></script>
+    <script src="../../js/libs/calendar.js"></script>
+    <script src="../../js/libs/GridManager.min.js"></script>
+    <script src="../../js/system/system.js"></script>
+</head>
+<body>
+<div class="mask"></div>
+
+<div class="pop-alert"></div>
+
+<!--删除表格数据模态框-->
+<div class="delete-overlay">
+    <div class="overlay-header">
+        是否确认删除选中数据？
+    </div>
+    <div class="overlay-content">
+        <button class="confirm-btn" id="dictionary_del_confirm">删除</button>
+        <button class="cancel-btn" id="dictionary_del_cancel">再想想</button>
+    </div>
+</div>
+
+<!--添加模态框-->
+<div class="overlay" id="dict_new_overlay">
+    <div class="overlay-header" id="dict_new_overlay_header">
+
+    </div>
+    <div class="overlay-content">
+        <div class="new-line">
+            <label for="dict_new_item">分类<span class="required">*</span>：
+                <input type="text" class="input-primary" id="dict_new_item">
+            </label>
+
+            <label for="dict_new_value">值<span class="required">*</span>：
+                <input type="text" class="input-primary" id="dict_new_value">
+            </label>
+
+            <label for="dict_new_text">显示<span class="required">*</span>：
+                <input type="text" class="input-primary" id="dict_new_text">
+            </label>
+        </div>
+
+        <div class="new-line">
+            <label for="dict_new_remark">备注：
+                <textarea rows="4" class="textarea-primary" id="dict_new_remark"></textarea>
+            </label>
+        </div>
+    </div>
+    <div class="overlay-footer">
+        <button class="confirm-btn" id="dictionary_new_save">保存</button>
+        <button class="cancel-btn" onclick="close_new_order_modal()">取消</button>
+    </div>
+</div>
+
+<!--正文内容-->
+<div class="content-panel">
+    <div class="action-container">
+        <button class="btn btn-primary" id="dictionary_add_btn">添 加</button>
+
+        <button class="btn btn-primary" id="dictionary_edit_btn">编 辑</button>
+
+        <button class="btn btn-primary" id="dictionary_del_btn">删 除</button>
+    </div>
+    <table class="system-table dictionary-table" grid-manager="dictionary_table"></table>
+</div>
+</body>
+</html>

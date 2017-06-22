@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户管理—驳空箱车队管理系统—www.jhlm8.com—</title>
+    <link rel="stylesheet" href="../../css/libs/calendar.css">
+    <link rel="stylesheet" href="../../css/libs/GridManager.min.css">
+    <link rel="stylesheet" href="../../css/public/reset.css">
+    <link rel="stylesheet" href="../../css/search/search.css">
+    <link rel="stylesheet" href="../../css/archive/archive.css">
+    <script src="../../js/libs/jquery.min.js"></script>
+    <script src="../../js/libs/calendar.js"></script>
+    <script src="../../js/libs/GridManager.min.js"></script>
+    <script src="../../js/search/search.js"></script>
+    <script src="../../js/archive/archive.js"></script>
+</head>
+<body>
+<div class="mask"></div>
+
+<div class="pop-alert"></div>
+
+<!--删除表格数据模态框-->
+<div class="delete-overlay">
+    <div class="overlay-header">
+        是否确认删除选中数据？
+    </div>
+    <div class="overlay-content">
+        <button class="confirm-btn" id="customer_del_confirm">删除</button>
+        <button class="cancel-btn" id="customer_del_cancel">再想想</button>
+    </div>
+</div>
+
+<!--添加模态框-->
+<div class="overlay" id="customer_new_overlay">
+    <div class="overlay-header" id="customer_new_overlay_header">
+        添加客户
+    </div>
+    <div class="overlay-content">
+        <div class="new-line">
+            <label for="customer_new_cuscode">客户代码<span class="required">*</span>：
+                <input type="text" class="input-primary" id="customer_new_cuscode">
+            </label>
+
+            <label for="customer_new_cusabbr">客户简称<span class="required">*</span>：
+                <input type="text" class="input-primary" id="customer_new_cusabbr">
+            </label>
+
+            <label for="customer_new_ticket">开票抬头<span class="required">*</span>：
+                <input type="text" class="input-primary" id="customer_new_ticket">
+            </label>
+        </div>
+
+        <div class="new-line">
+            <label for="customer_new_custype">客户类型<span class="required">*</span>：
+                <select class="select-primary" id="customer_new_custype">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </label>
+
+            <label for="customer_new_chargeman">负责人信息<span class="required">*</span>：
+                <input type="text" class="input-primary" id="customer_new_chargeman">
+            </label>
+
+            <label for="customer_new_finance">财务信息<span class="required">*</span>：
+                <input type="text" class="input-primary" id="customer_new_finance">
+            </label>
+        </div>
+
+        <div class="new-line">
+            <label for="customer_new_addr">办公地址：
+                <input type="text" class="input-primary" id="customer_new_addr">
+            </label>
+            <label for="customer_new_fax">传真：
+                <input type="text" class="input-primary" id="customer_new_fax">
+            </label>
+            <label for="customer_new_remark">备注：
+                <textarea class="textarea-primary" id="customer_new_remark" rows="4"></textarea>
+            </label>
+        </div>
+
+    </div>
+    <div class="overlay-footer">
+        <button class="confirm-btn" id="customer_new_save">保存</button>
+        <button class="cancel-btn" onclick="close_new_order_modal()">取消</button>
+    </div>
+</div>
+
+<!--正文内容-->
+<div class="content-panel">
+    <div class="search-container" id="customer_search">
+        <div class="search-autocomplete">
+            <input type="text" class="input-primary input-autocomplete" id="customer_cusabbr" placeholder="客户代码/简称">
+            <div class="search-result">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+
+        <select class="select-primary" id="customer_type">
+            <option value="">客户类型</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+
+        <button class="btn btn-primary" id="customer_search_btn">查 询</button>
+    </div>
+
+    <div class="customer-info">
+        <div class="action-container">
+            <button class="btn btn-primary" id="customer_add_btn">添 加</button>
+
+            <button class="btn btn-primary" id="customer_edit_btn">编 辑</button>
+
+            <button class="btn btn-primary" id="customer_del_btn">删 除</button>
+        </div>
+
+        <table class="archive-table customer-table" grid-manager="customer_table"></table>
+    </div>
+</div>
+</body>
+</html>

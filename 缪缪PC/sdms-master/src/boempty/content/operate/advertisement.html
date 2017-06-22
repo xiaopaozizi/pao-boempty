@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页广告—驳空箱车队管理系统—</title>
+    <link rel="stylesheet" href="../../css/libs/calendar.css">
+    <link rel="stylesheet" href="../../css/libs/GridManager.min.css">
+    <link rel="stylesheet" href="../../css/public/reset.css">
+    <link rel="stylesheet" href="../../css/search/search.css">
+    <link rel="stylesheet" href="../../css/operate/operate.css">
+    <script src="../../js/libs/jquery.min.js"></script>
+    <script src="../../js/libs/calendar.js"></script>
+    <script src="../../js/libs/GridManager.min.js"></script>
+    <script src="../../js/operate/operate.js"></script>
+</head>
+<body>
+<div class="mask"></div>
+
+<div class="pop-alert"></div>
+
+<!--删除表格数据模态框-->
+<div class="delete-overlay">
+    <div class="overlay-header">
+        是否确认删除选中数据？
+    </div>
+    <div class="overlay-content">
+        <button class="confirm-btn" id="ad_del_confirm">删除</button>
+        <button class="cancel-btn" id="ad_del_cancel">再想想</button>
+    </div>
+</div>
+
+<!--添加编辑模态框-->
+<div class="overlay" id="ad_overlay">
+    <div class="overlay-header" id="ad_header">
+
+    </div>
+    <div class="overlay-content">
+        <div class="row">
+            <input type="text" class="input-primary" id="ad_title" placeholder="请输入广告标题">
+        </div>
+        <div class="row">
+            <button class="file-upload-trigger">上传广告图片</button><input type="file" class="search-btn file-upload">
+        </div>
+        <div class="row">
+            <div class="radio-primary">
+                <input type="radio" name="ad-state" id="ad_state_yes" checked value="有效"><span></span>
+            </div>
+            <label for="ad_state_yes">有效</label>
+
+            <div class="radio-primary">
+                <input type="radio" name="ad-state" id="ad_state_no" value="无效"><span></span>
+            </div>
+            <label for="ad_state_no">无效</label>
+        </div>
+    </div>
+    <div class="overlay-footer">
+        <button class="confirm-btn" id="ad_confirm">保存</button>
+        <button class="cancel-btn" id="ad_cancel">再想想</button>
+    </div>
+</div>
+
+<!--正文内容-->
+<div class="content-panel">
+    <div class="action-container">
+        <button class="btn btn-primary" id="ad_add_btn">添 加</button>
+
+        <button class="btn btn-primary" id="ad_edit_btn">编 辑</button>
+
+        <button class="btn btn-primary" id="ad_del_btn">删 除</button>
+    </div>
+    <table class="operate-table ad-table" grid-manager="ad_table"></table>
+</div>
+</body>
+</html>

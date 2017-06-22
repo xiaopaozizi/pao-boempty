@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>消息推送—驳空箱车队管理系统—www.jhlm8.com—</title>
+    <link rel="stylesheet" href="../../css/libs/calendar.css">
+    <link rel="stylesheet" href="../../css/libs/GridManager.min.css">
+    <link rel="stylesheet" href="../../css/public/reset.css">
+    <link rel="stylesheet" href="../../css/search/search.css">
+    <link rel="stylesheet" href="../../css/operate/operate.css">
+    <script src="../../js/libs/jquery.min.js"></script>
+    <script src="../../js/libs/calendar.js"></script>
+    <script src="../../js/libs/GridManager.min.js"></script>
+    <script src="../../js/operate/operate.js"></script>
+</head>
+<body>
+<div class="mask"></div>
+
+<div class="pop-alert"></div>
+
+<!--删除表格数据模态框-->
+<div class="delete-overlay">
+    <div class="overlay-header">
+        是否确认删除选中数据？
+    </div>
+    <div class="overlay-content">
+        <button class="confirm-btn" id="ad_del_confirm">删除</button>
+        <button class="cancel-btn" id="ad_del_cancel">再想想</button>
+    </div>
+</div>
+
+<!--添加编辑模态框-->
+<div class="overlay" id="msg_overlay">
+    <div class="overlay-header" id="msg_header">
+
+    </div>
+    <div class="overlay-content">
+        <div class="row">
+            <input type="text" class="input-primary" id="msg_title" placeholder="请输入消息标题">
+        </div>
+        <div class="row">
+            <textarea id="msg_remark" rows="5" cols="61" class="textarea-primary" placeholder="请输入消息内容"></textarea>
+        </div>
+    </div>
+    <div class="overlay-footer">
+        <button class="confirm-btn" id="msg_confirm">保存</button>
+        <button class="cancel-btn" id="msg_cancel">再想想</button>
+    </div>
+</div>
+
+<!--正文内容-->
+<div class="content-panel">
+    <div class="action-container">
+        <button class="btn btn-primary" id="msg_add_btn">添 加</button>
+
+        <button class="btn btn-primary" id="msg_edit_btn">编 辑</button>
+
+        <button class="btn btn-primary" id="msg_del_btn">删 除</button>
+
+        <button class="btn btn-primary" id="msg_send_btn">发 送</button>
+    </div>
+    <table class="operate-table msg-table" grid-manager="msg_table"></table>
+</div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>车辆管理—驳空箱车队管理系统—www.jhlm8.com—</title>
+    <link rel="stylesheet" href="../../css/libs/calendar.css">
+    <link rel="stylesheet" href="../../css/libs/GridManager.min.css">
+    <link rel="stylesheet" href="../../css/public/reset.css">
+    <link rel="stylesheet" href="../../css/search/search.css">
+    <link rel="stylesheet" href="../../css/archive/archive.css">
+    <script src="../../js/libs/jquery.min.js"></script>
+    <script src="../../js/libs/calendar.js"></script>
+    <script src="../../js/libs/GridManager.min.js"></script>
+    <script src="../../js/search/search.js"></script>
+    <script src="../../js/archive/archive.js"></script>
+</head>
+<body>
+<div class="mask"></div>
+
+<div class="pop-alert"></div>
+
+<!--删除表格数据模态框-->
+<div class="delete-overlay">
+    <div class="overlay-header">
+        是否确认删除选中数据？
+    </div>
+    <div class="overlay-content">
+        <button class="confirm-btn" id="truck_del_confirm">删除</button>
+        <button class="cancel-btn" id="truck_del_cancel">再想想</button>
+    </div>
+</div>
+
+<!--添加模态框-->
+<div class="overlay" id="truck_new_overlay">
+    <div class="overlay-header" id="truck_new_overlay_header">
+
+    </div>
+    <div class="overlay-content">
+        <div class="new-line">
+            <label for="truck_new_code">车辆编号<span class="required">*</span>：
+                <input type="text" class="input-primary" id="truck_new_code">
+            </label>
+
+            <label for="truck_new_plateno">车牌号<span class="required">*</span>：
+                <input type="text" class="input-primary" id="truck_new_plateno">
+            </label>
+
+            <label for="truck_new_fleet">归属车队<span class="required">*</span>：
+                <div class="search-autocomplete">
+                    <input type="text" class="input-primary input-autocomplete" id="truck_new_fleet">
+                    <div class="search-result">
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <div class="new-line">
+            <label for="truck_new_driver">当前驾驶司机<span class="required">*</span>：
+                <input type="text" class="input-primary" id="truck_new_driver">
+            </label>
+
+            <label for="truck_new_trucktype">车辆类型<span class="required">*</span>：
+                <input type="text" class="input-primary" id="truck_new_trucktype">
+            </label>
+
+            <label for="truck_new_hangcode">挂车号<span class="required">*</span>：
+                <input type="text" class="input-primary" id="truck_new_hangcode">
+            </label>
+        </div>
+
+        <div class="new-line">
+            <label for="truck_new_oiltype">燃油类型：
+                <input type="text" class="input-primary" id="truck_new_oiltype">
+            </label>
+            <label for="truck_new_type">车型：
+                <input type="text" class="input-primary" id="truck_new_type">
+            </label>
+            <label for="truck_new_weight">载重（吨）：
+                <input type="text" class="input-primary" id="truck_new_weight">
+            </label>
+        </div>
+
+        <div class="new-line">
+            <label for="truck_new_transport">道路运输证<span class="required">*</span>：
+                <input type="text" class="input-primary" id="truck_new_transport">
+            </label>
+            <label for="truck_new_ensureno">保险号<span class="required">*</span>：
+                <input type="text" class="input-primary" id="truck_new_ensureno">
+            </label>
+            <label for="truck_new_ensuredate">保险有效期：
+                <input type="text" class="input-primary" id="truck_new_ensuredate">
+            </label>
+        </div>
+
+        <div class="new-line">
+            <label for="truck_new_yeardate">年审有效期：
+                <input type="text" class="input-primary" id="truck_new_yeardate">
+            </label>
+            <label for="truck_new_seasondate">季审有效期：
+                <input type="text" class="input-primary" id="truck_new_seasondate">
+            </label>
+            <label for="truck_new_remark">备注：
+                <textarea class="textarea-primary" id="truck_new_remark" rows="4"></textarea>
+            </label>
+        </div>
+
+    </div>
+    <div class="overlay-footer">
+        <button class="confirm-btn" id="truck_new_save">保存</button>
+        <button class="cancel-btn" onclick="close_new_order_modal()">取消</button>
+    </div>
+</div>
+
+<!--正文内容-->
+<div class="content-panel">
+    <div class="search-container" id="truck_search">
+        <div class="search-autocomplete">
+            <input type="text" class="input-primary input-autocomplete" id="truck_code" placeholder="车辆编号">
+            <div class="search-result">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="search-autocomplete">
+            <input type="text" class="input-primary input-autocomplete" id="truck_plateno" placeholder="车牌号">
+            <div class="search-result">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="search-autocomplete">
+            <input type="text" class="input-primary input-autocomplete" id="truck_fleet" placeholder="归属车队">
+            <div class="search-result">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="search-autocomplete">
+            <input type="text" class="input-primary input-autocomplete" id="truck_driver" placeholder="驾驶员">
+            <div class="search-result">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+
+        <select class="select-primary" id="truck_type">
+            <option value="">车辆类型</option>
+            <option value="自有车">自有车</option>
+            <option value="合作车">合作车</option>
+            <option value="挂靠车">挂靠车</option>
+        </select>
+
+        <button class="btn btn-primary" id="truck_search_btn">查 询</button>
+    </div>
+
+    <div class="truck-info">
+        <div class="action-container">
+            <button class="btn btn-primary" id="truck_add_btn">添 加</button>
+
+            <button class="btn btn-primary" id="truck_edit_btn">编 辑</button>
+
+            <button class="btn btn-primary" id="truck_del_btn">删 除</button>
+
+            <button class="btn btn-primary">导 出</button>
+        </div>
+        <table class="archive-table truck-table" grid-manager="truck_table"></table>
+    </div>
+</div>
+</body>
+</html>

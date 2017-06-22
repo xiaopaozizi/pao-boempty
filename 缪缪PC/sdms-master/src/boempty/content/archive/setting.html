@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>参数设置—驳空箱车队管理系统—www.jhlm8.com—</title>
+    <link rel="stylesheet" href="../../css/libs/calendar.css">
+    <link rel="stylesheet" href="../../css/libs/GridManager.min.css">
+    <link rel="stylesheet" href="../../css/public/reset.css">
+    <link rel="stylesheet" href="../../css/search/search.css">
+    <link rel="stylesheet" href="../../css/archive/archive.css">
+    <script src="../../js/libs/jquery.min.js"></script>
+    <script src="../../js/libs/calendar.js"></script>
+    <script src="../../js/libs/GridManager.min.js"></script>
+    <script src="../../js/archive/archive.js"></script>
+</head>
+<body>
+<div class="mask"></div>
+
+<div class="pop-alert"></div>
+
+<!--删除表格数据模态框-->
+<div class="delete-overlay">
+    <div class="overlay-header">
+        是否确认删除选中数据？
+    </div>
+    <div class="overlay-content">
+        <button class="confirm-btn" id="setting_del_confirm">删除</button>
+        <button class="cancel-btn" id="setting_del_cancel">再想想</button>
+    </div>
+</div>
+
+<!--添加模态框-->
+<div class="overlay" id="setting_new_overlay">
+    <div class="overlay-header" id="setting_new_overlay_header">
+
+    </div>
+    <div class="overlay-content">
+        <div class="new-line">
+            <label for="setting_new_price">单价（元）<span class="required">*</span>：
+                <input type="text" class="input-primary" id="setting_new_price">
+            </label>
+
+            <label for="setting_new_oiltype">燃气类型<span class="required">*</span>：
+                <select class="select-primary" id="setting_new_oiltype">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </label>
+
+            <label for="setting_new_date1">开始时间<span class="required">*</span>：
+                <div class="calendar-time-container">
+                    <input type="text" class="input-primary" id="setting_new_date1">
+                    <div class="search-calendar-start" id="setting_calendar_date1"></div>
+                </div>
+            </label>
+        </div>
+
+        <div class="new-line">
+            <label for="setting_new_date2">结束时间<span class="required">*</span>：
+                <div class="calendar-time-container">
+                    <input type="text" class="input-primary" id="setting_new_date2">
+                    <div class="search-calendar-start" id="setting_calendar_date2"></div>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="overlay-footer">
+        <button class="confirm-btn" id="customer_new_save">保存</button>
+        <button class="cancel-btn" onclick="close_new_order_modal()">取消</button>
+    </div>
+</div>
+
+<!--正文内容-->
+<div class="content-panel">
+    <div class="action-container">
+        <button class="btn btn-primary" id="setting_add_btn">添 加</button>
+
+        <button class="btn btn-primary" id="setting_edit_btn">编 辑</button>
+
+        <button class="btn btn-primary" id="setting_del_btn">删 除</button>
+    </div>
+    <table class="archive-table setting-table" grid-manager="setting_table"></table>
+</div>
+</body>
+</html>
