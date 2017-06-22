@@ -169,10 +169,13 @@ $(document).on('click','#del_cancel',function() {
 
 
 // 单击表格tr
+// 单击表格tr
 $(document).on('click','.finance-table tbody tr',function() {
-    $('.aaa', parent.document).trigger('click');
-});
+    $('.aaa', parent.document).click(function (e, target) {
+        location.href = '?data=' + target.name;
+    }).trigger('click', [{name : 'zhang'}]);
 
+});
 
 
 

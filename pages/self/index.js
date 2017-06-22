@@ -9,8 +9,7 @@ Page({
       { icon : '../../images/dir.png', text : '历史单子', url : 'his-list' },
       { icon : '../../images/camera.png', text : '历史预录入', url : 'his-pre-enter' },
       { icon : '../../images/wallet.png', text : '账单', url : '' },
-      { icon : '../../images/share.png', text : '分享', url : '' },
-      { icon : '../../images/service.png', text : '客服', url : '' },
+      { icon : '../../images/service.png', text : '客服', url : 'about' },
     ]
   },
   

@@ -13,9 +13,17 @@ Page({
         "addrStart": "大榭招商（CMICT）",
         "addrEnd": "长胜货柜",
         "price": "100.00",
-
-
-
+        "boxType": "40GP",
+        "statusImg": 'phone',
+        "ship": "KOTAGANDING/0044E",
+        "time": "2017-12-12 18:00:00",
+        "remark": "无",
+        "page": 3,
+      },
+      {
+        "addrStart": "大榭招商（CMICT）",
+        "addrEnd": "长胜货柜",
+        "price": "100.00",
         "boxType": "40GP",
         "statusImg": 'phone',
         "ship": "KOTAGANDING/0044E",
@@ -66,14 +74,14 @@ Page({
     if (temp_addr === 'take_attr') {
       this.setData({
         take_addr: this.data.take_addr_all[val[0]],
+        isShowAddress : false,
       })
     } else if (temp_addr === 'dest_attr') {
       this.setData({
         dest_addr: this.data.dest_addr_all[val[0]],
+        isShowAddress : false,
       })
     } 
-   
-    
   },
 
   // 判断点击的是选择提箱地还是目的地
@@ -121,5 +129,10 @@ Page({
     //console.log(this.data.choiceType);
   },
 
+  toast: function () {
+    wx.navigateTo({
+      url: '../fly/dealing'
+    })
+  }
 
 })

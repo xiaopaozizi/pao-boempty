@@ -10,7 +10,8 @@
     "pages/self/his-pre-enter",
     "pages/self/his-list",
     "pages/self/mod-pass",
-    "pages/self/info"
+    "pages/self/info",
+    "pages/self/about"
   ],
   "window":{
     "backgroundTextStyle":"light",

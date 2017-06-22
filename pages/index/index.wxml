@@ -22,7 +22,19 @@
   <text>正在进行的单子</text>
 </view>
 <view class="his-list">
-    <block wx:for="{{lists}}" wx:for-item="list">
+    <block wx:for="{{myList}}" wx:for-item="list">
+        <template is="list" data="{{...list}}"></template>
+    </block>
+</view>
+
+
+
+
+<view class="nav-text">
+  <text>市场单子</text>
+</view>
+<view class="his-list">
+    <block wx:for="{{marketList}}" wx:for-item="list">
         <template is="list" data="{{...list}}"></template>
     </block>
 </view>

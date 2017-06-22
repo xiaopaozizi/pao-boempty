@@ -70,6 +70,12 @@ $(function() {
     });
 });
 
+
+$('.aaa').bind('click',function(event,arg1){
+    //$(arg1).appendTo('body');
+    console.log(arg1);
+})
+
 // 点击我的消息显示消息详情
 $(document).on('click','#my_msg',function() {
     //$('.msg-content').stop().slideToggle('fast');

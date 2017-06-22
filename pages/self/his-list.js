@@ -33,5 +33,11 @@ Page({
       
     ]
   },
+
+  toast: function () {
+    wx.navigateTo({
+      url: '../fly/dealing'
+    })
+  }
   
 })

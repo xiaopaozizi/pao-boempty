@@ -32,7 +32,7 @@
 -->
 <template name="list">
     <view class="list">
-        <view class="top">
+        <view class="top" bindtap="toast">
             <image wx:if="{{publicImg}}" src="{{publicImg}}" class="public"></image>
             <text>{{addrStart}}</text>
             <image src="../../images/arrow-left.png" class="arrow-left"></image>
