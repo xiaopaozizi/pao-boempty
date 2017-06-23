@@ -16,6 +16,9 @@
   statusImg : String --- 右侧已结束/电话的图标 <2选1>
              --- over 已结束
              --- phone 电话
+  phone  　　: int ----- 电话
+
+    
   ship       : String --- 船名航次
   time       : String --- 计划提箱时间
   remark     : String --- 备注
@@ -85,7 +88,7 @@
           </view>
           <view class="picture">
             <image wx:if="{{statusImg === 'over'}}" class="already-over" src="../../images/already-over.png"></image>
-            <image wx:if="{{statusImg === 'phone'}}"  class="phone" src="../../images/phone.png"></image>
+            <image wx:if="{{phone}}"  class="phone" src="../../images/phone.png" bindtap="calling" data-phone="{{phone}}"></image>
           </view>
         </view>    
         <view class="bottom">
