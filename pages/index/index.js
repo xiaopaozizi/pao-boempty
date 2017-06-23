@@ -1,6 +1,11 @@
 //index.js
 //获取应用实例
 var app = getApp()
+
+
+var wxbarcode = require('../../utils/index.js');
+
+
 Page({
   data: {
      movies:[    
@@ -86,5 +91,10 @@ Page({
     wx.navigateTo({
       url: '../fly/dealing'
     })
+  },
+
+
+  onLoad: function () {
+    wxbarcode.barcode('barcode', '1234567890123456789', 500, 100)
   }
 })

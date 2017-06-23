@@ -59,6 +59,17 @@
   display: flex;
   width:100%;
 }
+.list .middle .main .barcode {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.barcode > canvas {
+    width: 250px;
+    height: 50px;  
+}
+
 .list .middle .main .content text{
   font: bold 12px/25px Arial, Helvetica, sans-serif;
   color:#999;

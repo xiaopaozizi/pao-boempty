@@ -30,6 +30,8 @@
 
 
 -->
+
+
 <template name="list">
     <view class="list">
         <view class="top" bindtap="toast">
@@ -50,6 +52,9 @@
               <image src="../../images/ship.png"></image>
               <text class="key">预约号：</text>
               <text class="value">{{ship}}</text>
+            </view>
+            <view class="content barcode">
+              <canvas canvas-id="barcode" />
             </view>
             <view class="content">
                 <view class="case">
