@@ -95,6 +95,27 @@ Page({
 
 
   onLoad: function () {
+    var that = this;
     wxbarcode.barcode('barcode', '1234567890123456789', 500, 100)
+
+
+  
+    wx.request({
+      url: "http://10.16.20.210:8080/emptybox/weChat/getFlyList",
+      header: {
+        "Content-Type": "json"
+      },
+      success: function (res) {
+        //console.log(res.data)
+        that.setData({
+          marketList : res.data.data
+        });
+        console.log(that.data.marketList)
+      }
+    })  
+
   }
+
 })
+
+
