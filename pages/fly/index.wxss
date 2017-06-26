@@ -3,9 +3,6 @@
 
 .his-list{
   width : 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   background:#f5f5f5;
 }
 .his-list .nav {
@@ -67,4 +64,36 @@
 
 .his-list .list .bottom{
   margin-top:-20px;
+}
+
+
+.his-list .bottom{
+  width:100%;
+  text-align: right;
+}
+
+.his-list .bottom button {
+  background : #838383;
+  color:#fff;
+  margin-right:10px;
+}
+
+
+.his-list .bottom-btn .look-over{
+  background : #838383;
+  color:#fff;
+}
+.his-list .bottom .look-active{
+  background : #fe4800;
+  color:#fff;
+}
+.his-list .bottom .rob {
+  padding:10px 0;
+  text-align: center;
+  background : #fff;
+  color:#fe9900;
+  font-weight: bold;
+}
+.his-list .bottom .rob:after{
+  border:none;
 }

@@ -15,75 +15,15 @@ var indexPage = {
     ],
     "myList": [
       // 首页
-      {
-        "addrStart": "大榭招商（CMICT）",
-        "addrEnd": "长胜货柜",
-        "price": "100.00",
-        "order": "31506444450",
-        "boxType": "40GP",
-        "ship": "KOTAGANDING/0044E",
-        "time": "2017-12-12 18:00:00",
-        "remark": "无",
-        "page": 2,
-      },
-      {
-        "publicImg": "../../images/public.png",
-        "addrStart": "大榭招商（CMICT）",
-        "addrEnd": "长胜货柜",
-        "progress": 12,
-        "order": "31506444450",
-        "boxType": "40GP",
-        "boxNum": 20,
-        "ship": "KOTAGANDING/0044E",
-        "time": "2017-12-12 18:00:00",
-        "remark": "无",
-        "page": 2,
-      },
-
-
-
-
-
-
     ],
-
     // 市场单子
     marketList: [
       // 正在进行的单子
-      {
-        "addrStart": "大榭招商（CMICT）",
-        "addrEnd": "长胜货柜",
-        "price": "100.00",
-        "boxType": "40GP",
-        "statusImg": 'phone',
-        "ship": "KOTAGANDING/0044E",
-        "time": "2017-12-12 18:00:00",
-        "remark": "无",
-        "page": 3,
-      },
-      {
-        "addrStart": "大榭招商（CMICT）",
-        "addrEnd": "长胜货柜",
-        "price": "100.00",
-        "boxType": "40GP",
-        "statusImg": 'phone',
-        "ship": "KOTAGANDING/0044E",
-        "time": "2017-12-12 18:00:00",
-        "remark": "无",
-        "page": 3,
-      },
-      {
-        "addrStart": "大榭招商（CMICT）",
-        "addrEnd": "长胜货柜",
-        "price": "100.00",
-        "boxType": "40GP",
-        "statusImg": 'phone',
-        "ship": "KOTAGANDING/0044E",
-        "time": "2017-12-12 18:00:00",
-        "remark": "无",
-        "page": 3,
-      },
     ],
+    // 每页多少条
+    pageSize : 2,
+    // 第几页
+    pageNo : 1,
   },
 
 
@@ -92,22 +32,73 @@ var indexPage = {
     var that = this;
     wxbarcode.barcode('barcode', '1234567890123456789', 500, 100)
 
-
+    // 我的单子
+    var url = getApp().globalData.url;
 
     wx.request({
-      url: "http://10.16.20.210:8080/emptybox/weChat/getFlyList",
+      url: url + "/emptybox/weChat/getMyList",
       header: {
         "Content-Type": "json"
       },
+      data: {
+
+      },
       success: function (res) {
-        //console.log(res.data)
+        console.log(res.data)
+
         that.setData({
-          marketList: res.data.data
+          myList: res.data.data
         });
-        console.log(that.data.marketList)
       }
     })
 
+
+    // 飞单
+    //console.log(url + "/emptybox/weChat/getFlyList");
+    wx.request({
+      url: url + "/emptybox/weChat/getFlyList",
+      header: {
+        "Content-Type": "json"
+      },
+      data : {
+        pageNo : 1, 
+        pageSize : 2
+      },
+      success: function (res) {
+        console.log(res.data)
+
+        that.setData({
+          marketList: res.data.data
+        });
+      }
+    })
+
+  },
+
+
+  // 下拉刷新
+  more(){
+    var that = this;
+    //console.log(999);
+    wx.request({
+      url: "http://192.168.16.166:8080/emptybox/weChat/getFlyList",
+      header: {
+        "Content-Type": "json"
+      },
+      data: {
+        pageNo: 1,
+        pageSize: (that.data.pageNo++) * 2
+      },
+      success: function (res) {
+        //console.log(res.data)
+        
+
+        that.setData({
+          marketList: res.data.data
+        });
+       // console.log(that.data.marketList)
+      }
+    })
   }
 
 }

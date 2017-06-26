@@ -107,33 +107,4 @@
 }
 
 
-.list .bottom{
-  width:100%;
-  text-align: right;
-}
 
-.list .bottom button {
-  background : #838383;
-  color:#fff;
-  margin-right:10px;
-}
-
-
-.list .bottom-btn .look-over{
-  background : #838383;
-  color:#fff;
-}
-.list .bottom .look-active{
-  background : #fe4800;
-  color:#fff;
-}
-.list .bottom .rob {
-  margin-top:20px;
-  text-align: center;
-  background : #fff;
-  color:#fe9900;
-  font-weight: bold;
-}
-.list .bottom .rob:after{
-  border:none;
-}

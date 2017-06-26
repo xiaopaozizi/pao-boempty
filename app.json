@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/index/index",
     "pages/fly/index",
+    "pages/index/index",
     "pages/fly/detail",
     "pages/fly/dealing",
     "pages/news/detail",

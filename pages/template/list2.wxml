@@ -31,6 +31,13 @@
              --- 2 首页     高亮的产看预约单
              --- 3 飞单     抢单
 
+87077179
+
+ <view class="bottom">
+            <button wx-if="{{page === 1}}" size="mini" class="look-over">查看预约单</button>
+            <button wx-if="{{page === 2}}" size="mini" class="look-active">查看预约单</button>
+            <navigator url="../fly/detail" wx-if="{{page === 3}}" class="rob">抢单</navigator>
+        </view>  
 
 -->
 
@@ -56,9 +63,9 @@
               <text class="key">预约号：</text>
               <text class="value">{{ship}}</text>
             </view>
-            <view class="content barcode">
+            <!--<view class="content barcode">
               <canvas canvas-id="barcode" />
-            </view>
+            </view>-->
             <view class="content">
                 <view class="case">
                     <image src="../../images/box.png"></image>
@@ -91,10 +98,6 @@
             <image wx:if="{{phone}}"  class="phone" src="../../images/phone.png" bindtap="calling" data-phone="{{phone}}"></image>
           </view>
         </view>    
-        <view class="bottom">
-            <button wx-if="{{page === 1}}" size="mini" class="look-over">查看预约单</button>
-            <button wx-if="{{page === 2}}" size="mini" class="look-active">查看预约单</button>
-            <navigator url="../fly/detail" wx-if="{{page === 3}}" class="rob">抢单</navigator>
-        </view>  
+       
     </view>
 </template>

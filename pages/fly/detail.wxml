@@ -1,8 +1,8 @@
 <view class="detail">
   <view class="top">
-    <view class="left">计划提箱时间：2017-03-22 12:30:00</view>
+    <view class="left">计划提箱时间：{{detailData.time}}</view>
     <view class="right">
-      <view class="price">￥100.00</view>
+      <view class="price">￥{{detailData.price}}</view>
       <view class="status">待抢单</view>
     </view>
   </view>
@@ -12,8 +12,8 @@
         <image src="../../images/pos-start.png"></image>
       </view>
       <view class="content">
-        <view class="title">提箱点：浙江省 宁波市 鄞州区</view>
-        <view class="desc">大榭招商（CMIT）</view>
+        <view class="title">提箱点：</view>
+        <view class="desc">{{detailData.addrStart}}</view>
       </view>
     </view>
     <view class="list">
@@ -21,8 +21,8 @@
         <image src="../../images/pos-end.png"></image>
       </view>
       <view class="content">
-        <view class="title">还箱点：浙江省 宁波市 高新区</view>
-        <view class="desc">长胜货柜</view>
+        <view class="title">还箱点：</view>
+        <view class="desc">{{detailData.addrEnd}}</view>
       </view>
     </view>
     <view class="list">
@@ -31,7 +31,7 @@
       </view>
       <view class="content">
         <view class="title">船名/航次</view>
-        <view class="desc"></view>
+        <view class="desc">{{detailData.ship}}</view>
       </view>
     </view>
     <view class="list">
@@ -40,7 +40,7 @@
       </view>
       <view class="content">
         <view class="title">箱型</view>
-        <view class="desc">40GP</view>
+        <view class="desc">{{detailData.boxType}}</view>
       </view>
     </view>
     <view class="list">
@@ -49,7 +49,7 @@
       </view>
       <view class="content">
         <view class="title">备注</view>
-        <view class="desc">无</view>
+        <view class="desc">{{detailData.remark}}</view>
       </view>
     </view>
   </view>

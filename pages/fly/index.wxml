@@ -1,20 +1,20 @@
 <!--index.wxml-->
 <import src="../template/list2.wxml" />
-<view class="his-list">
+<scroll-view scroll-y="true" style="height: 420px;" bindscrolltolower="more" class="his-list">
     <view class="nav">
         <view class="pos pos-start">
             <image src="../../images/pos-start.png"></image>
-            <text data-title="take_attr" bindtap="choiceType">{{take_addr}}</text>
+            <text data-title="take_attr" bindtap="choiceType">{{take_addr.display}}</text>
         </view>
         <view class="pos pos-end">
             <image src="../../images/pos-end.png"></image>
-            <text data-title="dest_attr" bindtap="choiceType">{{dest_addr}}</text>
+            <text data-title="dest_attr" bindtap="choiceType">{{dest_addr.display}}</text>
         </view>
     </view>
     <view class="address" wx:if="{{isShowAddress}}">
       <picker-view indicator-style="height: 50px;" style="width: 100%; height: 150px;" value="{{value}}" bindchange="bindChange">
-        <picker-view-column>
-          <view wx:for="{{addresses}}" style="line-height: 50px;text-align:center;">{{item}}</view>
+        <picker-view-column  bindtap="hide">
+          <view wx:for="{{addresses}}" style="line-height: 50px;text-align:center;">{{item.display}}</view>
         </picker-view-column>
       </picker-view>
       <view class="choice">
@@ -24,10 +24,13 @@
           class="{{item.isActive ? 'active' : '' }}">{{item.text}}      </view>
       </view>
     </view>
-    <block wx:for="{{lists}}" wx:for-item="list">
-        <template is="list" data="{{...list}}"></template>
-    </block>
-</view>
+    <block wx:for="{{marketList}}" wx:for-item="list">
+          <template is="list" data="{{...list}}"></template>
+          <view class="bottom">
+              <navigator url="../fly/detail?id={{list.id}}" class="rob">抢单</navigator>
+          </view>  
+      </block>
+</scroll-view>
 
         
            

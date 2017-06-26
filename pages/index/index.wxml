@@ -1,40 +1,53 @@
 <!--index.wxml-->
 
 <import src="../template/list2.wxml" />
-<swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">    
-  <block wx:for="{{movies}}" wx:for-index="index">    
-    <swiper-item>    
-      <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>    
-    </swiper-item>    
-  </block>    
-</swiper> 
-<view class="nav">
-    <view class="nav-item">
-        <image src="../../images/camera-active.png"></image>
-        <text>预录入</text>
-    </view>
-    <view class="nav-item">
-        <image src="../../images/4-box.png"></image>
-        <text>待开发</text>
-    </view>
-</view>
-<view class="nav-text">
-  <text>正在进行的单子</text>
-</view>
-<view class="his-list">
-    <block wx:for="{{myList}}" wx:for-item="list">
-        <template is="list" data="{{...list}}"></template>
-    </block>
-</view>
+
+
+
+<scroll-view scroll-y="true" style="height: 800px;" bindscrolltolower="more">
+  <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">    
+    <block wx:for="{{movies}}" wx:for-index="index">    
+      <swiper-item>    
+        <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>    
+      </swiper-item>    
+    </block>    
+  </swiper> 
+  <view class="nav">
+      <view class="nav-item">
+          <image src="../../images/camera-active.png"></image>
+          <text>预录入</text>
+      </view>
+      <view class="nav-item">
+          <image src="../../images/4-box.png"></image>
+          <text>待开发</text>
+      </view>
+  </view>
+  <view class="nav-text">
+    <text>正在进行的单子</text>
+  </view>
+  <view class="his-list">
+      <block wx:for="{{myList}}" wx:for-item="list">
+          <template is="list" data="{{...list}}"></template>
+           <view class="bottom">
+            <button size="mini" class="look-active">查看预约单</button>
+        </view> 
+      </block> 
+  </view>
 
 
 
 
-<view class="nav-text">
-  <text>市场单子</text>
-</view>
-<view class="his-list">
-    <block wx:for="{{marketList}}" wx:for-item="list">
-        <template is="list" data="{{...list}}"></template>
-    </block>
-</view>
+  <view class="nav-text">
+    <text>市场单子</text>
+  </view>
+  <view class="his-list">
+      <block wx:for="{{marketList}}" wx:for-item="list">
+          <template is="list" data="{{...list}}"></template>
+          <view class="bottom">
+              <navigator url="../fly/detail?id={{list.id}}" class="rob">抢单</navigator>
+          </view>  
+      </block>
+  </view>
+
+
+</scroll-view>
