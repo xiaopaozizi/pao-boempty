@@ -16,3 +16,10 @@
   color:#fff;
   font-weight: normal;
 }
+
+
+
+.dialog{
+  text-align: center;
+}
+

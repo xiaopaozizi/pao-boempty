@@ -3,8 +3,20 @@
     <view class="img">
         <image src="../../images/user-ok.png"></image>
     </view>
-    <view class="content" wx:for="{{infos}}" wx:for-item="info">
-        <text class="key">{{info.key}}：</text>
-        <text class="value">{{info.value}}</text>
+    <view class="content">
+        <text class="key">姓名：</text>
+        <text class="value">{{info.driver_name}}</text>
+    </view>
+    <view class="content">
+        <text class="key">身份证：</text>
+        <text class="value">{{info.id_card}}</text>
+    </view>
+    <view class="content">
+        <text class="key">车牌号：</text>
+        <text class="value">{{info.truck_code}}</text>
+    </view>
+    <view class="content">
+        <text class="key">手机号码：</text>
+        <text class="value">{{info.telphone}}</text>
     </view>
 </view>

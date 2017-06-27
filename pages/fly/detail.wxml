@@ -54,8 +54,15 @@
     </view>
   </view>
   <view class="bottom2">
-    <button>马上抢单</button>
+    <button data-id="{{id}}" bindtap="robHandle">马上抢单</button>
   </view>
+
+  <!--抢单成功-->
+  
+
+<modal class="dialog" hidden="{{closeDialog}}" no-cancel="true" confirm-text="">{{message}}</modal>
+
+
 </view>
 
 

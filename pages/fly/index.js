@@ -75,15 +75,19 @@ Page({
     })
   },
 
-  clear(str){
-    console.log(999)
+  clear(e){
+    let str = e.target.dataset.addr;
     if(str === 'take'){
       this.setData({
-        take_addr : ''
-      });
+        take_addr: {
+          display: '选择提箱地'
+        },
+      })
     } else if (str === 'dest') {
       this.setData({
-        dest_addr: ''
+        dest_addr: {
+          display : '选择目的地'
+        }
       });
     }
   },
