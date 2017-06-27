@@ -49,9 +49,9 @@ Page({
     // 第几页
     pageNo: 1,
 
+    // 临时存储选择的按钮---提箱地、目的地
+    temp_addr: '',
   },
-  // 临时存储选择的按钮---提箱地、目的地
-  temp_addr: '',
 
   // 页面加载
   onLoad(){
@@ -73,6 +73,19 @@ Page({
         });
       }
     })
+  },
+
+  clear(str){
+    console.log(999)
+    if(str === 'take'){
+      this.setData({
+        take_addr : ''
+      });
+    } else if (str === 'dest') {
+      this.setData({
+        dest_addr: ''
+      });
+    }
   },
 
   // 下拉刷新

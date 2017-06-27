@@ -24,9 +24,21 @@ var indexPage = {
     pageSize : 2,
     // 第几页
     pageNo : 1,
+    // 窗口的高度
+    windowHeight : '',
   },
 
-
+  // 读取屏幕高度，赋值给scroll-view
+  onShow: function (e) {
+    wx.getSystemInfo({
+      success: (res) => {
+        console.log(res.windowHeight)
+        this.setData({
+          windowHeight: res.windowHeight
+        })
+      }
+    })
+  },
 
   onLoad: function () {
     var that = this;

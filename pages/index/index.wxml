@@ -4,9 +4,9 @@
 
 
 
-<scroll-view scroll-y="true" style="height: 800px;" bindscrolltolower="more">
+<scroll-view scroll-y="true" style="height: {{windowHeight}}px" bindscrolltolower="more">
   <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">    
-    <block wx:for="{{movies}}" wx:for-index="index">    
+    <block wx:for="{{movies}}" wx:for-index="index">  
       <swiper-item>    
         <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>    
       </swiper-item>    
@@ -17,10 +17,7 @@
           <image src="../../images/camera-active.png"></image>
           <text>预录入</text>
       </view>
-      <view class="nav-item">
-          <image src="../../images/4-box.png"></image>
-          <text>待开发</text>
-      </view>
+     
   </view>
   <view class="nav-text">
     <text>正在进行的单子</text>

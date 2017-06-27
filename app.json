@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/fly/index",
     "pages/index/index",
+    "pages/fly/index",
     "pages/fly/detail",
     "pages/fly/dealing",
     "pages/news/detail",
@@ -16,7 +16,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "首页",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {  
