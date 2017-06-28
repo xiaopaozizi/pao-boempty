@@ -1,16 +1,66 @@
 <!--index.wxml-->
 <view class="his-pre-enter">
-    <view class="list" wx:for="{{lists}}" wx:for-item="list">
-        <image src="{{list.image}}"></image>
-        <view class="info">
-            <view class="line first">
-                <text>{{list.user}}</text>
-                <view class="status doing" wx:if="{{list.status === 1}}">进行中</view>
-                <view class="status success" wx:if="{{list.status === 2}}">已成功</view>
-                <view class="status void" wx:if="{{list.status === 3}}">已作废</view>
-            </view>
-            <text class="line">{{list.tel}}</text>
-            <text class="line time">{{list.time}}</text>
+    <view class="list">
+        <view class="left">
+          <view class="line">
+            <image src="../../images/user_g_icon@2x.png"></image>
+            <text>张三</text>
+          </view>
+          <view class="line">
+            <image src="../../images/tel_g_icon@2x.png"></image>
+            <text>18898765456</text>
+          </view>
+          <view class="line">
+            <image src="../../images/xianghao_g_icon@2x.png"></image>
+            <text>箱号：xxx</text>
+            <text>封号：xxx</text>
+          </view>
+        </view>
+        <view class="right">
+          <text class="doing">进行中</text>
+          <view>2017-09-12 09:00:00</view>
+        </view>
+    </view>
+    <view class="list">
+        <view class="left">
+          <view class="line">
+            <image src="../../images/user_g_icon@2x.png"></image>
+            <text>张三</text>
+          </view>
+          <view class="line">
+            <image src="../../images/tel_g_icon@2x.png"></image>
+            <text>18898765456</text>
+          </view>
+          <view class="line">
+            <image src="../../images/xianghao_g_icon@2x.png"></image>
+            <text>箱号：xxx</text>
+            <text>封号：xxx</text>
+          </view>
+        </view>
+        <view class="right">
+          <text class="success">已成功</text>
+          <view>2017-09-12 09:00:00</view>
+        </view>
+    </view>
+    <view class="list">
+        <view class="left">
+          <view class="line">
+            <image src="../../images/user_g_icon@2x.png"></image>
+            <text>张三</text>
+          </view>
+          <view class="line">
+            <image src="../../images/tel_g_icon@2x.png"></image>
+            <text>18898765456</text>
+          </view>
+          <view class="line">
+            <image src="../../images/xianghao_g_icon@2x.png"></image>
+            <text>箱号：xxx</text>
+            <text>封号：xxx</text>
+          </view>
+        </view>
+        <view class="right">
+          <text class="void">已作废</text>
+          <view>2017-09-12 09:00:00</view>
         </view>
     </view>
 </view>

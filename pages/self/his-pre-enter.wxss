@@ -1,56 +1,70 @@
 .his-pre-enter{
   padding:0;
+  margin:0;
   width : 100%;
-  height : 800px;
+  height : 100vh;
   background : #f5f5f5;
   font-family: '黑体';
+  display: flex;
+  flex-direction: column;
 }
 .his-pre-enter .list{
   width : 100%;
   height : 100px;
-  margin:10px;
   background : #fff;
-  display: flex;
+  display: flex;  
+  margin-bottom:10px;
 }
-.his-pre-enter .list image {
-  width : 280px;
-  height:80px;
-  margin:10px 0;
-}
-.his-pre-enter .list .info{
-  margin:10px 20px;
+.his-pre-enter .list .left{
+  width: 60%;
   display: flex;
-  width : 100%;
   flex-direction: column;
-  align-items: flex-start;
-  font-size : 14px;
+  padding:10px 0px 10px 10px;
 }
-.his-pre-enter .list .info .line {
-  width : 100%;
-  flex-grow: 1;
+.his-pre-enter .list .left .line{
+  color:#555;
+  font-size:14px;
+  margin-bottom:10px;
+  
 }
-.his-pre-enter .list .info .line.first {
-  display: flex;
-  justify-content: space-between;
-}
-.his-pre-enter .list .info .line .status{
-  padding:7px 10px 0 10px;
-  border-radius: 3px;
-  color : #fff;
+.his-pre-enter .list .left .line image{
+  width:16px;
+  height:16px;
   vertical-align: middle;
+  margin-right:10px;
 }
-.his-pre-enter .list .info .line .status.doing{
-  background : #180ee9;
+.his-pre-enter .list .left .line text{
+  padding:1px;
+  margin-right:10px;
 }
-.his-pre-enter .list .info .line .status.success{
-  background : #0dae27;
-}
-.his-pre-enter .list .info .line .status.void{
-  background : #e91010;
-}
-.his-pre-enter .list .info .line.time {
-  text-align : right;
-  color : #999;
+.his-pre-enter .list .right{
+  width:40%;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
   font-size:12px;
+  padding-right:10px;
 }
-
+.his-pre-enter .list .right text{
+  padding:5px;
+  text-align:center;
+  background:red;
+  margin-top:10px;
+  margin-bottom:50px;
+  width:50px;
+  align-self:flex-end;
+  color:#fff;
+}
+.his-pre-enter .list .right text.doing{
+  background:#108ee9;
+}
+.his-pre-enter .list .right text.success{
+  background: #0dae27;
+}
+.his-pre-enter .list .right text.void{
+  background: #e91010;
+}
+.his-pre-enter .list .right view{
+  align-self: flex-end;
+  font-size:10px;
+}

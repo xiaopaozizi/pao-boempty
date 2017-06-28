@@ -9,6 +9,22 @@
             <label for="ID">身份证号</label>
             <input type="number" placeholder-class='placeholder' id="ID" placeholder="请输入身份证号码"/>
         </view>
+        <view class="form-item">
+            <label><text bindtap="showProvince" class="license-plate">浙▶</text></label>
+            <input type="number" placeholder-class='placeholder' placeholder="请输入车牌号"/>
+        </view>
+        <view class="province" wx-if="{{isShowProvice}}">
+          <text class="active">浙</text>
+          <text>赣</text>
+          <text>沪</text>
+          <text>皖</text>
+          <text>浙</text>
+          <text>浙</text>
+          <text>浙</text>
+          <text>浙</text>
+          <text>浙</text>
+          <text>浙</text>
+        </view>
         <view class="picture">
             <label>主车前脸照片（带车牌号）</label>
             <view class="addPicture">

@@ -3,8 +3,19 @@
 var app = getApp()
 Page({
   data: {
-    
+
+    // 是否显示省份
+    isShowProvince: false,
   },
+  // 显示省份
+  showProvince(e) {
+    var that = this;
+    this.setData({
+      isShowProvince: true
+    })
+    console.log('ok')
+  },
+
   // 上传图片
   upload(){
     wx.chooseImage({
@@ -26,3 +37,6 @@ Page({
     })
   }
 })
+
+
+

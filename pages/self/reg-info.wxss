@@ -16,6 +16,13 @@
   justify-content: flex-start;
   padding:0 20px;
 }
+.mod-pass .license-plate{
+  width:40px;
+  height:40px;
+  background:#f90;
+  color:#fff;
+  padding:5px;
+}
 .mod-pass .form-item label {
   width : 120px;
   height : 26px;
@@ -27,6 +34,24 @@
   margin : 20px 0;
   width : 90%;
   padding:0px 20px;
+}
+.mod-pass .province{
+  display: flex;
+  padding:0px 20px;
+  width:90%;
+  flex-wrap : wrap;
+}
+.mod-pass .province text{
+  width:15%;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+  background:#ccc;
+  margin:2px;
+}
+.mod-pass .province text.active{
+  background:#f90;
+  color:#fff;
 }
 .mod-pass .picture .addPicture{
   width : 100%;
