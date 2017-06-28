@@ -1,5 +1,7 @@
 {
   "pages":[
+    "pages/self/reg-info",
+    "pages/self/register",
     "pages/self/index",
     "pages/fly/index",
     "pages/index/index",

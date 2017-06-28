@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="mod-pass">
+    <view class="form">
+        <view class="form-item">
+            <label for="username">姓  名</label>
+            <input type="text" placeholder-class='placeholder' id="username"placeholder="请输入姓名" />
+        </view>
+        <view class="form-item">
+            <label for="ID">身份证号</label>
+            <input type="number" placeholder-class='placeholder' id="ID" placeholder="请输入身份证号码"/>
+        </view>
+        <view class="picture">
+            <label>主车前脸照片（带车牌号）</label>
+            <view class="addPicture">
+              <image src="../../images/userinfo_pic@2x.png" bindtap="upload">
+              </image>
+            </view>
+        </view>
+        <view class="form-item">
+            <label for="fleet">归属车队</label>
+            <input type="text" placeholder-class='placeholder' id="fleet"placeholder="请填入归属车队" />
+        </view>
+        <button class="save-btn" size="default" type="primary">完成注册</button>
+    </view>
+</view>

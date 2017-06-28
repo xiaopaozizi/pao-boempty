@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="mod-pass">
+    <view class="form">
+        <view class="form-item">
+            <label for="phone">手机号码</label>
+            <input type="number" placeholder-class='placeholder' id="phone"placeholder="请输入手机号码" />
+        </view>
+        <view class="form-item">
+            <label for="code">验 证 码</label>
+            <input type="number" placeholder-class='placeholder' id="code" placeholder="请输入验证码" size="4"/>
+            <text class="codeBtn">获取验证码</text>
+        </view>
+        <view class="form-item">
+            <label for="password">密  码</label>
+            <input type="password" placeholder-class='placeholder' id="password"placeholder="请设置密码" />
+        </view>
+        <view class="form-item">
+            <label for="com-pass">确认密码</label>
+            <input type="password" placeholder-class='placeholder' id="com-pass"placeholder="请再次填入" />
+        </view>
+        <button class="save-btn" size="default" type="primary">下一步</button>
+    </view>
+</view>
