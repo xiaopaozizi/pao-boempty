@@ -5,15 +5,42 @@ Page({
   data: {
 
     // 是否显示省份
-    isShowProvince: false,
+    isShow : false,
+    // 省份
+    provinces : [
+      { value: '浙', isShow: 'active' },
+      { value: '京', isShow: '' },
+      { value: '苏', isShow: '' },
+      { value: '疆', isShow: '' },
+      { value: '粤', isShow: '' },
+      { value: '皖', isShow: '' },
+      { value: '晋', isShow: '' }
+    ],
+    // 当前省份
+    curProvince : '浙',
+    
   },
   // 显示省份
-  showProvince(e) {
-    var that = this;
+  showProvince() {
     this.setData({
-      isShowProvince: true
+      isShow: !this.data.isShow,
     })
-    console.log('ok')
+   
+  },
+  // 选择省份
+  choiceProvice(e){
+    var index = e.target.dataset.index;
+    var provinces = this.data.provinces;
+    provinces.forEach(item => {
+      item.isShow = '';
+    });
+    provinces[index].isShow = 'active';
+    var curProvince = provinces[index].value;
+    this.setData({
+      provinces: provinces,
+      curProvince: curProvince,
+      isShow : false
+    });
   },
 
   // 上传图片
