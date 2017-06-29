@@ -1,0 +1,37 @@
+<!--index.wxml-->
+<view class="pre-enter-detail">
+   <view class="top">
+    <text class="title">预录入成功</text>
+    <text class="content">您与2017年3月3日拍照上传成功，信息已预录入edi系统中</text>
+    <text class="time">2017-03-03 10:00:00</text>
+   </view>
+   <view class="middle">
+    <view class="line">
+      <image src="../../images/xianghao_o_icon@2x.png"></image>
+      <text>箱号：</text><label>xxx</label>
+      <text>封号：</text><label>xxx</label>
+    </view>
+    <view class="picture">
+      <view class="item"></view>
+      <view class="item"></view>
+      <view class="item"></view>
+    </view>
+   </view>
+
+
+
+   <view class="bottom">
+    <view class="title">
+      <text>操作信息</text>
+    </view>
+    <view class="linker">
+      <view class="left">
+         <view>客服：王小丫</view> 
+         <view>联系电话：13456789009</view>
+      </view>
+      <view class="right">
+        <image src="../../images/phone.png"></image>
+      </view>
+    </view>
+   </view>
+</view>

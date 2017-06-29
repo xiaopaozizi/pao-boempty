@@ -1,0 +1,13 @@
+<view class="upload-pre-enter">
+  <view class="pic-title">图片1</view>
+  <view class="pic-upload">
+    <image src="../../images/userinfo_pic@2x.png"></image>
+  </view>
+  <view class="pic-content">
+    <label>*</label>
+    <text>最少上传一张照片，最多上传三张</text>
+    <button>上传</button>
+  </view>
+</view>
+
+
