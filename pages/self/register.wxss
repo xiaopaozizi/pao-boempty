@@ -16,6 +16,14 @@
   justify-content: flex-start;
   padding:0 20px;
 }
+.mod-pass .error{
+  font-size:12px;
+  color:red;
+}
+.mod-pass .success{
+  font-size:12px;
+  color:#48c23d;
+}
 .mod-pass .form-item label {
   width : 120px;
   height : 26px;
@@ -26,8 +34,8 @@
   margin-right:20px;
 }
 .mod-pass .form-item .codeBtn{
-  width:60px;
-  padding:5px 5px 0 5px;
+  width:75px;
+  padding:0px;
   font-size:12px;
   background:#f60;
   color:#fff;

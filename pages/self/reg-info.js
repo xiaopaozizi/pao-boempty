@@ -27,6 +27,10 @@ Page({
     })
    
   },
+  // 获取参数
+  onLoad(options){
+    console.log(options);
+  },
   // 选择省份
   choiceProvice(e){
     var index = e.target.dataset.index;
