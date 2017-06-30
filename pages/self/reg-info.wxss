@@ -16,6 +16,14 @@
   justify-content: flex-start;
   padding:0 20px;
 }
+.mod-pass .error{
+  font-size:12px;
+  color:red;
+}
+.mod-pass .success{
+  font-size:12px;
+  color:#48c23d;
+}
 .mod-pass .license-plate{
   width:40px;
   height:40px;
@@ -46,12 +54,16 @@
   height:30px;
   line-height:30px;
   text-align:center;
-  background:#ccc;
+  background:#f5f5f5;
   margin:2px;
 }
 .mod-pass .province text.active{
   background:#f90;
   color:#fff;
+}
+.mod-pass .province text.more{
+  color:#f90;
+  font-weight: bold;
 }
 .mod-pass .picture .addPicture{
   width : 100%;
