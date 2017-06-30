@@ -3,7 +3,6 @@
 var app = getApp()
 Page({
   data: {
-
     // 是否显示省份
     isShow : false,
     // 省份
@@ -17,6 +16,8 @@ Page({
     lisence: '',
     // 下一步是否可以注册
     isDisabledRegisterBtn: true,
+    // 用户id
+    userid : 24,
     // 司机用户名
     username : '',
     // 身份证
@@ -49,9 +50,55 @@ Page({
     },
     
   },
+  // 获取参数
+  onLoad(options) {
+    //console.log(options);
+    var userid = options.id ? options.id : 24;
+    var that = this;
+    // 我的单子
+    var url = getApp().globalData.url;
+
+    wx.request({
+      url: url + "/emptybox/weChat/getProvinceCode",
+      header: {
+        "Content-Type": "json"
+      },
+      data: {
+
+      },
+      success: function (res) {
+        let arr = res.data.data;
+        let provinces = [];
+        arr.forEach(item => {
+          provinces.push({
+            value: item,
+          });
+        });
+        that.setData({
+          startProvinces: provinces
+        });
+        provinces[0].isShow = 'active';
+        provinces.splice(11, 0, {
+          value: '»',
+          isMore: 'more'
+        })
+
+        that.setData({
+          provinces: provinces.slice(0, 12),
+          userid: userid
+        });
+      }
+    })
+  },
+  // 获取用户名
+  checkUsername(e){
+    this.setData({
+      username : e.detail.value
+    });
+  },
   // 验证身份证号
   checkID(e) {
-    let str = e.detail.value;
+    let str = e.detail.value.toUpperCase();
     let value = '';
     let cssStyle = '';
     let hidden = false;
@@ -72,7 +119,7 @@ Page({
       'checkIDResStr.code': code,
       IDCard: str
     });
-    //this.isRegister();
+    this.isRegister();
   },
   // 验证车牌号
   checkLisence(e) {
@@ -98,13 +145,21 @@ Page({
       lisence: str,
     });
     console.log(this.data.curProvince + this.data.lisence);
-    //this.isRegister();
+    this.isRegister();
+  },
+
+  // 获取车队名称
+  checkFleet(e) {
+    this.setData({
+      fleet: e.detail.value
+    });
   },
   // 是否可以注册
   isRegister() {
+    // 411524199406245611
+    // b12345
     let idCode = this.data.checkIDResStr.code;
-    let lisenceCode = this.data.checkLisenceResStr.code;
-
+    let lisenceCode = this.data.checkLicenseResStr.code;
     if (idCode && lisenceCode) {
       this.setData({
         isDisabledRegisterBtn: false
@@ -121,44 +176,6 @@ Page({
   showProvince() {
     this.setData({
       isShow: !this.data.isShow,
-    })
-  },
-  // 获取参数
-  onLoad(options){
-    //console.log(options);
-    var that = this;
-    // 我的单子
-    var url = getApp().globalData.url;
-
-    wx.request({
-      url: url + "/emptybox/weChat/getProvinceCode",
-      header: {
-        "Content-Type": "json"
-      },
-      data: {
-
-      },
-      success: function (res) {
-        let arr = res.data.data;
-        let provinces = [];
-        arr.forEach(item => {
-          provinces.push({
-            value : item,
-          });
-        });
-        that.setData({
-          startProvinces: provinces
-        });
-        provinces[0].isShow = 'active';
-        provinces.splice(11, 0, {
-          value: '»',
-          isMore : 'more'
-        })
-
-        that.setData({
-          provinces: provinces.slice(0, 12)
-        });
-      }
     })
   },
   // 选择省份
@@ -195,27 +212,61 @@ Page({
 
     console.log(this.data.curProvince + this.data.lisence);
   },
+  // 提交注册
+  registerHandle(){
+    console.log(999999)
+    let that = this;
+    let username = this.data.username;
+    console.log(username);
+    if (this.isRegister() && username){
+      // 提交
+      // 获取验证码
+      var url = getApp().globalData.url;
 
-  // 上传图片
-  upload(){
-    wx.chooseImage({
-      success: function (res) {
-        var tempFilePaths = res.tempFilePaths
-        wx.uploadFile({
-          url: 'http://example.weixin.qq.com/upload', //仅为示例，非真实的接口地址
-          filePath: tempFilePaths[0],
-          name: 'file',
-          formData: {
-            'user': 'test'
-          },
-          success: function (res) {
-            var data = res.data
-            //do something
+      wx.request({
+        url: url + "/emptybox/weChat/weChatTruckRegister",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'POST',
+        data: {
+          driverId : that.data.userid,
+          driverName : that.data.username,
+          idCard : that.data.IDCard,
+          truckCode: that.data.curProvince + that.data.lisence,
+          remark : that.data.fleet
+        },
+        success: function (res) {
+          console.log(res.data);
+          if(res.data.status === 'success'){
+            wx.showToast({
+              title: '注册成功',
+              icon : 'success',
+              duration : 5000,
+              success : function () {
+                wx.navigateTo({
+                  url: './login?telphone=' + res.data.data,
+                })
+              }
+            })
+          } else {
+            let message = res.data.message;
+            if(message.indexOf('车辆') > -1){
+              that.setData({
+                'checkLicenseResStr.value': message,
+                'checkLicenseResStr.cssStyle': 'error',
+                'checkLicenseResStr.hidden': false,
+                'checkLicenseResStr.code': false,
+              });
+              that.isRegister();
+            }
           }
-        })
-      }
-    })
-  }
+        },
+
+      })
+    }
+  },
+  
 })
 
 
