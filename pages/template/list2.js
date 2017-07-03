@@ -5,6 +5,7 @@ var list2 = {
     wx.navigateTo({
       url: '../fly/dealing'
     })
+  
   },
 
   // 打电话

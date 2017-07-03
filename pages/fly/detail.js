@@ -22,13 +22,14 @@ Page({
     let id = e.target.dataset.id;
     let that = this;
     wx.request({
-      url: "http://192.168.16.166:8080/emptybox/weChat/grabOrder",
+      url: getApp().globalData.url + "/emptybox/weChat/grabOrder",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       method: 'POST',
       data: {
-        id: id
+        id: id,
+        driverId : wx.getStorageSync('driverInfo').id
       },
       success: function (res) {
         //console.log(res);

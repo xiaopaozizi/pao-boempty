@@ -17,16 +17,21 @@
           <image src="../../images/camera-active.png"></image>
           <text>预录入</text>
       </view>
-     
   </view>
-  <view class="nav-text">
+  <!--图片查看-->
+  <modal hidden="{{isHiddenModal}}" class="imageModal" title="" confirm-text="" cancel-text="" bindtap="hideImageHandle" no-cancel="{{nocancel}}" >
+      <image src="{{imageSrc}}"></image>
+  </modal>
+  <!--我的单子-->
+  <view class="nav-text" wx:if="{{myList.length > 0}}">
     <text>正在进行的单子</text>
   </view>
+  <!--市场单子-->
   <view class="his-list">
       <block wx:for="{{myList}}" wx:for-item="list">
           <template is="list" data="{{...list}}"></template>
            <view class="bottom">
-            <button size="mini" class="look-active">查看预约单</button>
+            <button size="mini" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage" class="look-active" >查看预约单</button>
         </view> 
       </block> 
   </view>
@@ -41,7 +46,7 @@
       <block wx:for="{{marketList}}" wx:for-item="list">
           <template is="list" data="{{...list}}"></template>
           <view class="bottom">
-              <navigator url="../fly/detail?id={{list.id}}" class="rob">抢单</navigator>
+              <text class="rob" data-listid="{{list.id}}" bindtap="robListHandle">抢单</text>
           </view>  
       </block>
   </view>

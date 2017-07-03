@@ -64,6 +64,7 @@
   width:100%;
   text-align: right;
   background:#fff;
+  display: flex;
 }
 
 .his-list .bottom button {
@@ -87,7 +88,19 @@
   background : #fff;
   color:#fe9900;
   font-weight: bold;
+  width:100%;
 }
 .his-list .bottom .rob:after{
   border:none;
+}
+
+.imageModa{
+  display: flex;
+}
+.imageModal image{
+  width:100%;
+  height:200px;
+  background-size: cover;
+  margin:0 auto;
+  text-align: center;
 }

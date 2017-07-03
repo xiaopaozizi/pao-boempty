@@ -27,5 +27,17 @@ App({
   globalData:{
     userInfo:null,
     url: 'http://192.168.16.166:8080',
+  },
+  // 判断是否登录了
+  isLogin(){
+    console.log(wx.getStorageSync('driverInfo'))
+    if(!wx.getStorageSync('driverInfo')){
+      wx.navigateTo({
+        url: '../self/login',
+      })
+    } else {
+
+      return true;
+    }
   }
 })

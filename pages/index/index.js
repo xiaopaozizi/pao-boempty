@@ -13,6 +13,10 @@ var indexPage = {
       { url: 'http://img04.tooopen.com/images/20130701/tooopen_20083555.jpg' },
       { url: 'http://img02.tooopen.com/images/20141231/sy_78327074576.jpg' }
     ],
+    // 是否隐藏查看图片的modal
+    isHiddenModal : true,
+    // 图片路径
+    imageSrc : '',
     "myList": [
       // 首页
     ],
@@ -27,7 +31,21 @@ var indexPage = {
     // 窗口的高度
     windowHeight : '',
   },
-
+  // 点击显示图片
+  showImage(e){
+    let src = getApp().globalData.url + '/emptybox/file' + e.target.dataset.imgsrc;
+    this.setData({
+      imageSrc : src,
+      isHiddenModal : false
+    })
+  },
+  // 点击图片modal，并且隐藏
+  hideImageHandle(){
+    console.log('dasfkljs')
+    this.setData({
+      isHiddenModal : true
+    })
+  },
   // 读取屏幕高度，赋值给scroll-view
   onShow: function (e) {
     wx.getSystemInfo({
@@ -42,27 +60,30 @@ var indexPage = {
 
   onLoad: function () {
     var that = this;
+    var driverInfo = wx.getStorageSync('driverInfo');
     wxbarcode.barcode('barcode', '1234567890123456789', 500, 100)
 
     // 我的单子
     var url = getApp().globalData.url;
+    if(driverInfo){
+      wx.request({
+        url: url + "/emptybox/weChat/getMyList",
+        header: {
+          "Content-Type": "json"
+        },
+        data: {
+          id: driverInfo.id
+        },
+        success: function (res) {
+          console.log(res.data)
 
-    wx.request({
-      url: url + "/emptybox/weChat/getMyList",
-      header: {
-        "Content-Type": "json"
-      },
-      data: {
-
-      },
-      success: function (res) {
-        console.log(res.data)
-
-        that.setData({
-          myList: res.data.data
-        });
-      }
-    })
+          that.setData({
+            myList: res.data.data
+          });
+        }
+      })
+    }
+   
 
 
     // 飞单
@@ -86,7 +107,15 @@ var indexPage = {
     })
 
   },
-
+  // 抢单
+  robListHandle(e){
+    let listId = e.target.dataset.listid;
+    if(getApp().isLogin()){
+      wx.navigateTo({
+        url: '../fly/detail?id=' + listId,
+      })
+    }
+  },
 
   // 下拉刷新
   more(){

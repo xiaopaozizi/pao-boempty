@@ -1,15 +1,15 @@
 {
   "pages":[
+    "pages/index/index",
+    "pages/self/login",
     "pages/self/reg-info",
     "pages/self/register",
     "pages/index/upload-pre-enter",
     "pages/self/pre-enter-detail",
     "pages/self/his-pre-enter",
     "pages/self/his-list",
-    "pages/self/login",
     "pages/self/index",
     "pages/fly/index",
-    "pages/index/index",
     "pages/fly/detail",
     "pages/fly/dealing",
     "pages/news/detail",
