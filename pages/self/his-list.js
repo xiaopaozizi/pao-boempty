@@ -5,31 +5,6 @@ Page({
   data: {
     "lists" : [
       // 历史单子
-      {
-        "addrStart" : "大榭招商（CMICT）",
-        "addrEnd" : "长胜货柜",
-        "price" : "100.00",
-        "order" : "31506444450",
-        "boxType" : "40GP",
-        "statusImg" : 'over',
-        "ship" : "KOTAGANDING/0044E",
-        "time" : "2017-12-12 18:00:00",
-        "remark" : "无",
-        "page" : 1,
-      },
-      {
-        "publicImg" : "../../images/public.png",
-        "addrStart" : "大榭招商（CMICT）",
-        "addrEnd" : "长胜货柜",
-        "order" : "31506444450",
-        "boxType" : "40GP",
-        "boxNum" : 20,
-        "statusImg" : 'over',
-        "ship" : "KOTAGANDING/0044E",
-        "time" : "2017-12-12 18:00:00",
-        "remark" : "无",
-        "page" : 1,
-      },
       
     ]
   },
@@ -38,6 +13,31 @@ Page({
     wx.navigateTo({
       url: '../fly/dealing'
     })
+  },
+
+  onLoad(){
+    // 历史单子
+    var that = this;
+    var url = getApp().globalData.url;
+    var driverInfo = wx.getStorageSync('driverInfo');
+    if (driverInfo) {
+      wx.request({
+        url: url + "/emptybox/weChat/getMyFinish",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'POST',
+        data: {
+          driverId: driverInfo.id,
+        },
+        success: function (res) {
+          console.log(res.data);
+          that.setData({
+            lists: res.data.data
+          });
+        }
+      })
+    }
   }
   
 })

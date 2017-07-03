@@ -6,9 +6,9 @@
 
 <scroll-view scroll-y="true" style="height: {{windowHeight}}px" bindscrolltolower="more">
   <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">    
-    <block wx:for="{{movies}}" wx:for-index="index">  
+    <block wx:for="{{ads}}" wx:for-index="index">  
       <swiper-item>    
-        <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>    
+        <image src="{{item}}" class="slide-image" mode="aspectFill"/>    
       </swiper-item>    
     </block>    
   </swiper> 
@@ -29,9 +29,9 @@
   <!--市场单子-->
   <view class="his-list">
       <block wx:for="{{myList}}" wx:for-item="list">
-          <template is="list" data="{{...list}}"></template>
-           <view class="bottom">
-            <button size="mini" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage" class="look-active" >查看预约单</button>
+        <template is="list" data="{{...list}}"></template>
+        <view class="bottom">
+          <button size="mini" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage" class="look-active" >查看预约单</button>
         </view> 
       </block> 
   </view>

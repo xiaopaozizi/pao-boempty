@@ -7,12 +7,7 @@ var wxbarcode = require('../../utils/index.js');
 
 var indexPage = {
   data: {
-    movies: [
-      { url: 'http://img04.tooopen.com/images/20130712/tooopen_17270713.jpg' },
-      { url: 'http://img04.tooopen.com/images/20130617/tooopen_21241404.jpg' },
-      { url: 'http://img04.tooopen.com/images/20130701/tooopen_20083555.jpg' },
-      { url: 'http://img02.tooopen.com/images/20141231/sy_78327074576.jpg' }
-    ],
+    ads: [],
     // 是否隐藏查看图片的modal
     isHiddenModal : true,
     // 图片路径
@@ -50,7 +45,6 @@ var indexPage = {
   onShow: function (e) {
     wx.getSystemInfo({
       success: (res) => {
-        console.log(res.windowHeight)
         this.setData({
           windowHeight: res.windowHeight
         })
@@ -63,20 +57,25 @@ var indexPage = {
     var driverInfo = wx.getStorageSync('driverInfo');
     wxbarcode.barcode('barcode', '1234567890123456789', 500, 100)
 
+
+    
+
+
     // 我的单子
     var url = getApp().globalData.url;
     if(driverInfo){
       wx.request({
         url: url + "/emptybox/weChat/getMyList",
         header: {
-          "Content-Type": "json"
+          "Content-Type": "application/x-www-form-urlencoded"
         },
+        method: 'POST',
         data: {
-          id: driverInfo.id
+          driverId: driverInfo.id,
+          dataStatus : 1
         },
         success: function (res) {
-          console.log(res.data)
-
+          
           that.setData({
             myList: res.data.data
           });
@@ -84,6 +83,27 @@ var indexPage = {
       })
     }
    
+
+    // 广告
+    wx.request({
+      url: url + "/emptybox/weChat/getAd",
+      header: {
+        "Content-Type": "json"
+      },
+      data: {
+      },
+      success: function (res) {
+        let result= [];
+        res.data.data.forEach(item => {
+          result.push(getApp().globalData.url + '/emptybox/file' + item.imgUrl);
+        })
+        console.log(res.data);
+        that.setData({
+          ads: result
+        })
+      }
+    })
+
 
 
     // 飞单
@@ -98,7 +118,6 @@ var indexPage = {
         pageSize : 2
       },
       success: function (res) {
-        console.log(res.data)
 
         that.setData({
           marketList: res.data.data

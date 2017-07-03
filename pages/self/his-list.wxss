@@ -31,3 +31,23 @@
 .his-list .title text.text{
   font-size:12px;
 }
+
+
+.his-list .bottom{
+  width:100%;
+  text-align: right;
+  background:#fff;
+  display: flex;
+}
+
+.his-list .bottom button {
+  background : #838383;
+  color:#fff;
+  margin-right:10px;
+}
+
+
+.his-list .bottom-btn .look-over{
+  background : #838383;
+  color:#fff;
+}

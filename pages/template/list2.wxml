@@ -45,15 +45,15 @@
 <template name="list">
     <view class="list">
         <view class="top" bindtap="toast">
-            <image wx:if="{{publicImg}}" src="{{publicImg}}" class="public"></image>
+            <image wx:if="{{arrangeType === '1'}}" src="../../images/public.png" class="public"></image>
             <text>{{addrStart}}</text>
             <image src="../../images/arrow-left.png" class="arrow-left"></image>
             <text>{{addrEnd}}</text>
-            <text class="price" wx:if="{{price}}">￥{{price}}</text>
+            <text class="price" wx:if="{{arrangeType === '2'&& undone }}">￥{{price}}</text>
             
-            <view class="progress" wx:if="{{progress}}">
-                <progress percent="80"stroke-width="5"color="red" active/>
-                <text class="text">剩余{{progress}}</text>
+            <view class="progress" wx:if="{{arrangeType === '1'&& undone > 0 }}">
+                <progress percent="{{percent}}"stroke-width="{{undone}}"color="red" active/>
+                <text class="text">剩余{{undone}}</text>
             </view>
         </view>    
         <view class="middle">
@@ -72,7 +72,7 @@
                     <text class="key">箱型：</text>
                     <text class="value">{{boxType}}</text>
                 </view>
-                <view class="case" wx:if="{{boxNum}}">
+                <view class="case" wx:if="{{arrangeType === '1'}}">
                     <text class="key">箱量：</text>
                     <text class="value">{{boxNum}}箱</text>
                 </view>
@@ -94,8 +94,8 @@
             </view>
           </view>
           <view class="picture">
-            <image wx:if="{{statusImg === 'over'}}" class="already-over" src="../../images/already-over.png"></image>
-            <image wx:if="{{phone}}"  class="phone" src="../../images/phone.png" bindtap="calling" data-phone="{{phone}}"></image>
+            <image wx:if="{{undone === '0'}}" class="already-over" src="../../images/already-over.png"></image>
+            <image wx:if="{{phone && !undone}}"  class="phone" src="../../images/phone.png" bindtap="calling" data-phone="{{phone}}"></image>
           </view>
         </view>    
        

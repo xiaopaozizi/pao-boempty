@@ -13,19 +13,24 @@ Page({
 
     // 个人信息
     var url = getApp().globalData.url;
-
-    wx.request({
-      url: url + "/emptybox/weChat/getDriver",
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      method: 'POST',
-      success: function (res) {
-        that.setData({
-          info: res.data.data
-        });
-      }
-    })
+    if(getApp().isLogin()){
+      wx.request({
+        url: url + "/emptybox/weChat/getDriver",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'POST',
+        data: {
+          'driverId': wx.getStorageSync('driverInfo').id
+        },
+        success: function (res) {
+          console.log(res.data);
+          that.setData({
+            info: res.data.data
+          });
+        }
+      })
+    }
   }
   
 })
