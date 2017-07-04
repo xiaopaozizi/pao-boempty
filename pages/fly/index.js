@@ -21,9 +21,6 @@ Page({
       value : '' 
     },
     take_addr_all: [
-      '提箱地1', '提箱地2', '提箱地3', '提箱地4',
-      '提箱地5', '提箱地6', '提箱地7', '提箱地8',
-      '提箱地9', '提箱地10', '提箱地11', '提箱地12',
     ],
     // 还箱点
     dest_addr: {
@@ -31,9 +28,6 @@ Page({
       value: ''
     },
     dest_addr_all: [
-      '目的地1', '目的地2', '目的地3', '目的地4',
-      '目的地5', '目的地6', '目的地7', '目的地8',
-      '目的地9', '目的地10', '目的地11', '目的地12',
     ],
     // 堆场或码头
     addr_types: [
@@ -56,9 +50,8 @@ Page({
   // 页面加载
   onLoad(){
     var that = this;
-    var url = getApp().globalData.url;
     wx.request({
-      url: url + "/emptybox/weChat/getFlyList",
+      url: getApp().globalData.url  + "/emptybox/weChat/getFlyList",
       header: {
         "Content-Type": "json"
       },
@@ -102,7 +95,7 @@ Page({
   
 
     wx.request({
-      url: "http://192.168.16.166:8080/emptybox/weChat/getFlyList",
+      url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
       header: {
         "Content-Type": "json"
       },
@@ -144,13 +137,12 @@ Page({
     })
 
 
-    var url = getApp().globalData.url;
 
     let take_addr = this.data.take_addr && this.data.take_addr.value != undefined ? this.data.take_addr.value : '';
     let dest_addr = this.data.dest_addr && this.data.dest_addr.value != undefined ? this.data.dest_addr.value : '';
 
     wx.request({
-      url: url + "/emptybox/weChat/getFlyList",
+      url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
       header: {
         "Content-Type": "json"
       },
@@ -182,7 +174,7 @@ Page({
       var that = this;
       //console.log(999);
       wx.request({
-        url: "http://192.168.16.166:8080/emptybox/weChat/getAddr",
+        url: getApp().globalData.url + "/emptybox/weChat/getAddr",
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
@@ -213,7 +205,7 @@ Page({
 
       var that = this;
       wx.request({
-        url: "http://192.168.16.166:8080/emptybox/weChat/getAddr",
+        url: getApp().globalData.url + "/emptybox/weChat/getAddr",
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },

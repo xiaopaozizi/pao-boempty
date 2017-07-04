@@ -27,6 +27,7 @@ App({
   globalData:{
     userInfo:null,
     url: 'http://192.168.16.166:8080',
+    //url: 'http://10.16.20.210:8080',
   },
   // 判断是否登录了
   isLogin(){

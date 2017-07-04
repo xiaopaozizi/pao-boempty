@@ -26,7 +26,6 @@
   <view class="nav-text" wx:if="{{myList.length > 0}}">
     <text>正在进行的单子</text>
   </view>
-  <!--市场单子-->
   <view class="his-list">
       <block wx:for="{{myList}}" wx:for-item="list">
         <template is="list" data="{{...list}}"></template>
@@ -39,6 +38,7 @@
 
 
 
+  <!--市场单子-->
   <view class="nav-text">
     <text>市场单子</text>
   </view>

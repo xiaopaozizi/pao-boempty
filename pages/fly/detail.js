@@ -66,7 +66,7 @@ Page({
     let id = options.id;
     var that = this;
     wx.request({
-      url: "http://192.168.16.166:8080/emptybox/weChat/getFlyById",
+      url: getApp().globalData.url + "/emptybox/weChat/getFlyById",
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },

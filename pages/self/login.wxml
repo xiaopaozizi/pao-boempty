@@ -16,6 +16,6 @@
     </view>
     <view class="bottom">
       <view class="loginBtn" bindtap="loginHandle">登录</view>
-      <view class="registerBtn">注册</view>
+      <view class="registerBtn"><navigator url="register">注册</navigator></view>
     </view>
 </view>

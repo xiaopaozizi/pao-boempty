@@ -61,11 +61,14 @@
             <view class="content" wx:if="{{order}}">
               <image src="../../images/ship.png"></image>
               <text class="key">预约号：</text>
-              <text class="value">{{ship}}</text>
+              <text class="value">{{order}}</text>
             </view>
-            <!--<view class="content barcode">
-              <canvas canvas-id="barcode" />
-            </view>-->
+            <!--二维码-->
+            <view class="content barcode" wx:if="{{barCodeImgUrl}}">
+              <!--<canvas canvas-id="barcode" />-->
+              <image src="{{barCodeImgUrl}}" class="aaa"></image>
+             
+            </view>
             <view class="content">
                 <view class="case">
                     <image src="../../images/box.png"></image>

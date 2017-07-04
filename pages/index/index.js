@@ -41,16 +41,8 @@ var indexPage = {
       isHiddenModal : true
     })
   },
-  // 读取屏幕高度，赋值给scroll-view
-  onShow: function (e) {
-    wx.getSystemInfo({
-      success: (res) => {
-        this.setData({
-          windowHeight: res.windowHeight
-        })
-      }
-    })
-  },
+  
+  
 
   onLoad: function () {
     var that = this;
@@ -62,10 +54,10 @@ var indexPage = {
 
 
     // 我的单子
-    var url = getApp().globalData.url;
+    //var url = getApp().globalData.url;
     if(driverInfo){
       wx.request({
-        url: url + "/emptybox/weChat/getMyList",
+        url: getApp().globalData.url + "/emptybox/weChat/getMyList",
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
@@ -75,9 +67,17 @@ var indexPage = {
           dataStatus : 1
         },
         success: function (res) {
-          
+          let result = [];
+          res.data.data.forEach(item => {
+            result.push(item);
+          });
+          result.forEach(item => {
+            if (item.barCodeImgUrl) {
+              item.barCodeImgUrl = getApp().globalData.url + '/emptybox/file' + item.barCodeImgUrl;
+            }
+          })
           that.setData({
-            myList: res.data.data
+            myList: result
           });
         }
       })
@@ -86,7 +86,7 @@ var indexPage = {
 
     // 广告
     wx.request({
-      url: url + "/emptybox/weChat/getAd",
+      url: getApp().globalData.url + "/emptybox/weChat/getAd",
       header: {
         "Content-Type": "json"
       },
@@ -109,7 +109,7 @@ var indexPage = {
     // 飞单
     //console.log(url + "/emptybox/weChat/getFlyList");
     wx.request({
-      url: url + "/emptybox/weChat/getFlyList",
+      url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
       header: {
         "Content-Type": "json"
       },
@@ -141,7 +141,7 @@ var indexPage = {
     var that = this;
     //console.log(999);
     wx.request({
-      url: "http://192.168.16.166:8080/emptybox/weChat/getFlyList",
+      url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
       header: {
         "Content-Type": "json"
       },

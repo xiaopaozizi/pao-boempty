@@ -59,15 +59,14 @@
   display: flex;
   width:100%;
 }
-.list .middle .main .barcode {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.list .middle .main .barcode{
+  height:100px;
+  
 }
-.barcode > canvas {
-    width: 250px;
-    height: 50px;  
+.list .middle .main .barcode .aaa{
+  width : 100%;
+  height:100%;
+  background-size:cover;
 }
 
 .list .middle .main .content text{

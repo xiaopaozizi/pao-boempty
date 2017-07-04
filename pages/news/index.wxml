@@ -6,6 +6,6 @@
             <navigator  wx:if="list.url && list.icon" class="text" url="{{list.url}}"><image src="{{list.icon}}"></image></navigator>
         </view>
         <view class="content">{{list.content}}</view>
-        <view class="time">{{list.time}}</view>
+        <view class="time">{{list.sendDate}}</view>
     </view>
 </view>

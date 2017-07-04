@@ -4,19 +4,29 @@ var app = getApp()
 Page({
   data: {
     lists : [
-       { 
-         title : '违章停车', 
-         content : '您的车辆浙B12345停在码头B区域，属于违章停车，请于30分钟之内进行处理', 
-         time : '2017-01-01 10:00:00' 
-        },
-        { 
-          title : '预录入成功', 
-          icon : '../../images/pen.png', 
-          url : 'detail',
-          content : '您在2017年1月1号拍照上传成功，数据已预录入IDE系统，请点击查看具体信息', 
-          time : '2017-01-01 10:00:00' 
-        },
+       
       ]
   },
+  onLoad(){
+    // 消息列表
+    var that = this;
+    var url = getApp().globalData.url;
+
+    wx.request({
+      url: url + "/emptybox/weChat/getMesInfo",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: 'POST',
+      data: {
+      },
+      success: function (res) {
+       // console.log(res.data);
+        that.setData({
+          lists : res.data.data
+        })
+      }
+    })
+  }
   
 })

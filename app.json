@@ -1,7 +1,9 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/news/index",
     "pages/self/his-list",
+    "pages/self/forget-pass",
     "pages/self/mod-pass",
     "pages/self/info",
     "pages/self/login",
@@ -15,7 +17,6 @@
     "pages/fly/detail",
     "pages/fly/dealing",
     "pages/news/detail",
-    "pages/news/index",
     "pages/self/about"
   ],
   "window":{

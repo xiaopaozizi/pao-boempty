@@ -1,0 +1,46 @@
+<!--index.wxml-->
+<view class="mod-pass">
+    <view class="form">
+
+
+
+        <view class="form-item">
+            <label for="phone">手机号码</label>
+            <input type="number" placeholder-class='placeholder' id="phone" placeholder="请输入手机号码" bindinput="checkPhone"/>
+        </view>
+        <view class="form-item {{checkPhoneResStr.cssStyle}}" wx:if="{{!checkPhoneResStr.hidden}}">{{checkPhoneResStr.value}}</view>
+
+
+
+        <view class="form-item">
+            <label for="code">验 证 码</label>
+            <input type="number" placeholder-class='placeholder' id="code" placeholder="请输入验证码" size="6" bindinput="checkCode"/>
+            <button class="codeBtn" bindtap="getCode" disabled="{{getCodeBtn.disabled}}" loading="{{getCodeBtn.disabled}}">{{getCodeBtn.value}}</button>
+        </view>
+        <view class="form-item {{checkCodeResStr.cssStyle}}" wx:if="{{!checkCodeResStr.hidden}}">{{checkCodeResStr.value}}</view>
+
+
+
+        <view class="form-item">
+            <label for="password">密  码</label>
+            <input type="password" placeholder-class='placeholder' id="password" placeholder="请设置密码" bindinput="checkPass" />
+        </view>
+        <view class="form-item {{checkPassResStr.cssStyle}}" wx:if="{{!checkPassResStr.hidden}}">{{checkPassResStr.value}}</view>
+
+
+
+        <view class="form-item">
+            <label for="com-pass">确认密码</label>
+            <input type="password" placeholder-class='placeholder' id="com-pass"placeholder="请再次填入" bindinput="checkRepPass"/>
+        </view>
+        <view class="form-item {{checkRepPassResStr.cssStyle}}" wx:if="{{!checkRepPassResStr.hidden}}">{{checkRepPassResStr.value}}</view>
+
+
+
+
+
+
+
+        <button class="save-btn" size="default" type="primary" bindtap="registerInfo" disabled="{{isDisabledRegisterBtn}}">完成</button>
+    </view>
+</view>
