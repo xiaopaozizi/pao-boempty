@@ -26,7 +26,7 @@
         <view class="picture">
             <label>主车前脸照片（带车牌号）</label>
             <view class="addPicture">
-              <image src="../../images/userinfo_pic@2x.png" bindtap="upload">
+              <image src="{{picture}}" bindtap="chooseImg">
               </image>
             </view>
         </view>

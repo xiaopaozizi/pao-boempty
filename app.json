@@ -1,14 +1,14 @@
 {
   "pages":[
-    "pages/index/upload-pre-enter",
+    "pages/self/reg-info",
     "pages/index/index",
+    "pages/index/upload-pre-enter",
     "pages/news/index",
     "pages/self/his-list",
     "pages/self/forget-pass",
     "pages/self/mod-pass",
     "pages/self/info",
     "pages/self/login",
-    "pages/self/reg-info",
     "pages/self/register",
     "pages/self/pre-enter-detail",
     "pages/self/his-pre-enter",

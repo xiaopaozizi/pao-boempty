@@ -23,7 +23,7 @@ Page({
     // 身份证
     IDCard : '',
     // 照片
-    picture : '',
+    picture: '../../images/userinfo_pic@2x.png',
     // 所属车队
     fleet : '',
     // 验证身份证---结果字符串
@@ -212,18 +212,42 @@ Page({
 
     console.log(this.data.curProvince + this.data.lisence);
   },
+  // 选择图片
+  chooseImg(){
+    var that = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      success: function (info) {
+        //var paths = info.tempFilePaths;
+       // console.log(paths);
+       // var url = url + 'emptybox/weChat/upload';
+        that.setData({
+          picture: info.tempFilePaths
+        })
+        //that.singleUpload(url, paths);
+
+      }
+    });
+  },
   // 提交注册
   registerHandle(){
-    console.log(999999)
     let that = this;
     let username = this.data.username;
     console.log(username);
     if (this.isRegister() && username){
       // 提交
       // 获取验证码
-      var url = getApp().globalData.url;
+      var url = getApp().globalData.url + '/emptybox/weChat/weChatTruckRegister';
+      var data = {
+          driverId: that.data.userid,
+          driverName: that.data.username,
+          idCard: that.data.IDCard,
+          truckCode: that.data.curProvince + that.data.lisence,
+          remark: that.data.fleet
+      };
 
-      wx.request({
+      /*wx.request({
         url: url + "/emptybox/weChat/weChatTruckRegister",
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -263,8 +287,38 @@ Page({
           }
         },
 
-      })
+      })*/
+      this.singleUpload(url, that.data.picture, data);
+      
     }
+  },
+  // 上传图片
+  singleUpload(url, paths, data) {
+    var that = this;
+    wx.uploadFile({
+      url: url,    //服务器上传地址
+      filePath: paths[0],
+      name: 'file',    //上传文件对应表单字段
+      header: {   //请求头
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+
+      methods: 'POST',
+      formData: {
+        type: 'jpg',
+        driverId: that.data.userid,
+        driverName: that.data.username,
+        idCard: that.data.IDCard,
+        truckCode: that.data.curProvince + that.data.lisence,
+        remark: that.data.fleet
+      },   //其他额外的表单字段
+      success: function (res, code) {
+        console.log(res.data);
+      },
+      fail: function (e) {
+        console.log(e);
+      }
+    });
   },
   
 })
