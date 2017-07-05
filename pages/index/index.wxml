@@ -10,10 +10,11 @@
       <swiper-item>    
         <image src="{{item}}" class="slide-image" mode="aspectFill"/>    
       </swiper-item>    
-    </block>    
+ </block>    
   </swiper> 
+  <!--预录入-->
   <view class="nav">
-      <view class="nav-item">
+      <view class="nav-item" bindtap="uploadPicHandle">
           <image src="../../images/camera-active.png"></image>
           <text>预录入</text>
       </view>

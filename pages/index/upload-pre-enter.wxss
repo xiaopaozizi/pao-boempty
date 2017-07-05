@@ -29,12 +29,30 @@
   background:#f5f5f5;
   color:#666;
   font-size:12px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
-.upload-pre-enter .pic-content label{
-  color:red;
+.upload-pre-enter .pic-content .picBox{
+  display: flex;
+  width: 90%;
+  margin: 10px auto;
+  justify-content: space-between;
+}
+.upload-pre-enter .pic-content .picBox image{
+  width:30%;
+  height: 80px;
+}
+.upload-pre-enter .pic-content textarea{
+  background:#fff;
+  padding:10px;
+  margin:0 auto;
+  margin-top:20px;
+  width:90%;
+  height: 100px;
 }
 .upload-pre-enter .pic-content button{
-  margin-top:200px;
+  margin-top:20px;
   background:#f90;
   color:#fff;
   width:90%;

@@ -24,7 +24,7 @@ var indexPage = {
     // 第几页
     pageNo : 1,
     // 窗口的高度
-    windowHeight : '',
+    windowHeight : 0,
   },
   // 点击显示图片
   showImage(e){
@@ -125,6 +125,15 @@ var indexPage = {
       }
     })
 
+    // 设置高度
+    wx.getSystemInfo({
+      success: function (res) {
+        console.info(res.windowHeight);
+        that.setData({
+          windowHeight: res.windowHeight
+        });
+      }
+    });
   },
   // 抢单
   robListHandle(e){
@@ -139,7 +148,7 @@ var indexPage = {
   // 下拉刷新
   more(){
     var that = this;
-    //console.log(999);
+    console.log(999);
     wx.request({
       url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
       header: {
@@ -159,8 +168,13 @@ var indexPage = {
        // console.log(that.data.marketList)
       }
     })
+  },
+  // 上传
+  uploadPicHandle(){
+    wx.navigateTo({
+      url: 'upload-pre-enter',
+    })
   }
-
 }
 
 import list2Obj from '../template/list2'

@@ -60,7 +60,7 @@ Page({
         pageSize: 2
       },
       success: function (res) {
-        console.log(res.data)
+        //console.log(res.data)
         that.setData({
           marketList: res.data.data
         });
