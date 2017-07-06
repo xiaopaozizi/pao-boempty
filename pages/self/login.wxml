@@ -12,7 +12,8 @@
         <image src="../../images/pas_icon@2x.png"></image>
         <input type="password" placeholder="请输入密码" placeholder-class='placeholder' bindblur="passHandle"  />
       </view>
-      <view class="forget-pass-tip">忘记密码？</view>
+      <view class="forget-pass-tip">
+      <navigator url="forget-pass">忘记密码？</navigator></view>
     </view>
     <view class="bottom">
       <view class="loginBtn" bindtap="loginHandle">登录</view>

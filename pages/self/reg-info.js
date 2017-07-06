@@ -24,6 +24,7 @@ Page({
     IDCard : '',
     // 照片
     picture: '../../images/userinfo_pic@2x.png',
+    pictureFlag : false,
     // 所属车队
     fleet : '',
     // 验证身份证---结果字符串
@@ -160,7 +161,7 @@ Page({
     // b12345
     let idCode = this.data.checkIDResStr.code;
     let lisenceCode = this.data.checkLicenseResStr.code;
-    if (idCode && lisenceCode) {
+    if (idCode && lisenceCode && this.data.pictureFlag) {
       this.setData({
         isDisabledRegisterBtn: false
       });
@@ -223,10 +224,11 @@ Page({
        // console.log(paths);
        // var url = url + 'emptybox/weChat/upload';
         that.setData({
-          picture: info.tempFilePaths
+          picture: info.tempFilePaths,
+          pictureFlag : true,
         })
         //that.singleUpload(url, paths);
-
+        that.isRegister();
       }
     });
   },
@@ -313,7 +315,22 @@ Page({
         remark: that.data.fleet
       },   //其他额外的表单字段
       success: function (res, code) {
-        console.log(res.data);
+        console.log(typeof res.data);
+        res = JSON.parse(res.data);
+        if (res.status === 'success') {
+          wx.navigateTo({
+            url: 'login?telphone=' + res.data,
+          })
+        } else if ( res.status === 'fail') {
+  
+          that.setData({
+            'checkLicenseResStr.value': res.message,
+            'checkLicenseResStr.cssStyle': 'error',
+            'checkLicenseResStr.hidden': false,
+            'checkLicenseResStr.code': false,
+          });
+          that.isRegister();
+        }
       },
       fail: function (e) {
         console.log(e);

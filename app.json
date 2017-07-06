@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/self/reg-info",
     "pages/index/index",
+    "pages/self/reg-info",
     "pages/index/upload-pre-enter",
     "pages/news/index",
     "pages/self/his-list",

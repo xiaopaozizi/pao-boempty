@@ -42,13 +42,25 @@ Page({
         password : that.data.password
       },
       success: function (res) {
-        console.log(res.data)
-        wx.setStorageSync(
-          "driverInfo",res.data.data
-        )
-        wx.switchTab({
-          url: '../index/index',
-        })
+       // console.log(res.data)
+        if(res.data.status === 'success'){
+          wx.showToast({
+            title: res.data.message,
+            icon: 'success',
+            duratioin:2000
+          })
+          wx.setStorageSync(
+            "driverInfo", res.data.data
+          )
+          wx.switchTab({
+            url: '../index/index',
+          })
+        } else if ( res.data.status === 'fail'){
+          wx.showToast({
+            title: res.data.message,
+            icon: 'loading'
+          })
+        }
         console.log(wx.getStorageSync('driverInfo'))
       }
     })
