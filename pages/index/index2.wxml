@@ -1,0 +1,5 @@
+<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" bindscrolltolower="bindDownLoad" bindscroll="scroll">
+    <block wx:for="{{goodsList}}" wx:key="item" >
+      <view>{{item.id}}</view>
+   </block>
+</scroll-view>

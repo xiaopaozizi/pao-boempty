@@ -26,9 +26,10 @@ App({
   },
   globalData:{
     userInfo:null,
-    //url: 'http://192.168.16.166:8080',
+   url: 'http://192.168.16.166:8080',
     //url: 'http://10.16.20.210:8080',
-    url: 'http://www.9entong.com:8080',
+    //url: 'http://www.9entong.com:8080',
+    //url: 'http://www.easy-mock.com/mock/596038ae9adc231f357bbb39'
   },
   // 判断是否登录了
   isLogin(){

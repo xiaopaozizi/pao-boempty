@@ -1,10 +1,11 @@
 {
   "pages":[
+    "pages/fly/index",
+    "pages/self/his-list",
     "pages/index/index",
     "pages/self/reg-info",
     "pages/index/upload-pre-enter",
     "pages/news/index",
-    "pages/self/his-list",
     "pages/self/forget-pass",
     "pages/self/mod-pass",
     "pages/self/info",
@@ -13,7 +14,6 @@
     "pages/self/pre-enter-detail",
     "pages/self/his-pre-enter",
     "pages/self/index",
-    "pages/fly/index",
     "pages/fly/detail",
     "pages/fly/dealing",
     "pages/news/detail",
@@ -23,7 +23,8 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "首页",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {  
    "color": "#333333",  
@@ -34,12 +35,7 @@
      "iconPath": "images/index.png",  
      "pagePath": "pages/index/index",  
      "text": "首页"  
-   },/** {  
-     "selectedIconPath": "images/news-active.png",  
-     "iconPath": "images/news.png",  
-     "pagePath": "pages/news/index",  
-     "text": "消息"  
-   },**/ {  
+   }, {  
      "selectedIconPath": "images/list-active.png",  
      "iconPath": "images/list.png",  
      "pagePath": "pages/fly/index",  

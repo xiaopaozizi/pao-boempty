@@ -7,10 +7,15 @@ var app = getApp()
 
 Page({
   data: {
-    "marketList": [
-      
-
-    ],
+    // 市场单子----公共单子
+    publicList: [],
+    // 市场单子----飞单
+    flyList: [],
+    hasMore : true,
+    // 窗口的高度
+    windowHeight: 0,
+    // 滚动条的位置
+    scrollTop: 0,
     // 是否显示联动器
     isShowAddress : false,
     // 联动显示的内容，提箱地/目的地
@@ -20,8 +25,7 @@ Page({
       display: '选择提箱地',
       value : '' 
     },
-    take_addr_all: [
-    ],
+    take_addr_all: [ ],
     // 还箱点
     dest_addr: {
       display: '选择目的地',
@@ -39,7 +43,7 @@ Page({
     // 延时器
     timer : null,
     // 每页多少条
-    pageSize: 2,
+    pageSize: 5,
     // 第几页
     pageNo: 1,
 
@@ -48,25 +52,164 @@ Page({
   },
 
   // 页面加载
-  onLoad(){
+  onLoad: function () {
     var that = this;
+    var driverInfo = wx.getStorageSync('driverInfo');
+
+    // 公共单子----publicList
+   if (driverInfo) {
+      wx.request({
+        url: getApp().globalData.url + "/emptybox/weChat/getMyList",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'POST',
+        data: {
+          driverId: driverInfo.id,
+          agree: 0
+        },
+        success: function (res) {
+          console.log(res.data);
+          if (res.data.status === 'success') {
+            that.setData({
+              publicList: res.data.data
+            })
+          }
+        }
+      })
+   }
+
+
+    // 飞单----flyList
+    let take_addr = this.data.take_addr && this.data.take_addr.value != undefined ? this.data.take_addr.value : '';
+    let dest_addr = this.data.dest_addr && this.data.dest_addr.value != undefined ? this.data.dest_addr.value : '';
     wx.request({
-      url: getApp().globalData.url  + "/emptybox/weChat/getFlyList",
+      url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
       header: {
         "Content-Type": "json"
       },
       data: {
         pageNo: 1,
-        pageSize: 2
+        pageSize: that.data.pageSize,
+        addrStart: take_addr,
+        addrEnd: dest_addr
       },
       success: function (res) {
-        //console.log(res.data)
+
         that.setData({
-          marketList: res.data.data
+          flyList: res.data.data.rows
         });
       }
     })
+
+    // 设置高度
+    wx.getSystemInfo({
+      success: function (res) {
+        console.info(res.windowHeight);
+        that.setData({
+          windowHeight: res.windowHeight
+        });
+      }
+    });
   },
+
+  // 接单
+  receiveListHandle(e) {
+    console.log('recive')
+    var that = this;
+    let listId = e.target.dataset.listid;
+    let driverInfo = wx.getStorageSync('driverInfo');
+    if (driverInfo) {
+      wx.request({
+        url: getApp().globalData.url + "/emptybox/weChat/agree",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'POST',
+        data: {
+          driverId: driverInfo.id,
+          arrangeId: listId,
+        },
+        success: function (res) {
+          console.log(res.data);
+          if (res.data.status === 'success') {
+            console.log('success');
+            wx.showToast({
+              title: '接单成功',
+              duration: 3000
+            })
+          }
+          that.onLoad();
+        }
+      })
+    }
+  },
+
+  // 抢单
+  robListHandle(e) {
+    let listId = e.target.dataset.listid;
+    if (getApp().isLogin()) {
+      wx.navigateTo({
+        url: '../fly/detail?id=' + listId,
+      })
+    }
+  },
+
+ 
+  //   该方法绑定了页面滚动时的事件
+  scroll: function (event) {
+    this.setData({
+      scrollTop: event.detail.scrollTop,
+      //scrollTop: that.data.windowHeight,
+    });
+    console.log(event.data.scrollTop)
+  },
+
+
+  // 上拉刷新
+  more() {
+    var that = this;
+    console.log(999999999999999999)
+    var pageNo = that.data.pageNo;
+    let take_addr = this.data.take_addr && this.data.take_addr.value != undefined ? this.data.take_addr.value : '';
+    let dest_addr = this.data.dest_addr && this.data.dest_addr.value != undefined ? this.data.dest_addr.value : '';
+    if (that.data.hasMore) {
+
+      that.setData({
+        hasMore: false,
+        pageNo: ++pageNo,
+      })
+      console.log(111, that.data.hasMore)
+      wx.request({
+        url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
+        header: {
+          "Content-Type": "json"
+        },
+        data: {
+          pageNo: 1,
+          pageSize: that.data.pageNo * that.data.pageSize,
+          addrStart: take_addr,
+          addrEnd: dest_addr
+          //pageSize : 2
+        },
+        success: function (res) {
+          that.setData({
+            flyList: res.data.data.rows,
+            hasMore: true,
+            addrStart: take_addr,
+            addrEnd: dest_addr
+          });
+          if (that.data.pageNo * 2 > res.data.data.length) {
+            that.setData({
+              pageNo: --pageNo
+            })
+          }
+        }
+      })
+    }
+  },
+
+
 
   clear(e){
     let str = e.target.dataset.addr;
@@ -85,33 +228,7 @@ Page({
     }
   },
 
-  // 下拉刷新
-  more() {
-    var that = this;
 
-    let take_addr = this.data.take_addr && this.data.take_addr.value != undefined ? this.data.take_addr.value : '';
-    let dest_addr = this.data.dest_addr && this.data.dest_addr.value != undefined ? this.data.dest_addr.value : '';
-
-  
-
-    wx.request({
-      url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
-      header: {
-        "Content-Type": "json"
-      },
-      data: {
-        pageNo: 1,
-        pageSize: (that.data.pageNo++) * 2,
-        addrStart: take_addr,
-        addrEnd: dest_addr
-      },
-      success: function (res) {
-        that.setData({
-          marketList: res.data.data
-        });
-      }
-    })
-  },
 
 
   // 联动选择器
@@ -148,14 +265,14 @@ Page({
       },
       data: {
         pageNo: 1,
-        pageSize: 2,
+        pageSize: that.data.pageSize,
         addrStart: take_addr,
         addrEnd: dest_addr
       },
       success: function (res) {
         console.log(res.data)
         that.setData({
-          marketList: res.data.data
+          flyList: res.data.data.rows
         });
       }
     })

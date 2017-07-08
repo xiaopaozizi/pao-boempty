@@ -12,19 +12,22 @@ var indexPage = {
     isHiddenModal : true,
     // 图片路径
     imageSrc : '',
-    "myList": [
-      // 首页
-    ],
-    // 市场单子
-    marketList: [
-      // 正在进行的单子
-    ],
+    // 正在进行的单子
+    doingList : [],
+    // 市场单子----公共单子
+    publicList : [],
+    // 市场单子----飞单
+    flyList : [],
     // 每页多少条
-    pageSize : 2,
+    pageSize : 5,
+    // 是否可以加载更多
+    hasMore : true,
     // 第几页
     pageNo : 1,
     // 窗口的高度
     windowHeight : 0,
+    // 滚动条的位置
+    scrollTop : 0
   },
   // 点击显示图片
   showImage(e){
@@ -47,14 +50,8 @@ var indexPage = {
   onLoad: function () {
     var that = this;
     var driverInfo = wx.getStorageSync('driverInfo');
-    wxbarcode.barcode('barcode', '1234567890123456789', 500, 100)
 
-
-    
-
-
-    // 我的单子
-    //var url = getApp().globalData.url;
+    // 正在进行的单子---doingList
     if(driverInfo){
       wx.request({
         url: getApp().globalData.url + "/emptybox/weChat/getMyList",
@@ -64,7 +61,7 @@ var indexPage = {
         method: 'POST',
         data: {
           driverId: driverInfo.id,
-          dataStatus : 1
+          agree : 1
         },
         success: function (res) {
           let result = [];
@@ -73,18 +70,18 @@ var indexPage = {
           });
           result.forEach(item => {
             if (item.barCodeImgUrl) {
-              item.barCodeImgUrl = getApp().globalData.url + '/emptybox/file' + item.barCodeImgUrl;
+              item.barCodeImgUrl = getApp().globalData.url + '' + item.barCodeImgUrl;
             }
           })
           that.setData({
-            myList: result
+            doingList: result
           });
         }
       })
     }
    
 
-    // 广告
+    // 广告----ads
     wx.request({
       url: getApp().globalData.url + "/emptybox/weChat/getAd",
       header: {
@@ -104,10 +101,33 @@ var indexPage = {
       }
     })
 
+    // 正在进行的单子
+
+    // 公共单子----publicList
+    if (driverInfo) {
+      wx.request({
+        url: getApp().globalData.url + "/emptybox/weChat/getMyList",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'POST',
+        data: {
+          driverId: driverInfo.id,
+          agree : 0
+        },
+        success: function (res) {
+          console.log(res.data);
+          if(res.data.status === 'success'){
+            that.setData({
+              publicList : res.data.data
+            })
+          }
+        }
+      })
+    }
 
 
-    // 飞单
-    //console.log(url + "/emptybox/weChat/getFlyList");
+    // 飞单----flyList
     wx.request({
       url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
       header: {
@@ -115,12 +135,12 @@ var indexPage = {
       },
       data : {
         pageNo : 1, 
-        pageSize : 2
+        pageSize : that.data.pageSize
       },
       success: function (res) {
 
         that.setData({
-          marketList: res.data.data
+          flyList: res.data.data.rows
         });
       }
     })
@@ -135,6 +155,38 @@ var indexPage = {
       }
     });
   },
+  // 接单
+  receiveListHandle(e){
+    console.log('recive')
+    var that = this;
+    let listId = e.target.dataset.listid;
+    let driverInfo = wx.getStorageSync('driverInfo');
+    if (driverInfo) {
+      wx.request({
+        url: getApp().globalData.url + "/emptybox/weChat/agree",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'POST',
+        data: {
+          driverId: driverInfo.id,
+          arrangeId : listId
+        },
+        success: function (res) {
+          console.log(res.data);
+          if (res.data.status === 'success') {
+            console.log('success');
+            wx.showToast({
+              title: '接单成功',
+              duration:3000
+            })
+          }
+          that.onLoad();
+        }
+      })
+    }
+  },
+ 
   // 抢单
   robListHandle(e){
     let listId = e.target.dataset.listid;
@@ -145,29 +197,47 @@ var indexPage = {
     }
   },
 
-  // 下拉刷新
+  // 上拉刷新
   more(){
     var that = this;
-    console.log(999);
-    wx.request({
-      url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
-      header: {
-        "Content-Type": "json"
-      },
-      data: {
-        pageNo: 1,
-        pageSize: (that.data.pageNo++) * 2
-      },
-      success: function (res) {
-        //console.log(res.data)
-        
+    var pageNo = that.data.pageNo;
+    if(that.data.hasMore){
 
-        that.setData({
-          marketList: res.data.data
-        });
-       // console.log(that.data.marketList)
-      }
-    })
+      that.setData({
+        hasMore : false,
+        pageNo: ++pageNo,
+      })
+      console.log(111,that.data.hasMore)
+      wx.request({
+        url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
+        header: {
+          "Content-Type": "json"
+        },
+        data: {
+          pageNo: 1,
+          pageSize: that.data.pageNo * that.data.pageSize
+         //pageSize : 2
+        },
+        success: function (res) {
+          that.setData({
+            flyList: res.data.data.rows,
+            hasMore : true,
+          });
+          if (that.data.pageNo * 2 > res.data.data.length){
+            that.setData({
+              pageNo : --pageNo
+            })
+          }
+        }
+      })
+    }
+  },
+  //   该方法绑定了页面滚动时的事件
+  scroll: function (event) {
+    this.setData({
+      scrollTop: event.detail.scrollTop,
+      //scrollTop: that.data.windowHeight,
+    });
   },
   // 上传
   uploadPicHandle(){

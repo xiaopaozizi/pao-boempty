@@ -54,6 +54,11 @@ Page({
           )
           wx.switchTab({
             url: '../index/index',
+            success(){
+              var page = getCurrentPages().pop();
+              if (page == undefined || page == null) return;
+              page.onLoad();
+            }
           })
         } else if ( res.data.status === 'fail'){
           wx.showToast({

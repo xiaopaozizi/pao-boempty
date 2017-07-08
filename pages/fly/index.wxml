@@ -1,37 +1,137 @@
 <!--index.wxml-->
-<import src="../template/list2.wxml" />
-<scroll-view scroll-y="true" style="height: 420px;" bindscrolltolower="more" class="his-list">
-    <view class="nav">
-        <view class="pos pos-start">
-            <image src="../../images/pos-start.png"></image>
-            <text data-title="take_attr" bindtap="choiceType">{{take_addr.display}}</text>
-            <icon type="cancel" size="20" color="#ccc" bindtap="clear" data-addr="take"/>
-        </view>
-        <view class="pos pos-end">
-            <image src="../../images/pos-end.png"></image>
-            <text data-title="dest_attr" bindtap="choiceType">{{dest_addr.display}}</text>
-            <icon type="cancel" size="20" color="#ccc" bindtap="clear" data-addr="dest"/>
-        </view>
-    </view>
-    <view class="address" wx:if="{{isShowAddress}}">
-      <picker-view indicator-style="height: 50px;" style="width: 100%; height: 150px;" value="{{value}}" bindchange="bindChange">
-        <picker-view-column  bindtap="hide">
-          <view wx:for="{{addresses}}" style="line-height: 50px;text-align:center;">{{item.display}}</view>
-        </picker-view-column>
-      </picker-view>
-      <view class="choice">
-        <view wx:for="{{addr_types}}" 
-          data-index="{{index}}"
-          bindtap="changeType"
-          class="{{item.isActive ? 'active' : '' }}">{{item.text}}      </view>
+
+
+
+
+
+
+
+
+
+
+
+
+<scroll-view scroll-y="true"  style="height: {{windowHeight}}px" bindscrolltolower="more"  class="his-list">
+  <!--选择提箱地和选择目的地的框-->
+  <view class="nav">
+      <view class="pos pos-start">
+          <image src="../../images/pos-start.png"></image>
+          <text data-title="take_attr" bindtap="choiceType">{{take_addr.display}}</text>
+          <icon type="cancel" size="20" color="#ccc" bindtap="clear" data-addr="take"/>
       </view>
+      <view class="pos pos-end">
+          <image src="../../images/pos-end.png"></image>
+          <text data-title="dest_attr" bindtap="choiceType">{{dest_addr.display}}</text>
+          <icon type="cancel" size="20" color="#ccc" bindtap="clear" data-addr="dest"/>
+      </view>
+  </view>
+  <!--下拉列表选择器-->
+  <view class="address" wx:if="{{isShowAddress}}">
+    <picker-view indicator-style="height: 50px;" style="width: 100%; height: 150px;" value="{{value}}" bindchange="bindChange">
+      <picker-view-column  bindtap="hide">
+        <view wx:for="{{addresses}}" style="line-height: 50px;text-align:center;">{{item.display}}</view>
+      </picker-view-column>
+    </picker-view>
+    <view class="choice">
+      <view wx:for="{{addr_types}}" 
+        data-index="{{index}}"
+        bindtap="changeType"
+        class="{{item.isActive ? 'active' : '' }}">{{item.text}}              </view>
     </view>
-    <block wx:for="{{marketList}}" wx:for-item="list">
-          <template is="list" data="{{...list}}"></template>
-          <view class="bottom">
-              <navigator url="../fly/detail?id={{list.id}}" class="rob">抢单</navigator>
-          </view>  
-      </block>
+  </view>
+
+
+  
+  
+  <!--公共单子-->
+  <view class="list" wx:for="{{publicList}}" wx:for-item="list">
+    <view class="top" bindtap="toast">
+        <image src="../../images/public.png" class="public"></image>
+        <text>{{list.addrStart}}</text>
+        <image src="../../images/arrow-left.png" class="arrow-left"></image>
+        <text>{{list.addrEnd}}</text>
+        <view class="progress" >
+            <progress percent="{{list.percent}}"stroke-width="{{list.undone}}"color="red" active/>
+            <text class="text">剩余{{list.undone}}</text>
+        </view>
+    </view>    
+    <view class="middle">
+      <view class="main">
+        
+        <view class="content">
+            <view class="case">
+                <image src="../../images/box.png"></image>
+                <text class="key">箱型：</text>
+                <text class="value">{{list.boxType}}</text>
+            </view>
+            <view class="case">
+                <text class="key">箱量：</text>
+                <text class="value">{{list.boxNum}}箱</text>
+            </view>
+        </view>
+        <view class="content">
+            <image src="../../images/ship.png"></image>
+            <text class="key">船名/航次：</text>
+            <text class="value">{{list.ship}}</text>
+        </view>
+        <view class="content">
+            <image src="../../images/clock.png"></image>
+            <text class="key">计划驳箱时间：</text>
+            <text class="value">{{list.time}}</text>
+        </view>
+        <view class="content">
+            <image src="../../images/flag.png"></image>
+            <text class="key">备注：</text>
+            <text class="value">{{list.remark}}</text>
+        </view>
+      </view>
+    </view> 
+    <view class="bottom" wx:if="{{doingList.length === 0}}">
+        <text class="rob" data-listid="{{list.id}}" bindtap="receiveListHandle">接单</text>
+    </view> 
+  </view> 
+  <!--飞单-->
+  <view class="list"  wx:for="{{flyList}}" wx:for-item="list">
+    <view class="top" bindtap="toast">
+        <text>{{list.addrStart}}</text>
+        <image src="../../images/arrow-left.png" class="arrow-left"></image>
+        <text>{{list.addrEnd}}</text>
+        <text class="price">￥{{list.price}}</text>
+    </view>    
+    <view class="middle">
+      <view class="main">
+        <view class="content">
+            <view class="case">
+                <image src="../../images/box.png"></image>
+                <text class="key">箱型：</text>
+                <text class="value">{{list.boxType}}</text>
+            </view>
+        </view>
+        <view class="content">
+            <image src="../../images/ship.png"></image>
+            <text class="key">船名/航次：</text>
+            <text class="value">{{list.ship}}</text>
+        </view>
+        <view class="content">
+            <image src="../../images/clock.png"></image>
+            <text class="key">计划驳箱时间：</text>
+            <text class="value">{{list.time}}</text>
+        </view>
+        <view class="content">
+            <image src="../../images/flag.png"></image>
+            <text class="key">备注：</text>
+            <text class="value">{{list.remark}}</text>
+        </view>
+      </view>
+      <view class="picture">
+        <image class="phone" src="../../images/phone.png" bindtap="calling" data-phone="{{list.phone}}"></image>
+      </view>
+    </view>    
+    <view class="bottom"  wx:if="{{doingList.length === 0}}">
+        <text class="rob" data-listid="{{list.id}}" bindtap="robListHandle">抢单</text>
+    </view> 
+  </view>
+
 </scroll-view>
 
         

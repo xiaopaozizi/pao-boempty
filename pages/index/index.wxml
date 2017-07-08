@@ -4,7 +4,12 @@
 
 
 
-<scroll-view scroll-y="true" style="height: {{windowHeight}}px" bindscrolltolower="more">
+<scroll-view scroll-y="true"  style="height: {{windowHeight}}px" bindscrolltolower="more" bindscroll="scroll">
+
+
+
+
+  <!--广告-->
   <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">    
     <block wx:for="{{ads}}" wx:for-index="index">  
       <swiper-item>    
@@ -12,28 +17,92 @@
       </swiper-item>    
  </block>    
   </swiper> 
+
+
+
+
   <!--预录入-->
-  <view class="nav">
+  <view class="nav" style="display:none;">
       <view class="nav-item" bindtap="uploadPicHandle">
           <image src="../../images/camera-active.png"></image>
           <text>预录入</text>
       </view>
   </view>
+
+
+
   <!--图片查看-->
   <modal hidden="{{isHiddenModal}}" class="imageModal" title="" confirm-text="" cancel-text="" bindtap="hideImageHandle" no-cancel="{{nocancel}}" >
-      <image src="{{imageSrc}}"></image>
+    <image src="{{imageSrc}}"></image>
   </modal>
+
+
+
+
+
   <!--我的单子-->
-  <view class="nav-text" wx:if="{{myList.length > 0}}">
+  <view class="nav-text" wx:if="{{doingList.length > 0}}">
     <text>正在进行的单子</text>
   </view>
   <view class="his-list">
-      <block wx:for="{{myList}}" wx:for-item="list">
-        <template is="list" data="{{...list}}"></template>
-        <view class="bottom">
-          <button size="mini" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage" class="look-active" >查看预约单</button>
-        </view> 
-      </block> 
+    <view class="list" wx:for="{{doingList}}" wx:for-item="list">
+      <view class="top" bindtap="toast">
+          <image wx:if="{{list.arrangeType === '1'}}" src="../../images/public.png" class="public"></image>
+          <text>{{list.addrStart}}</text>
+          <image src="../../images/arrow-left.png" class="arrow-left"></image>
+          <text>{{list.addrEnd}}</text>
+          <text class="price" wx:if="{{list.arrangeType === '2'&& list.undone }}">￥{{list.price}}</text>
+          
+          <view class="progress" wx:if="{{list.arrangeType === '1'&& list.undone > 0 }}">
+              <progress percent="{{list.percent}}"stroke-width="{{list.undone}}"color="red" active/>
+              <text class="text">剩余{{list.undone}}</text>
+          </view>
+      </view>    
+      <view class="middle">
+        <view class="main">
+          <view class="content">
+            <image src="../../images/ship.png"></image>
+            <text class="key">预约号：</text>
+            <text class="value">{{list.order}}</text>
+          </view>
+          <!--二维码-->
+          <view class="content barcode">
+            <!--<canvas canvas-id="barcode" />-->
+            <image src="{{list.barCodeImgUrl}}" class="aaa"></image>
+            
+          </view>
+          <view class="content">
+              <view class="case">
+                  <image src="../../images/box.png"></image>
+                  <text class="key">箱型：</text>
+                  <text class="value">{{list.boxType}}</text>
+              </view>
+              <view class="case">
+                  <text class="key">箱量：</text>
+                  <text class="value">{{list.boxNum}}箱</text>
+              </view>
+          </view>
+          <view class="content">
+              <image src="../../images/ship.png"></image>
+              <text class="key">船名/航次：</text>
+              <text class="value">{{list.ship}}</text>
+          </view>
+          <view class="content">
+              <image src="../../images/clock.png"></image>
+              <text class="key">计划驳箱时间：</text>
+              <text class="value">{{list.time}}</text>
+          </view>
+          <view class="content">
+              <image src="../../images/flag.png"></image>
+              <text class="key">备注：</text>
+              <text class="value">{{list.remark}}</text>
+          </view>
+        </view>
+      </view> 
+      <!--<view class="bottom">
+        <button size="mini" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage" class="look-active" >查看预约单</button>
+      </view>-->  
+    </view>
   </view>
 
 
@@ -44,12 +113,94 @@
     <text>市场单子</text>
   </view>
   <view class="his-list">
-      <block wx:for="{{marketList}}" wx:for-item="list">
-          <template is="list" data="{{...list}}"></template>
-          <view class="bottom">
-              <text class="rob" data-listid="{{list.id}}" bindtap="robListHandle">抢单</text>
-          </view>  
-      </block>
+    <!--公共单子-->
+    <view class="list" wx:for="{{publicList}}" wx:for-item="list">
+      <view class="top" bindtap="toast">
+          <image src="../../images/public.png" class="public"></image>
+          <text>{{list.addrStart}}</text>
+          <image src="../../images/arrow-left.png" class="arrow-left"></image>
+          <text>{{list.addrEnd}}</text>
+          <view class="progress" >
+              <progress percent="{{list.percent}}"stroke-width="{{list.undone}}"color="red" active/>
+              <text class="text">剩余{{list.undone}}</text>
+          </view>
+      </view>    
+      <view class="middle">
+        <view class="main">
+          
+          <view class="content">
+              <view class="case">
+                  <image src="../../images/box.png"></image>
+                  <text class="key">箱型：</text>
+                  <text class="value">{{list.boxType}}</text>
+              </view>
+              <view class="case">
+                  <text class="key">箱量：</text>
+                  <text class="value">{{list.boxNum}}箱</text>
+              </view>
+          </view>
+          <view class="content">
+              <image src="../../images/ship.png"></image>
+              <text class="key">船名/航次：</text>
+              <text class="value">{{list.ship}}</text>
+          </view>
+          <view class="content">
+              <image src="../../images/clock.png"></image>
+              <text class="key">计划驳箱时间：</text>
+              <text class="value">{{list.time}}</text>
+          </view>
+          <view class="content">
+              <image src="../../images/flag.png"></image>
+              <text class="key">备注：</text>
+              <text class="value">{{list.remark}}</text>
+          </view>
+        </view>
+      </view> 
+      <view class="bottom" wx:if="{{doingList.length === 0}}">
+          <text class="rob" data-listid="{{list.id}}" bindtap="receiveListHandle">接单</text>
+      </view> 
+    </view> 
+    <!--飞单-->
+    <view class="list"  wx:for="{{flyList}}" wx:for-item="list">
+      <view class="top" bindtap="toast">
+          <text>{{list.addrStart}}</text>
+          <image src="../../images/arrow-left.png" class="arrow-left"></image>
+          <text>{{list.addrEnd}}</text>
+          <text class="price">￥{{list.price}}</text>
+      </view>    
+      <view class="middle">
+        <view class="main">
+          <view class="content">
+              <view class="case">
+                  <image src="../../images/box.png"></image>
+                  <text class="key">箱型：</text>
+                  <text class="value">{{list.boxType}}</text>
+              </view>
+          </view>
+          <view class="content">
+              <image src="../../images/ship.png"></image>
+              <text class="key">船名/航次：</text>
+              <text class="value">{{list.ship}}</text>
+          </view>
+          <view class="content">
+              <image src="../../images/clock.png"></image>
+              <text class="key">计划驳箱时间：</text>
+              <text class="value">{{list.time}}</text>
+          </view>
+          <view class="content">
+              <image src="../../images/flag.png"></image>
+              <text class="key">备注：</text>
+              <text class="value">{{list.remark}}</text>
+          </view>
+        </view>
+        <view class="picture">
+          <image class="phone" src="../../images/phone.png" bindtap="calling" data-phone="{{list.phone}}"></image>
+        </view>
+      </view>    
+      <view class="bottom"  wx:if="{{doingList.length === 0}}">
+          <text class="rob" data-listid="{{list.id}}" bindtap="robListHandle">抢单</text>
+      </view> 
+    </view>
   </view>
 
 

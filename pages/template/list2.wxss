@@ -70,7 +70,7 @@
 }
 
 .list .middle .main .content text{
-  font: bold 12px/25px Arial, Helvetica, sans-serif;
+  font: bold 27rpx/50rpx Arial, Helvetica, sans-serif;
   color:#999;
 }
 .list .middle .main .content text.value{

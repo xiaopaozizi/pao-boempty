@@ -66,14 +66,11 @@
 
 
 
-.his-list .list .bottom{
-  margin-top:-20px;
-}
-
-
 .his-list .bottom{
   width:100%;
   text-align: right;
+  background:#fff;
+  display: flex;
 }
 
 .his-list .bottom button {
@@ -97,7 +94,11 @@
   background : #fff;
   color:#fe9900;
   font-weight: bold;
+  width:100%;
 }
 .his-list .bottom .rob:after{
   border:none;
 }
+
+
+
