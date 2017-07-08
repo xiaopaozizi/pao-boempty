@@ -246,7 +246,8 @@ Page({
         data :{
           telphone: this.data.telphone,
           verifyCode : this.data.validateCode,
-          password : this.data.password
+          password : this.data.password,
+          openId: getApp().globalData.openid
         },
         success: function (res) {
           console.log(res.data);

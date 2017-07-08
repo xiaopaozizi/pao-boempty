@@ -315,7 +315,7 @@ Page({
         remark: that.data.fleet
       },   //其他额外的表单字段
       success: function (res, code) {
-        console.log(typeof res.data);
+        //console.log(typeof res.data);
         res = JSON.parse(res.data);
         if (res.status === 'success') {
           wx.navigateTo({

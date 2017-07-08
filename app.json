@@ -1,8 +1,8 @@
 {
   "pages":[
+    "pages/index/index",
     "pages/fly/index",
     "pages/self/his-list",
-    "pages/index/index",
     "pages/self/reg-info",
     "pages/index/upload-pre-enter",
     "pages/news/index",

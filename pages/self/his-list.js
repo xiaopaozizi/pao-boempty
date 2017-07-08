@@ -3,15 +3,13 @@
 var app = getApp()
 Page({
   data: {
-    "lists" : [
-      // 历史单子
-      
-    ],
     count : 0,
     // 每页多少条
-    pageSize : 2,
+    pageSize : 5,
     // 第几页
     pageNo: 1,
+    // 历史单子
+    historyList : [],
     // 窗口的高度
     windowHeight: '',
     // 是否隐藏查看图片的modal
@@ -40,13 +38,13 @@ Page({
         method: 'POST',
         data: {
           driverId: driverInfo.id,
-          pageNo: 1,
-          pageSize: 2
+          pageNo: that.data.pageNo,
+          pageSize: that.data.pageSize
         },
         success: function (res) {
           console.log(res.data);
           that.setData({
-            lists: res.data.data.list,
+            historyList: res.data.data.rows,
             count : res.data.data.count
           });
         }
@@ -84,8 +82,8 @@ Page({
 
 
         that.setData({
-          lists: res.data.data.list,
-          count: res.data.data.count
+          historyList: res.data.data.rows,
+          total: res.data.data.total
         });
         // console.log(that.data.marketList)
       }

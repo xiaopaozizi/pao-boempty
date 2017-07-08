@@ -1,12 +1,12 @@
 <!--index.wxml-->
 <import src="../template/list2.wxml" />
 <scroll-view scroll-y="true" style="height: {{windowHeight}}px" bindscrolltolower="more" class="his-list">
-    <view class="title" wx:if="{{ count > 0 }}">
-        <text class="num">{{count}}</text>
+    <view class="title" wx:if="{{ total > 0 }}">
+        <text class="num">{{total}}</text>
         <text class="text">累计单量</text>
     </view>
     <!--图片查看-->
-  <modal hidden="{{isHiddenModal}}" class="imageModal" title="" confirm-text="" cancel-text="" bindtap="hideImageHandle" no-cancel="{{nocancel}}" >
+  <!--<modal hidden="{{isHiddenModal}}" class="imageModal" title="" confirm-text="" cancel-text="" bindtap="hideImageHandle" no-cancel="{{nocancel}}" >
       <image src="{{imageSrc}}"></image>
   </modal>
     <block wx:for="{{lists}}" wx:for-item="list">
@@ -14,7 +14,53 @@
         <view class="bottom">
           <button size="mini"  class="look-active" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage">查看预约单</button>
         </view> 
-    </block>
+    </block>-->
+    <view class="list" wx:for="{{historyList}}" wx:for-item="list">
+      <view class="top" bindtap="toast">
+          <image wx:if="{{list.arrangeType === '1'}}" src="../../images/public.png" class="public"></image>
+          <text>{{list.addrStart}}</text>
+          <image src="../../images/arrow-left.png" class="arrow-left"></image>
+          <text>{{list.addrEnd}}</text>
+          <text class="price" wx:if="{{list.arrangeType === '2'&& list.undone }}">￥{{list.price}}</text>
+      </view>    
+      <view class="middle">
+        <view class="main">
+          
+          <view class="content">
+              <view class="case">
+                  <image src="../../images/box.png"></image>
+                  <text class="key">箱型：</text>
+                  <text class="value">{{list.boxType}}</text>
+              </view>
+              <view class="case"  wx:if="{{list.arrangeType === '1'}}">
+                  <text class="key">箱量：</text>
+                  <text class="value">{{list.boxNum}}箱</text>
+              </view>
+          </view>
+          <view class="content">
+              <image src="../../images/ship.png"></image>
+              <text class="key">船名/航次：</text>
+              <text class="value">{{list.ship}}</text>
+          </view>
+          <view class="content">
+              <image src="../../images/clock.png"></image>
+              <text class="key">计划提箱时间：</text>
+              <text class="value">{{list.time}}</text>
+          </view>
+          <view class="content">
+              <image src="../../images/flag.png"></image>
+              <text class="key">备注：</text>
+              <text class="value">{{list.remark}}</text>
+          </view>
+        </view>
+         <view class="picture">
+           <image class="already-over" src="../../images/already-over.png"></image>
+          </view>
+      </view> 
+      <!--<view class="bottom">
+        <button size="mini"  class="look-active" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage">查看预约单</button>
+      </view>-->
+    </view> 
 </scroll-view>
 
         

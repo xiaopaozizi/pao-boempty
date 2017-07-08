@@ -48,6 +48,11 @@ var indexPage = {
   
 
   onLoad: function () {
+
+    getApp().getUserInfo();
+    //return;
+
+
     var that = this;
     var driverInfo = wx.getStorageSync('driverInfo');
 

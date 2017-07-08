@@ -39,7 +39,8 @@ Page({
       method: 'POST',
       data: {
         telphone: that.data.telphone,
-        password : that.data.password
+        password : that.data.password,
+        openId : getApp().globalData.openid
       },
       success: function (res) {
        // console.log(res.data)
