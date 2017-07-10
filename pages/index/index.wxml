@@ -99,9 +99,9 @@
           </view>
         </view>
       </view> 
-      <!--<view class="bottom">
+      <view class="bottom">
         <button size="mini" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage" class="look-active" >查看预约单</button>
-      </view>-->  
+      </view>
     </view>
   </view>
 

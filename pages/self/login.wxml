@@ -6,7 +6,7 @@
     <view class="middle">
       <view class="content">
         <image src="../../images/tel_icon@2x.png"></image>
-        <input type="text" placeholder="请输入手机号码" placeholder-class='placeholder' value="{{telphone}}" bindblur="phoneHandle" />
+        <input type="number" placeholder="请输入手机号码" placeholder-class='placeholder' value="{{telphone}}" bindblur="phoneHandle" />
       </view>
       <view class="content">
         <image src="../../images/pas_icon@2x.png"></image>

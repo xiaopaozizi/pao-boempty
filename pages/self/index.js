@@ -11,5 +11,19 @@ Page({
       { icon : '../../images/service.png', text : '客服', url : 'about' },
     ]
   },
+  onLoad(){
+    if (getApp().isLogin()) {}
+  },
+  logout(){
+    wx.removeStorage({
+      key: 'driverInfo',
+      success: function (res) {
+        wx.navigateTo({
+          url: 'login',
+        })
+      } 
+
+    })
+  }
   
 })

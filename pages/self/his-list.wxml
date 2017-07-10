@@ -57,9 +57,9 @@
            <image class="already-over" src="../../images/already-over.png"></image>
           </view>
       </view> 
-      <!--<view class="bottom">
+      <view class="bottom">
         <button size="mini"  class="look-active" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage">查看预约单</button>
-      </view>-->
+      </view>
     </view> 
 </scroll-view>
 

@@ -5,5 +5,5 @@
         <navigator class="text" url="{{list.url}}">{{list.text}}</navigator>
         <image class="arrow" src="../../images/arrow-right.png"></image>
     </view>
-    <button class="logout" size="default" type="primary">退出</button>
+    <button class="logout" size="default" type="primary" bindtap="logout">退出</button>
 </view>
