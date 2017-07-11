@@ -76,6 +76,9 @@
 .list .middle .main .content text.value{
   font-weight: normal;
 }
+.list .middle .main .content text.order{
+  color:red;
+}
 .list .middle .main .content image {
   width:18px;
   height:18px;

@@ -258,6 +258,36 @@ Page({
     let take_addr = this.data.take_addr && this.data.take_addr.value != undefined ? this.data.take_addr.value : '';
     let dest_addr = this.data.dest_addr && this.data.dest_addr.value != undefined ? this.data.dest_addr.value : '';
 
+
+    // 公共单子----publicList
+    /**if (driverInfo) {
+      wx.request({
+        url: getApp().globalData.url + "/emptybox/weChat/getMyList",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'POST',
+        data: {
+          driverId: driverInfo.id,
+          agree: 0,
+          pageNo: 1,
+          pageSize: that.data.pageSize,
+          addrStart: take_addr,
+          addrEnd: dest_addr
+        },
+        success: function (res) {
+          console.log(res.data);
+          if (res.data.status === 'success') {
+            that.setData({
+              publicList: res.data.data
+            })
+          }
+        }
+      })
+    }**/
+
+
+
     wx.request({
       url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
       header: {

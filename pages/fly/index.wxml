@@ -74,11 +74,16 @@
             <text class="key">船名/航次：</text>
             <text class="value">{{list.ship}}</text>
         </view>
-        <view class="content">
-            <image src="../../images/clock.png"></image>
-            <text class="key">计划驳箱时间：</text>
-            <text class="value">{{list.time}}</text>
-        </view>
+          <view class="content">
+              <image src="../../images/clock.png"></image>
+              <text class="key">计划驳箱开始时间：</text>
+              <text class="value">{{list.startTime}}</text>
+          </view>
+          <view class="content">
+              <image src="../../images/clock.png"></image>
+              <text class="key">计划驳箱结束时间：</text>
+              <text class="value">{{list.endTime}}</text>
+          </view>
         <view class="content">
             <image src="../../images/flag.png"></image>
             <text class="key">备注：</text>
@@ -86,7 +91,7 @@
         </view>
       </view>
     </view> 
-    <view class="bottom" wx:if="{{doingList.length === 0}}">
+    <view class="bottom" wx:if="{{publicList.length === 0}}">
         <text class="rob" data-listid="{{list.id}}" bindtap="receiveListHandle">接单</text>
     </view> 
   </view> 
@@ -114,9 +119,14 @@
         </view>
         <view class="content">
             <image src="../../images/clock.png"></image>
-            <text class="key">计划驳箱时间：</text>
-            <text class="value">{{list.time}}</text>
+            <text class="key">计划驳箱开始时间：</text>
+            <text class="value">{{list.startTime}}</text>
         </view>
+        <view class="content">
+            <image src="../../images/clock.png"></image>
+            <text class="key">计划驳箱结束时间：</text>
+            <text class="value">{{list.endTime}}</text>
+          </view>
         <view class="content">
             <image src="../../images/flag.png"></image>
             <text class="key">备注：</text>
@@ -127,7 +137,7 @@
         <image class="phone" src="../../images/phone.png" bindtap="calling" data-phone="{{list.phone}}"></image>
       </view>
     </view>    
-    <view class="bottom"  wx:if="{{doingList.length === 0}}">
+    <view class="bottom"  wx:if="{{publicList.length === 0}}">
         <text class="rob" data-listid="{{list.id}}" bindtap="robListHandle">抢单</text>
     </view> 
   </view>

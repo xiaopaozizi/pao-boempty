@@ -63,7 +63,7 @@
           <view class="content">
             <image src="../../images/ship.png"></image>
             <text class="key">预约号：</text>
-            <text class="value">{{list.order}}</text>
+            <text class="value order">{{list.order}}</text>
           </view>
           <!--二维码-->
           <view class="content barcode">
@@ -77,7 +77,7 @@
                   <text class="key">箱型：</text>
                   <text class="value">{{list.boxType}}</text>
               </view>
-              <view class="case">
+              <view class="case"  wx:if="{{list.arrangeType === '1'&& list.undone > 0 }}">
                   <text class="key">箱量：</text>
                   <text class="value">{{list.boxNum}}箱</text>
               </view>
@@ -89,8 +89,13 @@
           </view>
           <view class="content">
               <image src="../../images/clock.png"></image>
-              <text class="key">计划驳箱时间：</text>
-              <text class="value">{{list.time}}</text>
+              <text class="key">计划驳箱开始时间：</text>
+              <text class="value">{{list.startTime}}</text>
+          </view>
+          <view class="content">
+              <image src="../../images/clock.png"></image>
+              <text class="key">计划驳箱结束时间：</text>
+              <text class="value">{{list.endTime}}</text>
           </view>
           <view class="content">
               <image src="../../images/flag.png"></image>
@@ -99,9 +104,9 @@
           </view>
         </view>
       </view> 
-      <view class="bottom">
+      <!--<view class="bottom">
         <button size="mini" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage" class="look-active" >查看预约单</button>
-      </view>
+      </view>-->
     </view>
   </view>
 
@@ -146,8 +151,13 @@
           </view>
           <view class="content">
               <image src="../../images/clock.png"></image>
-              <text class="key">计划驳箱时间：</text>
-              <text class="value">{{list.time}}</text>
+              <text class="key">计划驳箱开始时间：</text>
+              <text class="value">{{list.startTime}}</text>
+          </view>
+          <view class="content">
+              <image src="../../images/clock.png"></image>
+              <text class="key">计划驳箱结束时间：</text>
+              <text class="value">{{list.endTime}}</text>
           </view>
           <view class="content">
               <image src="../../images/flag.png"></image>
@@ -184,8 +194,13 @@
           </view>
           <view class="content">
               <image src="../../images/clock.png"></image>
-              <text class="key">计划驳箱时间：</text>
-              <text class="value">{{list.time}}</text>
+              <text class="key">计划驳箱开始时间：</text>
+              <text class="value">{{list.startTime}}</text>
+          </view>
+          <view class="content">
+              <image src="../../images/clock.png"></image>
+              <text class="key">计划驳箱结束时间：</text>
+              <text class="value">{{list.endTime}}</text>
           </view>
           <view class="content">
               <image src="../../images/flag.png"></image>

@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<view class="mod-pass">
+    <view class="form">
+        <!--<view class="form-item">
+            <label for="username">姓  名</label>
+            <input type="text" placeholder-class='placeholder' id="username"placeholder="请输入姓名" bindinput="checkUsername"/>
+        </view>
+        <view class="form-item">
+            <label for="ID">身份证号</label>
+            <input type="number" placeholder-class='placeholder' id="ID" placeholder="请输入身份证号码" bindinput="checkID" />
+        </view>
+        <view class="form-item {{checkIDResStr.cssStyle}}" wx:if="{{!checkIDResStr.hidden}}">{{checkIDResStr.value}}</view>-->
+
+
+        
+        <view class="form-item">
+            <label><text bindtap="showProvince" class="license-plate">{{curProvince}}▶</text></label>
+            <input type="number" placeholder-class='placeholder' placeholder="请输入车牌号" bindinput="checkLisence"/>
+        </view>
+        <view class="form-item {{checkLicenseResStr.cssStyle}}" wx:if="{{!checkLicenseResStr.hidden}}">{{checkLicenseResStr.value}}</view>
+        <view class="province" wx-if="{{isShow}}">
+          <text data-index="{{index}}" bindtap="choiceProvice" class="{{item.isShow}} {{item.isMore}}"  wx:for="{{provinces}}">{{item.value}}</text>
+        </view>
+
+
+        <view class="picture">
+            <label>主车前脸照片（带车牌号）</label>
+            <view class="addPicture">
+              <image src="{{picture}}" bindtap="chooseImg">
+              </image>
+            </view>
+        </view>
+        <!--<view class="form-item">
+            <label for="fleet">归属车队</label>
+            <input type="text" placeholder-class='placeholder' id="fleet"placeholder="请填入归属车队" bindinput="checkFleet"  />
+        </view>-->
+        <button bindtap="registerHandle" class="save-btn" size="default" type="primary" disabled="{{isDisabledRegisterBtn}}">完成修改</button>
+    </view>
+</view>

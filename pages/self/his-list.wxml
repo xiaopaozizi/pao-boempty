@@ -44,8 +44,13 @@
           </view>
           <view class="content">
               <image src="../../images/clock.png"></image>
-              <text class="key">计划提箱时间：</text>
-              <text class="value">{{list.time}}</text>
+              <text class="key">计划驳箱开始时间：</text>
+              <text class="value">{{list.startTime}}</text>
+          </view>
+          <view class="content">
+              <image src="../../images/clock.png"></image>
+              <text class="key">计划驳箱结束时间：</text>
+              <text class="value">{{list.endTime}}</text>
           </view>
           <view class="content">
               <image src="../../images/flag.png"></image>
@@ -57,9 +62,9 @@
            <image class="already-over" src="../../images/already-over.png"></image>
           </view>
       </view> 
-      <view class="bottom">
+      <!--<view class="bottom">
         <button size="mini"  class="look-active" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage">查看预约单</button>
-      </view>
+      </view>-->
     </view> 
 </scroll-view>
 

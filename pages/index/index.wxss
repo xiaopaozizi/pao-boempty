@@ -83,12 +83,19 @@
   color:#fff;
 }
 .his-list .bottom .rob {
-  padding:10px 0;
-  text-align: center;
-  background : #fff;
-  color:#fe9900;
-  font-weight: bold;
-  width:100%;
+  text-align:center;
+  background:red;
+  color:#fff;
+  font-weight:bold;
+  margin:0 auto;
+  border-radius:100%;
+  padding:5px;
+  display:inline-block;
+  width:30px;
+  height:30px;
+  line-height:30px;
+  vertical-align:middle;
+  font-size:14px;
 }
 .his-list .bottom .rob:after{
   border:none;

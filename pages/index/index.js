@@ -97,7 +97,7 @@ var indexPage = {
       success: function (res) {
         let result= [];
         res.data.data.forEach(item => {
-          result.push(getApp().globalData.url + '/emptybox/file' + item.imgUrl);
+          result.push(getApp().globalData.url + '' + item.imgUrl);
         })
         console.log(res.data);
         that.setData({
@@ -162,7 +162,6 @@ var indexPage = {
   },
   // 接单
   receiveListHandle(e){
-    console.log('recive')
     var that = this;
     let listId = e.target.dataset.listid;
     let driverInfo = wx.getStorageSync('driverInfo');

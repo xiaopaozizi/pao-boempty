@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/self/modify-lisence-plate-number",
     "pages/fly/index",
     "pages/self/his-list",
     "pages/self/reg-info",

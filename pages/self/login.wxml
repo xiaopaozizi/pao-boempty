@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="login">
     <view class="top">
-      <image src="../../images/loading_icon@2x.png"></image>
+      <image src="../../images/loading_icon.png"></image>
     </view>
     <view class="middle">
       <view class="content">
