@@ -226,6 +226,7 @@ Page({
         }
       });
     }
+    this.hide();
   },
 
 
@@ -248,7 +249,9 @@ Page({
   },
   // 点击隐藏
   hide(){
+    console.log('hide')
     var that = this;
+    var driverInfo = wx.getStorageSync('driverInfo');
     this.setData({
       isShowAddress : false
     })
@@ -260,7 +263,7 @@ Page({
 
 
     // 公共单子----publicList
-    /**if (driverInfo) {
+    if (driverInfo) {
       wx.request({
         url: getApp().globalData.url + "/emptybox/weChat/getMyList",
         header: {
@@ -269,9 +272,9 @@ Page({
         method: 'POST',
         data: {
           driverId: driverInfo.id,
-          agree: 0,
-          pageNo: 1,
-          pageSize: that.data.pageSize,
+          agree: 0,   // 0 未接   1已接
+          //pageNo: 1,
+          //pageSize: that.data.pageSize,
           addrStart: take_addr,
           addrEnd: dest_addr
         },
@@ -284,10 +287,10 @@ Page({
           }
         }
       })
-    }**/
+    }
 
 
-
+    // 飞单----flyList
     wx.request({
       url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
       header: {

@@ -6,10 +6,10 @@
         <text class="text">累计单量</text>
     </view>
     <!--图片查看-->
-  <!--<modal hidden="{{isHiddenModal}}" class="imageModal" title="" confirm-text="" cancel-text="" bindtap="hideImageHandle" no-cancel="{{nocancel}}" >
+  <modal hidden="{{isHiddenModal}}" class="imageModal" title="" confirm-text="" cancel-text="" bindtap="hideImageHandle" no-cancel="{{nocancel}}" >
       <image src="{{imageSrc}}"></image>
   </modal>
-    <block wx:for="{{lists}}" wx:for-item="list">
+    <!--<block wx:for="{{lists}}" wx:for-item="list">
         <template is="list" data="{{...list}}"></template>
         <view class="bottom">
           <button size="mini"  class="look-active" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage">查看预约单</button>
@@ -62,9 +62,9 @@
            <image class="already-over" src="../../images/already-over.png"></image>
           </view>
       </view> 
-      <!--<view class="bottom">
+      <view class="bottom">
         <button size="mini"  class="look-active" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage">查看预约单</button>
-      </view>-->
+      </view>
     </view> 
 </scroll-view>
 

@@ -91,7 +91,7 @@ Page({
   },
   // 点击显示图片
   showImage(e) {
-    let src = getApp().globalData.url + '/emptybox/file' + e.target.dataset.imgsrc;
+    let src = getApp().globalData.url + '' + e.target.dataset.imgsrc;
     this.setData({
       imageSrc: src,
       isHiddenModal: false
