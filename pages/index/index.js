@@ -45,7 +45,9 @@ var indexPage = {
     })
   },
   
-  
+  onShow(){
+    this.onLoad();
+  },
 
   onLoad: function () {
 
@@ -111,7 +113,7 @@ var indexPage = {
     // 公共单子----publicList
     if (driverInfo) {
       wx.request({
-        url: getApp().globalData.url + "/emptybox/weChat/getMyList",
+        url: getApp().globalData.url + "/emptybox/weChat/getMyPublicList",
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
@@ -160,6 +162,43 @@ var indexPage = {
       }
     });
   },
+  // 做
+  doAgainHandle(e){
+
+    var that = this;
+    let listId = e.target.dataset.listid;
+    let driverInfo = wx.getStorageSync('driverInfo');
+    console.log(listId);
+    if (driverInfo) {
+      wx.request({
+        url: getApp().globalData.url + "/emptybox/weChat/doAgain",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'POST',
+        data: {
+          driverId: driverInfo.id,
+          arrangeId: listId
+        },
+        success: function (res) {
+          console.log(res.data);
+          if (res.data.status === 'success') {
+            console.log('succ ess');
+            wx.showToast({
+              title: '接单成功',
+              duration: 3000
+            })
+          } else {
+            wx.showToast({
+              title: res.data.message,
+              duration: 3000
+            })
+          }
+          that.onLoad();
+        }
+      })
+    }
+  },
   // 接单
   receiveListHandle(e){
     var that = this;
@@ -167,7 +206,7 @@ var indexPage = {
     let driverInfo = wx.getStorageSync('driverInfo');
     if (driverInfo) {
       wx.request({
-        url: getApp().globalData.url + "/emptybox/weChat/agree",
+        url: getApp().globalData.url + "/emptybox/weChat/grabOrder",
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
@@ -183,6 +222,11 @@ var indexPage = {
             wx.showToast({
               title: '接单成功',
               duration:3000
+            })
+          } else {
+            wx.showToast({
+              title: res.data.message,
+              duration: 3000
             })
           }
           that.onLoad();

@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <import src="../template/list2.wxml" />
 <scroll-view scroll-y="true" style="height: {{windowHeight}}px" bindscrolltolower="more" class="his-list">
-    <view class="title" wx:if="{{ total > 0 }}">
-        <text class="num">{{total}}</text>
+    <view class="title" wx:if="{{ count > 0 }}">
+        <text class="num">{{count}}</text>
         <text class="text">累计单量</text>
     </view>
     <!--图片查看-->
@@ -32,10 +32,10 @@
                   <text class="key">箱型：</text>
                   <text class="value">{{list.boxType}}</text>
               </view>
-              <view class="case"  wx:if="{{list.arrangeType === '1'}}">
+              <!-- <view class="case"  wx:if="{{list.arrangeType === '1'}}">
                   <text class="key">箱量：</text>
                   <text class="value">{{list.boxNum}}箱</text>
-              </view>
+              </view> -->
           </view>
           <view class="content">
               <image src="../../images/ship.png"></image>

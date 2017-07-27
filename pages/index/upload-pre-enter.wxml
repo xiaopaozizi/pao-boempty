@@ -8,8 +8,8 @@
       <view class="picBox">
       <image wx:for="{{imglist}}" mode="aspectFit" src="{{item}}"></image>
       </view>
-    <textarea placeholder="*最少上传一张照片，最多上传三张" placeholder-style="color:red;"/>
-      <button form-type="submit">上传</button>
+    <textarea placeholder="*最少上传一张照片，最多上传三张" placeholder-style="color:red;" focus bindinput="remarkHandle" value="{{remark}}"/>
+      <button form-type="submit" bindtap="uploadimg">上传</button>
     </view>
   </form>
 </view>

@@ -3,13 +3,14 @@
 var app = getApp()
 Page({
   data: {
-    imglist : []
+    imglist : [],
+    remark : '',
   },
   // 选择图片
   chooseImage(){
     let that = this;
     wx.chooseImage({
-      count: 1, // 默认9
+      count: 3, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
@@ -19,80 +20,63 @@ Page({
         that.setData({
           imglist: tempFilePaths
         })
-
-        console.log(tempFilePaths)
-       // return;
-        wx.uploadFile({
-          url: getApp().globalData.url + '/emptybox/weChat/upload', //仅为示例，非真实的接口地址
-          filePath: tempFilePaths[0],
-          name: 'file',
-          formData: {
-            'file': tempFilePaths[0],
-
-          },
-          success: function (res) {
-            var data = res.data
-            console.log(res.data)
-            //do something
-          },
-          fail: function (e) {
-            console.log(e);
-            wx.showModal({
-              title: '提示',
-              content: '上传失败',
-              showCancel: false
-            })
-          },
-        })
       }
     })
+  },
+  // 备注
+  remarkHandle(e){
+    this.setData({
+      remark : e.detail.value
+    })
+    console.log(this.data.remark)
+  },
+  uploadimg() {//这里触发图片上传的方法
+   
+    var that = this;
+    for (let i = 0; i < that.data.imglist.length; i++ ){
+      (function(i){
+        wx.uploadFile({
+          url: getApp().globalData.url + '/FHSHGL/weixin/fileUpload',    //服务器上传地址
+          filePath: that.data.imglist[i],
+          name: 'upload',    //上传文件对应表单字段
+          header: {   //请求头
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          methods: 'POST',
+          formData: {
+            type: 'jpg',
+            phone : '18957877424',
+           // phone: wx.getStorageSync('driverInfo').phone,
+            remark: that.data.remark
+          },   //其他额外的表单字段
+          success: function (res, code) {
+            //console.log(typeof res.data);
+            res = JSON.parse(res.data);
+            console.log(res);
+            if (res.status === 'success') {
+              wx.navigateTo({
+                url: 'login?telphone=' + res.data,
+              })
+            } else if (res.status === 'fail') {
+
+              that.setData({
+                'checkLicenseResStr.value': res.message,
+                'checkLicenseResStr.cssStyle': 'error',
+                'checkLicenseResStr.hidden': false,
+                'checkLicenseResStr.code': false,
+              });
+              that.isRegister();
+            }
+          }
+        });
+      })(i);
+    }
+    
+
+    
+    
   },
 })
 
 
 
-function upload(page, path) {
-  wx.showToast({
-    icon: "loading",
-    title: "正在上传"
-  });
-  
-  //for ( var i = 0; i < path.length; i++ ) {
-    wx.uploadFile({
-      url: getApp().globalData.url + '/emptybox/UploadServlet',
-      filePath: path[0],
-      name: 'file',
-      header: { "Content-Type": "multipart/form-data" },
-      formData: {
-        //和服务器约定的token, 一般也可以放在header中
-       // 'session_token': wx.getStorageSync('session_token')
-      },
-      success: function (res) {
-        console.log(res);
-        if (res.statusCode != 200) {
-          wx.showModal({
-            title: '提示',
-            content: '上传失败',
-            showCancel: false
-          })
-          return;
-        }
-        var data = res.data
-        page.setData({  //上传成功修改显示头像
-          src: path[0]
-        })
-      },
-      fail: function (e) {
-        console.log(e);
-        wx.showModal({
-          title: '提示',
-          content: '上传失败',
-          showCancel: false
-        })
-      },
-      complete: function () {
-        wx.hideToast();  //隐藏Toast
-      }
-    })
- // }
-}

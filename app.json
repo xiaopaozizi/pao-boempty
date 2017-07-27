@@ -1,23 +1,23 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/index/upload-pre-enter",
+    "pages/self/his-pre-enter",
+    "pages/news/index",
+    "pages/self/pre-enter-detail",
+    "pages/news/detail",
+    "pages/self/his-list",
     "pages/self/modify-lisence-plate-number",
     "pages/fly/index",
-    "pages/self/his-list",
     "pages/self/reg-info",
-    "pages/index/upload-pre-enter",
-    "pages/news/index",
     "pages/self/forget-pass",
     "pages/self/mod-pass",
     "pages/self/info",
     "pages/self/login",
     "pages/self/register",
-    "pages/self/pre-enter-detail",
-    "pages/self/his-pre-enter",
     "pages/self/index",
     "pages/fly/detail",
     "pages/fly/dealing",
-    "pages/news/detail",
     "pages/self/about"
   ],
   "window":{
@@ -41,7 +41,12 @@
      "iconPath": "images/list.png",  
      "pagePath": "pages/fly/index",  
      "text": "飞单"  
-   }, {  
+   }, {
+    "selectedIconPath": "images/news-active.png",
+    "iconPath": "images/news.png",
+    "pagePath": "pages/news/index",
+    "text": "消息"
+  },{  
      "selectedIconPath": "images/user-active.png",  
      "iconPath": "images/user.png",  
      "pagePath": "pages/self/index",  

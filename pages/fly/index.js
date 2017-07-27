@@ -50,7 +50,9 @@ Page({
     // 临时存储选择的按钮---提箱地、目的地
     temp_addr: '',
   },
-
+  onShow() {
+    this.onLoad();
+  },
   // 页面加载
   onLoad: function () {
     var that = this;
@@ -58,15 +60,15 @@ Page({
 
     // 公共单子----publicList
    if (driverInfo) {
+     
       wx.request({
-        url: getApp().globalData.url + "/emptybox/weChat/getMyList",
+        url: getApp().globalData.url + "/emptybox/weChat/getMyPublicList",
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         method: 'POST',
         data: {
-          driverId: driverInfo.id,
-          agree: 0
+          driverId: driverInfo.id
         },
         success: function (res) {
           console.log(res.data);
@@ -128,7 +130,7 @@ Page({
         method: 'POST',
         data: {
           driverId: driverInfo.id,
-          arrangeId: listId,
+          id: listId,
         },
         success: function (res) {
           console.log(res.data);
@@ -265,7 +267,7 @@ Page({
     // 公共单子----publicList
     if (driverInfo) {
       wx.request({
-        url: getApp().globalData.url + "/emptybox/weChat/getMyList",
+        url: getApp().globalData.url + "/emptybox/weChat/getMyPublicList",
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },

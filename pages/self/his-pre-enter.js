@@ -3,14 +3,31 @@
 var app = getApp()
 Page({
   data: {
-    // 是否显示省份
-    isShowProvince : false,
-
+    
   },
-  showProvince(){
-    this.setData({
-      isShowProvince: !this.data.isShowProvince
-    });
+  onLoad() {
+    var that = this;
+    var url = getApp().globalData.url; 
+    var driverInfo = wx.getStorageSync('driverInfo');
+    console.log(driverInfo)
+    if(driverInfo){
+      wx.request({
+        url: url + "/FHSHGL/weixin/getAll",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'POST',
+        data: {
+          phone: driverInfo.telphone
+        },
+        success: function (res) {
+          console.log(res.data);
+          that.setData({
+            publicMsg: res.data.data
+          })
+        }
+      })
+    }
   }
   
 })

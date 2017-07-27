@@ -1,9 +1,19 @@
 <!--index.wxml-->
 <view class="news">
-    <view class="list" wx:for="{{lists}}" wx:for-item="list">
+    <!--个人消息----违章停车-->
+    <view class="list" wx:for="{{selfCarMsg}}" wx:for-item="car">
+        <view class="title">
+            <text>车辆违规</text>
+        </view>
+        <view class="content">您的车辆{{car.truckLicense}}在码头{{car.liftContainerPlaceStr}}，{{car.punishReason}}，请及时处理</view>
+        <view class="time">{{car.formatStartDate}}</view>
+    </view>
+    
+    <!--公共消息-->
+    <view class="list" wx:for="{{publicMsg}}" wx:for-item="list">
         <view class="title">
             <text>{{list.title}}</text>
-            <navigator  wx:if="list.url && list.icon" class="text" url="{{list.url}}"><image src="{{list.icon}}"></image></navigator>
+            <!--<navigator  wx:if="list.url && list.icon" class="text" url="{{list.url}}"><image src="{{list.icon}}"></image></navigator>-->
         </view>
         <view class="content">{{list.content}}</view>
         <view class="time">{{list.sendDate}}</view>

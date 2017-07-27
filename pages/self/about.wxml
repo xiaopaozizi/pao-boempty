@@ -4,10 +4,10 @@
       <image src="../../images/truck.png"></image>
       <text>集港通-飞单</text>
     </view>
-    <view class="middle">“集港通-飞单app”隶属于宁波 XX物流科技有限公司，旨在用移动物联网技术让司机货主更加方便配货，提高工作效率。</view>
+    <view class="middle">“集港通-飞单app”隶属于宁波恩通物流科技有限公司，旨在通过移动物联网的方式让司机货主更加方便配货，全程GPS精准定位，提高匹配效率，提升双防收益。</view>
     <view class="bottom">
-      <view class="list">客服热线：13867568976</view>
-      <view class="list">微信公众号：宁波啦啦啦平台</view>
+      <view class="list">客服热线：15168159773</view>
+      <view class="list">微信公众号：集港通云平台</view>
       <view class="list">客服时间 9:00 ～ 17:90 （周一至周五）</view>
     </view>
 </view>

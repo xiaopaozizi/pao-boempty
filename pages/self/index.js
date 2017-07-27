@@ -8,7 +8,7 @@ Page({
       { icon: '../../images/chg-pass.png', text: '修改密码', url: 'mod-pass' },
       //{ icon: '../../images/chg-pass.png', text: '修改车牌', url: 'modify-lisence-plate-number' },
       { icon : '../../images/dir.png', text : '历史单子', url : 'his-list' },
-     // { icon : '../../images/camera.png', text : '历史预录入', url : 'his-pre-enter' },
+      //{ icon : '../../images/camera.png', text : '历史预录入', url : 'his-pre-enter' },
       { icon : '../../images/service.png', text : '客服', url : 'about' },
     ]
   },

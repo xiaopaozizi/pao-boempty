@@ -42,10 +42,10 @@ Page({
           pageSize: that.data.pageSize
         },
         success: function (res) {
-          console.log(res.data);
+          console.log(11111,res.data);
           that.setData({
             historyList: res.data.data.rows,
-            count : res.data.data.count
+            count: res.data.data.total
           });
         }
       })

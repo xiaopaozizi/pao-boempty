@@ -1,6 +1,6 @@
 <view class="detail">
   <view class="top">
-    <view class="left">计划提箱时间：{{detailData.time}}</view>
+    <view class="left">计划提箱时间：{{detailData.startTime}}</view>
     <view class="right">
       <view class="price">￥{{detailData.price}}</view>
       <view class="status">待抢单</view>

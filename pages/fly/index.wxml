@@ -50,10 +50,10 @@
         <text>{{list.addrStart}}</text>
         <image src="../../images/arrow-left.png" class="arrow-left"></image>
         <text>{{list.addrEnd}}</text>
-        <view class="progress" >
+        <!-- <view class="progress" >
             <progress percent="{{list.percent}}"stroke-width="{{list.undone}}"color="red" active/>
             <text class="text">剩余{{list.undone}}</text>
-        </view>
+        </view> -->
     </view>    
     <view class="middle">
       <view class="main">
@@ -64,10 +64,10 @@
                 <text class="key">箱型：</text>
                 <text class="value">{{list.boxType}}</text>
             </view>
-            <view class="case">
+            <!-- <view class="case">
                 <text class="key">箱量：</text>
                 <text class="value">{{list.boxNum}}箱</text>
-            </view>
+            </view> -->
         </view>
         <view class="content">
             <image src="../../images/ship.png"></image>

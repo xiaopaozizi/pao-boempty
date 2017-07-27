@@ -28,7 +28,7 @@ Page({
       },
       method: 'POST',
       data: {
-        id: id,
+        arrangeId: id,
         driverId : wx.getStorageSync('driverInfo').id
       },
       success: function (res) {
