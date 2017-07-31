@@ -6,6 +6,23 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
   },
+  //定义分享
+  onShareAppMessage: function () {
+    return {
+      title: '微信小程序联盟',
+      desc: '最具人气的小程序开发联盟!',
+      path: '/pages/index/index',
+      success: function (res) {
+        // 转发成功
+        console.log('成功')
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log('失败')
+      }
+
+    }
+  },
   getUserInfo:function(cb){
     var that = this;
     let url = getApp().globalData.url;
@@ -37,7 +54,7 @@ App({
                   success: function (data) {
                     //4.解密成功后 获取自己服务器返回的结果
                     if (data.data.status == 1) {
-                      that.globalData.openid = data.data.userInfo.openid;
+                      that.globalData.openid = data.data.userInfo.openId;
                     } else {
                       console.log('解密失败')
                     }
@@ -71,9 +88,9 @@ App({
     //url: 'http://120.55.188.15:8080',
     //url : 'http://192.168.10.127:8080',
     //url : 'http://192.168.1.101:8080',
-    //url: 'http://192.168.16.166:8080',
+    url: 'http://192.168.16.166:8080',
     //url: 'http://10.16.20.210:8080',
-    url: 'https://www.9entong.cn',
+    //url: 'https://www.9entong.cn',
     //url: 'http://120.55.188.15:8080'
     //url: 'http://www.easy-mock.com/mock/596038ae9adc231f357bbb39'
   },
