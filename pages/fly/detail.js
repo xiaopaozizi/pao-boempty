@@ -32,7 +32,6 @@ Page({
         driverId : wx.getStorageSync('driverInfo').id
       },
       success: function (res) {
-        //console.log(res);
         let status = res.data.status;
         if ( status === 'success' ) {
           that.setData({
@@ -53,7 +52,6 @@ Page({
             url: '../index/index',
             success: function (e) {
               var page = getCurrentPages().pop();
-              console.log(page);
               if (page == undefined || page == null) return;
               page.onLoad();
             }  
@@ -75,7 +73,6 @@ Page({
         id : id
       },
       success: function (res) {
-        console.log(res.data.data);
         that.setData({
           detailData: res.data.data,
           id : id

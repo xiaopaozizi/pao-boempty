@@ -14,7 +14,6 @@ Page({
     var that = this;
     var url = getApp().globalData.url; 
     var driverInfo = wx.getStorageSync('driverInfo');
-    console.log(driverInfo)
     // 自己的消息-----违章停车之类的
     if (driverInfo) {
       wx.request({
@@ -27,13 +26,6 @@ Page({
           driverId: driverInfo.id
         },
         success: function (res) {
-          // console.log(res.data);
-          /*let data = res.data.data;
-          data = data.map(item => {
-            let date = item.startDate;
-            item.startDate = date.substring(0,4) + '-' + date.substring(4,6) + '-' + date.substring(6,8) + ' ' + date.substring(8,10) + ':00:00';
-            return item;
-          })*/
           that.setData({
             selfCarMsg: res.data.data
           })
@@ -53,7 +45,6 @@ Page({
       data: {
       },
       success: function (res) {
-       // console.log(res.data);
         that.setData({
           publicMsg : res.data.data
         })

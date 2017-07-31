@@ -24,7 +24,6 @@ Page({
           'driverId': wx.getStorageSync('driverInfo').id
         },
         success: function (res) {
-          console.log(res.data);
           that.setData({
             info: res.data.data
           });

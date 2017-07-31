@@ -43,7 +43,6 @@ Page({
         openId : getApp().globalData.openid
       },
       success: function (res) {
-       // console.log(res.data)
         if(res.data.status === 'success'){
           wx.showToast({
             title: res.data.message,
@@ -67,7 +66,6 @@ Page({
             icon: 'loading'
           })
         }
-        console.log(wx.getStorageSync('driverInfo'))
       }
     })
 

@@ -53,7 +53,6 @@ Page({
   },
   // 获取参数
   onLoad(options) {
-    //console.log(options);
     var userid = options.id ? options.id : 24;
     var that = this;
     // 我的单子
@@ -145,7 +144,6 @@ Page({
       'checkLicenseResStr.code': code,
       lisence: str,
     });
-    console.log(this.data.curProvince + this.data.lisence);
     this.isRegister();
   },
 
@@ -182,7 +180,6 @@ Page({
   // 选择省份
   choiceProvice(e){
     var index = e.target.dataset.index;
-    console.log(index);
     // 点击更多
     if ( index === 11) {
       let startProvinces = this.data.startProvinces;
@@ -211,7 +208,6 @@ Page({
       isShow : false
     });
 
-    console.log(this.data.curProvince + this.data.lisence);
   },
   // 选择图片
   chooseImg(){
@@ -220,9 +216,6 @@ Page({
       count: 1,
       sizeType: ['compressed'],
       success: function (info) {
-        //var paths = info.tempFilePaths;
-       // console.log(paths);
-       // var url = url + 'emptybox/weChat/upload';
         that.setData({
           picture: info.tempFilePaths,
           pictureFlag : true,
@@ -236,7 +229,6 @@ Page({
   registerHandle(){
     let that = this;
     let username = this.data.username;
-    console.log(username);
     if (this.isRegister() && username){
       // 提交
       // 获取验证码
@@ -249,47 +241,6 @@ Page({
           remark: that.data.fleet
       };
 
-      /*wx.request({
-        url: url + "/emptybox/weChat/weChatTruckRegister",
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        method: 'POST',
-        data: {
-          driverId : that.data.userid,
-          driverName : that.data.username,
-          idCard : that.data.IDCard,
-          truckCode: that.data.curProvince + that.data.lisence,
-          remark : that.data.fleet
-        },
-        success: function (res) {
-          console.log(res.data);
-          if(res.data.status === 'success'){
-            wx.showToast({
-              title: '注册成功',
-              icon : 'success',
-              duration : 5000,
-              success : function () {
-                wx.navigateTo({
-                  url: './login?telphone=' + res.data.data,
-                })
-              }
-            })
-          } else {
-            let message = res.data.message;
-            if(message.indexOf('车辆') > -1){
-              that.setData({
-                'checkLicenseResStr.value': message,
-                'checkLicenseResStr.cssStyle': 'error',
-                'checkLicenseResStr.hidden': false,
-                'checkLicenseResStr.code': false,
-              });
-              that.isRegister();
-            }
-          }
-        },
-
-      })*/
       this.singleUpload(url, that.data.picture, data);
       
     }
@@ -315,7 +266,6 @@ Page({
         remark: that.data.fleet
       },   //其他额外的表单字段
       success: function (res, code) {
-        //console.log(typeof res.data);
         res = JSON.parse(res.data);
         if (res.status === 'success') {
           wx.navigateTo({
@@ -331,9 +281,6 @@ Page({
           });
           that.isRegister();
         }
-      },
-      fail: function (e) {
-        console.log(e);
       }
     });
   },

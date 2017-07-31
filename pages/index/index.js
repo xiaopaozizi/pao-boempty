@@ -31,7 +31,7 @@ var indexPage = {
   },
   // 点击显示图片
   showImage(e){
-    let src = getApp().globalData.url + '' + e.target.dataset.imgsrc;
+    let src = getApp().globalData.url + '/upload/' + e.target.dataset.imgsrc;
     this.setData({
       imageSrc : src,
       isHiddenModal : false
@@ -39,7 +39,6 @@ var indexPage = {
   },
   // 点击图片modal，并且隐藏
   hideImageHandle(){
-   // console.log('dasfkljs')
     this.setData({
       isHiddenModal : true
     })
@@ -77,7 +76,7 @@ var indexPage = {
           });
           result.forEach(item => {
             if (item.barCodeImgUrl) {
-              item.barCodeImgUrl = getApp().globalData.url + '' + item.barCodeImgUrl;
+              item.barCodeImgUrl = getApp().globalData.url + '/upload/' + item.barCodeImgUrl;
             }
           })
           that.setData({
@@ -99,9 +98,8 @@ var indexPage = {
       success: function (res) {
         let result= [];
         res.data.data.forEach(item => {
-          result.push(getApp().globalData.url + '' + item.imgUrl);
+          result.push(getApp().globalData.url + '/upload/' + item.imgUrl);
         })
-        console.log(res.data);
         that.setData({
           ads: result
         })
@@ -123,7 +121,6 @@ var indexPage = {
           agree : 0
         },
         success: function (res) {
-          console.log(res.data);
           if(res.data.status === 'success'){
             that.setData({
               publicList : res.data.data
@@ -155,7 +152,6 @@ var indexPage = {
     // 设置高度
     wx.getSystemInfo({
       success: function (res) {
-        console.info(res.windowHeight);
         that.setData({
           windowHeight: res.windowHeight
         });
@@ -168,7 +164,6 @@ var indexPage = {
     var that = this;
     let listId = e.target.dataset.listid;
     let driverInfo = wx.getStorageSync('driverInfo');
-    console.log(listId);
     if (driverInfo) {
       wx.request({
         url: getApp().globalData.url + "/emptybox/weChat/doAgain",
@@ -181,9 +176,7 @@ var indexPage = {
           arrangeId: listId
         },
         success: function (res) {
-          console.log(res.data);
           if (res.data.status === 'success') {
-            console.log('succ ess');
             wx.showToast({
               title: '接单成功',
               duration: 3000
@@ -216,9 +209,7 @@ var indexPage = {
           arrangeId : listId
         },
         success: function (res) {
-          console.log(res.data);
           if (res.data.status === 'success') {
-            console.log('success');
             wx.showToast({
               title: '接单成功',
               duration:3000
@@ -255,7 +246,6 @@ var indexPage = {
         hasMore : false,
         pageNo: ++pageNo,
       })
-      console.log(111,that.data.hasMore)
       wx.request({
         url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
         header: {

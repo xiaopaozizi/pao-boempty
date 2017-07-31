@@ -71,7 +71,6 @@ Page({
           driverId: driverInfo.id
         },
         success: function (res) {
-          console.log(res.data);
           if (res.data.status === 'success') {
             that.setData({
               publicList: res.data.data
@@ -117,7 +116,6 @@ Page({
 
   // 接单
   receiveListHandle(e) {
-    console.log('recive')
     var that = this;
     let listId = e.target.dataset.listid;
     let driverInfo = wx.getStorageSync('driverInfo');
@@ -133,9 +131,7 @@ Page({
           id: listId,
         },
         success: function (res) {
-          console.log(res.data);
           if (res.data.status === 'success') {
-            console.log('success');
             wx.showToast({
               title: '接单成功',
               duration: 3000
@@ -164,14 +160,12 @@ Page({
       scrollTop: event.detail.scrollTop,
       //scrollTop: that.data.windowHeight,
     });
-    console.log(event.data.scrollTop)
   },
 
 
   // 上拉刷新
   more() {
     var that = this;
-    console.log(999999999999999999)
     var pageNo = that.data.pageNo;
     let take_addr = this.data.take_addr && this.data.take_addr.value != undefined ? this.data.take_addr.value : '';
     let dest_addr = this.data.dest_addr && this.data.dest_addr.value != undefined ? this.data.dest_addr.value : '';
@@ -181,7 +175,6 @@ Page({
         hasMore: false,
         pageNo: ++pageNo,
       })
-      console.log(111, that.data.hasMore)
       wx.request({
         url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
         header: {
@@ -251,7 +244,6 @@ Page({
   },
   // 点击隐藏
   hide(){
-    console.log('hide')
     var that = this;
     var driverInfo = wx.getStorageSync('driverInfo');
     this.setData({
@@ -281,7 +273,6 @@ Page({
           addrEnd: dest_addr
         },
         success: function (res) {
-          console.log(res.data);
           if (res.data.status === 'success') {
             that.setData({
               publicList: res.data.data
@@ -305,7 +296,6 @@ Page({
         addrEnd: dest_addr
       },
       success: function (res) {
-        console.log(res.data)
         that.setData({
           flyList: res.data.data.rows
         });
@@ -324,7 +314,6 @@ Page({
     if( title === 'take_attr' ) {
       // 提箱地
       var that = this;
-      //console.log(999);
       wx.request({
         url: getApp().globalData.url + "/emptybox/weChat/getAddr",
         header: {
@@ -335,7 +324,6 @@ Page({
           type : 1
         },
         success: function (res) {
-          console.log(res.data.data);
           that.setData({
 
             addresses: res.data.data,
@@ -366,7 +354,6 @@ Page({
           type: 2
         },
         success: function (res) {
-          console.log(res.data.data);
           that.setData({
 
             addresses: res.data.data,
@@ -399,7 +386,6 @@ Page({
       addr_types: this.data.addr_types,
       choiceType: this.data.addr_types[index]
     });
-    //console.log(this.data.choiceType);
   },
 
   toast: function () {
@@ -412,10 +398,10 @@ Page({
     wx.makePhoneCall({
       phoneNumber: e.target.dataset.phone, //此号码并非真实电话号码，仅用于测试
       success: function () {
-        console.log("拨打电话成功！")
+        //console.log("拨打电话成功！")
       },
       fail: function () {
-        console.log("拨打电话失败！")
+        //console.log("拨打电话失败！")
       }
     })
   },

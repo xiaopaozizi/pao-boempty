@@ -173,6 +173,11 @@
           <text class="rob" data-listid="{{list.id}}" bindtap="receiveListHandle">接单</text>
       </view> 
     </view> 
+
+
+
+
+    
     <!--飞单-->
     <view class="list"  wx:for="{{flyList}}" wx:for-item="list">
       <view class="top" bindtap="toast">

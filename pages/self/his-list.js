@@ -42,7 +42,6 @@ Page({
           pageSize: that.data.pageSize
         },
         success: function (res) {
-          console.log(11111,res.data);
           that.setData({
             historyList: res.data.data.rows,
             count: res.data.data.total
@@ -65,7 +64,6 @@ Page({
   more() {
     var driverInfo = wx.getStorageSync('driverInfo');
     var that = this;
-    //console.log(999);
     wx.request({
       url: getApp().globalData.url + "/emptybox/weChat/getMyFinish",
       header: {
@@ -78,20 +76,18 @@ Page({
         pageSize: (that.data.pageNo++) * 2
       },
       success: function (res) {
-        //console.log(res.data)
 
 
         that.setData({
           historyList: res.data.data.rows,
           total: res.data.data.total
         });
-        // console.log(that.data.marketList)
       }
     })
   },
   // 点击显示图片
   showImage(e) {
-    let src = getApp().globalData.url + '' + e.target.dataset.imgsrc;
+    let src = getApp().globalData.url + '/upload/' + e.target.dataset.imgsrc;
     this.setData({
       imageSrc: src,
       isHiddenModal: false
@@ -99,7 +95,6 @@ Page({
   },
   // 点击图片modal，并且隐藏
   hideImageHandle() {
-    console.log('dasfkljs')
     this.setData({
       isHiddenModal: true
     })

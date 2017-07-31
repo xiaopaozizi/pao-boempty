@@ -11,7 +11,7 @@ var list2 = {
   // 打电话
   calling: function (e) {
     wx.makePhoneCall({
-      phoneNumber: e.target.dataset.phone, //此号码并非真实电话号码，仅用于测试
+      phoneNumber: e.target.dataset.phone, 
       success: function () {
         console.log("拨打电话成功！")
       },

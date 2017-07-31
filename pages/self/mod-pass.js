@@ -83,7 +83,6 @@ Page({
       value = '密码合法';
       cssStyle = 'success';
       code = true;
-      console.log(str, this.data.password)
       if (str == this.data.password) {
         value = '新密码与当前密码一致，请修改';
         cssStyle = 'error';
@@ -157,7 +156,6 @@ Page({
         newPwd : that.data.newPass
       },
       success: function (res) {
-        console.log(res.data);
         if (res.data.status === 'success') {
           // 成功--跳转页面
           wx.showToast({

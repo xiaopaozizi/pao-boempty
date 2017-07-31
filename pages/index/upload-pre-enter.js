@@ -28,7 +28,6 @@ Page({
     this.setData({
       remark : e.detail.value
     })
-    console.log(this.data.remark)
   },
   uploadimg() {//这里触发图片上传的方法
    
@@ -50,9 +49,7 @@ Page({
             remark: that.data.remark
           },   //其他额外的表单字段
           success: function (res, code) {
-            //console.log(typeof res.data);
             res = JSON.parse(res.data);
-            console.log(res);
             if (res.status === 'success') {
               wx.navigateTo({
                 url: 'login?telphone=' + res.data,

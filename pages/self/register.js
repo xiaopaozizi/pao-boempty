@@ -133,7 +133,6 @@ Page({
         telphone : that.data.telphone
       },
       success: function (res) {
-        console.log(res.data);
       }
     })
 
@@ -141,7 +140,6 @@ Page({
   // 验证码
   checkCode(e) {
     let str = e.detail.value;
-    console.log(str);
     let value = '';
     let cssStyle = '';
     let hidden = false;
@@ -233,7 +231,6 @@ Page({
   // 提交注册信息---手机号、验证码和密码
   registerInfo(){
     var that = this;
-    console.log(this.data.telphone, this.data.validateCode, this.data.password);
     if (this.isRegister()){
       // 个人信息
       var url = getApp().globalData.url;
@@ -250,7 +247,6 @@ Page({
           openId: getApp().globalData.openid
         },
         success: function (res) {
-          console.log(res.data);
           if(res.data.status === 'success'){
             wx.navigateTo({
               url: './reg-info?id=' + res.data.data,
@@ -288,7 +284,7 @@ Page({
     let passCode = this.data.checkPassResStr.code;
     let resPassCode = this.data.checkRepPassResStr.code;
    
-    console.log(phoneCode, codeCode, passCode, resPassCode)
+    
     if (phoneCode && codeCode && passCode && resPassCode){
       this.setData({
         isDisabledRegisterBtn : false
