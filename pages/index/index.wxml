@@ -84,8 +84,8 @@
           </view>
           <view class="content">
               <image src="../../images/ship.png"></image>
-              <text class="key">船名/航次：</text>
-              <text class="value">{{list.ship}}</text>
+              <text class="key">发布公司：</text>
+              <text class="value">{{list.compName}}</text>
           </view>
           <view class="content">
               <image src="../../images/clock.png"></image>
@@ -103,11 +103,15 @@
               <text class="value">{{list.remark}}</text>
           </view>
         </view>
+        <view class="picture">
+          <image class="phone" src="../../images/phone.png" bindtap="calling" data-phone="{{list.phone}}"></image>
+        </view>
       </view> 
       <!-- <view class="bottom" style="margin-bottom:20px;">
         <button size="mini" data-listid="{{list.id}}" bindtap="doAgainHandle" class="look-active" >做</button>
       </view> -->
       <view class="bottom">
+        <button size="mini" bindtap="cancelHandle" class="cancel-btn" data-listid="{{list.id}}">取消</button>
         <button size="mini" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage" class="look-active" >查看预约单</button>
       </view>
     </view>
@@ -147,10 +151,11 @@
                   <text class="value">{{list.boxNum}}箱</text>
               </view> -->
           </view>
+          
           <view class="content">
               <image src="../../images/ship.png"></image>
-              <text class="key">船名/航次：</text>
-              <text class="value">{{list.ship}}</text>
+              <text class="key">发布公司：</text>
+              <text class="value">{{list.compName}}</text>
           </view>
           <view class="content">
               <image src="../../images/clock.png"></image>
@@ -168,9 +173,12 @@
               <text class="value">{{list.remark}}</text>
           </view>
         </view>
+        <view class="picture">
+          <image class="phone" src="../../images/phone.png" bindtap="calling" data-phone="{{list.phone}}"></image>
+        </view>
       </view> 
       <view class="bottom" wx:if="{{doingList.length === 0}}">
-          <text class="rob" data-listid="{{list.id}}" bindtap="receiveListHandle">接单</text>
+          <text class="rob" data-listid="{{list.id}}" bindtap="robListHandle">接单</text>
       </view> 
     </view> 
 
@@ -195,10 +203,11 @@
                   <text class="value">{{list.boxType}}</text>
               </view>
           </view>
+          
           <view class="content">
               <image src="../../images/ship.png"></image>
-              <text class="key">船名/航次：</text>
-              <text class="value">{{list.ship}}</text>
+              <text class="key">发布公司：</text>
+              <text class="value">{{list.compName}}</text>
           </view>
           <view class="content">
               <image src="../../images/clock.png"></image>

@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>司机注册</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            width:100%;
+            height:100vh;
+        }
+        #app{
+            font-family: '微软雅黑';
+            width:100%;
+            height:100%;
+            display: flex;
+            flex-direction: column;
+        }
+        #app .header{
+            width:100%;
+            height:150px;
+            line-height:150px;
+            font-size:60px;
+            text-align: center;
+            margin-bottom:20px;
+            margin-top:20px;
+        }
+        #app .main{
+            width:100%;
+            height:800px;
+            display: flex;
+            flex-direction: column;
+        }
+        #app .main .line{
+            width:100%;
+            display: flex;
+            height:90px;
+            line-height:90px;
+            box-sizing: border-box;
+            margin-top:30px;
+        }
+        #app .main .line.res{
+            margin-top:100px;
+        }
+        /*验证信息*/
+        #app .main .line.checkMsg{
+            margin:0;
+            font-size:45px;
+        }
+        #app .main .line span{
+            padding:0px 10px;
+        }
+        #app .main .line span.success{
+            color:green;
+        }
+        #app .main .line span.error{
+            color:red;
+        }
+        #app .main .line label{
+            width:30%;
+            padding:5px 10px;
+            line-height:80px;
+            font-size:45px;
+        }
+        #app .main .line input{
+            width:60%;
+            font-size:45px;
+            border-radius: 5px;
+            border:1px solid #ccc;
+        }
+        #app .main .line input.yzm-input{
+            width:30%;
+        }
+        #app .main .line button.yzm-btn{
+            width:25%;
+            border-radius: 5px;
+            padding:5px 10px;
+            background:#f60;
+            border:1px solid #ccc;
+            margin-left:10px;
+            color:#fff;
+            font-size:45px;
+            cursor: pointer;
+        }
+        #app .main .line button.disabled{
+            opacity: 0.5;
+        }
+        #app .main .line button.res-btn{
+            height:90px;
+            line-height:90px;
+            width:95%;
+            font-size:40px;
+            background:green;
+            border-radius:10px;
+            border:1px solid #ccc;
+            text-align:center;
+            color:#fff;
+            margin:0 auto;
+            cursor: pointer;
+        }
+        #app .main .line button.disabled{
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h3 class="header">司机注册</h3>
+    <div class="main">
+        <div class="line">
+            <label for="">手机号码</label>
+            <input type="number" v-model="phoneObj.value" @keyup="checkPhone">
+        </div>
+        <div class="line checkMsg" v-show="phoneObj.msg">
+            <span :class="[ phoneObj.flag ? 'success' : 'error' ]">{{phoneObj.msg}}</span>
+        </div>
+        <div class="line">
+            <label for="">验 证 码</label>
+            <input type="number" maxlength="6" class="yzm-input" v-model="verifyCodeObj.value" @keyup="checkVerifyCode">
+            <button
+                    class="yzm-btn"
+                    :class="[ verifyCodeObj.disabled ? 'disabled' : '' ]"
+                    @click="getCodeHandle"
+                    :disabled="verifyCodeObj.disabled">{{verifyCodeObj.btnStr}}</button>
+        </div>
+        <div class="line checkMsg" v-show="verifyCodeObj.msg">
+            <span :class="[ verifyCodeObj.flag ? 'success' : 'error' ]">{{verifyCodeObj.msg}}</span>
+        </div>
+        <div class="line">
+            <label for="">密  码</label>
+            <input type="password" v-model="pwdObj.value" @keyup="checkPwdCode">
+        </div>
+        <div class="line checkMsg" v-show="pwdObj.msg">
+            <span :class="[ pwdObj.flag ? 'success' : 'error' ]">{{pwdObj.msg}}</span>
+        </div>
+        <div class="line">
+            <label for="">确认密码</label>
+            <input type="password" v-model="repPwdObj.value" @keyup="checkRepPwdCode">
+        </div>
+        <div class="line checkMsg" v-show="repPwdObj.msg">
+            <span :class="[ repPwdObj.flag ? 'success' : 'error' ]">{{repPwdObj.msg}}</span>
+        </div>
+        <div class="line res">
+            <button
+                    class="res-btn"
+                    @click="registerHandle"
+                    :class="[ !isRegister ? 'disabled' : '' ]"
+                    :disabled="!isRegister">注册</button>
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/vue">
+</script><script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.bootcss.com/qs/6.2.3/qs.js"></script>
+<script>
+    let config = {
+        baseURL: 'http://192.168.16.166:8080/flyingOrder/',
+        headers:{
+            'Content-Type':'application/x-www-form-urlencoded'
+        },
+        withCredentials:true,
+        transformRequest: [function (data) {
+            // 这里可以在发送请求之前对请求数据做处理，比如form-data格式化等，这里可以使用开头引入的Qs（这个模块在安装axios的时候就已经安装了，不需要另外安装）
+            data = Qs.stringify(data);
+            return data;
+        }],
+    }
+    var app = new Vue({
+        el: '#app',
+        data: {
+            // 手机号码
+            phoneObj : {
+                // input中的值
+                value : '',
+                // 验证是否正确
+                flag : false,
+                // 提示信息
+                msg : '',
+            },
+            // 验证码
+            verifyCodeObj : {
+                // input中的值
+                value : '',
+                // 验证是否正确
+                flag : false,
+                // 提示信息
+                msg : '',
+                // 按钮字段
+                btnStr : '验证码',
+                // 是否禁用按钮
+                disabled : true
+            },
+            // 密码
+            pwdObj : {
+                // input中的值
+                value : '',
+                // 验证是否正确
+                flag : false,
+                // 提示信息
+                msg : '',
+            },
+            // 确认密码
+            repPwdObj : {
+                // input中的值
+                value : '',
+                // 验证是否正确
+                flag : false,
+                // 提示信息
+                msg : '',
+            },
+            // 是否可以注册
+            isRegister : false
+
+        },
+        methods: {
+            // 验证手机号码
+            checkPhone : function(){
+                if (!(/^1[34578]\d{9}$/.test(this.phoneObj.value))) {
+                    this.phoneObj.msg = '请输入11位有效手机号码';
+                    this.phoneObj.flag = false;
+                    this.verifyCodeObj.disabled = true;
+                } else {
+                    this.phoneObj.msg = '';
+                    this.phoneObj.flag = true;
+                    this.verifyCodeObj.disabled = false;
+                    this.isRegisterHandle();
+                }
+            },
+            // 验证验证码
+            checkVerifyCode : function(){
+                if (this.verifyCodeObj.value.length !== 6) {
+                    this.verifyCodeObj.msg = '请输入6位验证码';
+                    this.verifyCodeObj.flag = false;
+                } else {
+                    this.verifyCodeObj.msg = '';
+                    this.verifyCodeObj.flag = true;
+                    this.isRegisterHandle();
+                }
+            },
+            // 验证密码
+            checkPwdCode : function(){
+                if (this.pwdObj.value.length < 6) {
+                    this.pwdObj.msg = '密码不少于6位';
+                    this.pwdObj.flag = false;
+                } else {
+                    this.pwdObj.msg = '';
+                    this.pwdObj.flag = true;
+                    this.isRegisterHandle();
+                }
+            },
+            // 验证重复密码
+            checkRepPwdCode : function(){
+                if (this.pwdObj.value !== this.repPwdObj.value) {
+                    this.repPwdObj.msg = '密码不一致';
+                    this.repPwdObj.flag = false;
+                } else {
+                    this.repPwdObj.msg = '';
+                    this.repPwdObj.flag = true;
+                    this.isRegisterHandle();
+                }
+            },
+            // 获取验证码
+            getCodeHandle : function(){
+                if (this.phoneObj.value === '' || !this.phoneObj.flag ) return;
+                var that = this;
+                let num = 60;
+                let value = '';
+                let disabled = false;
+                let timer = null;
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    if (num <= 0) {
+                        clearInterval(timer);
+                        that.verifyCodeObj.disabled = false;
+                        that.verifyCodeObj.btnStr = '验证码';
+                        return;
+                    }
+                    num--;
+                    value = num + '秒';
+                    disabled = true;
+                    that.verifyCodeObj.disabled = true;
+                    that.verifyCodeObj.btnStr = value;
+                }, 1000);
+                // 获取验证码
+                axios.post("verifycode/app/get.do", {
+                    phone : that.phoneObj.value
+                }, config)
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
+            // 判断是否可以登录
+            isRegisterHandle : function(){
+                if(this.phoneObj.flag && this.verifyCodeObj.flag
+                        && this.pwdObj.flag && this.repPwdObj.flag) {
+                    this.isRegister = true;
+                } else {
+                    this.isRegister = false;
+                }
+                console.log(this.isRegister);
+            },
+            // 登录
+            registerHandle : function(){
+                let that = this;
+                axios.post("driverinfo/app/register.do", {
+                    phone : that.phoneObj.value,
+                    verifyCode : this.data.validateCode,
+                    password : this.data.password,
+                    openId : `${openId}`
+                }, config)
+                .then(function (res) {
+                    if(res.data.status === 'success'){
+                        //location.href = getContextPath() + '/good.jsp';
+                    } else {
+                        var message = res.data.message;
+                        if (message.indexOf('手机号') > -1){
+                            that.phoneObj.msg = message;
+                            that.phoneObj.flag = false;
+                            that.verifyCodeObj.disabled = true;
+                        } else if ( message.indexOf('验证码') > -1){
+                            that.verifyCodeObj.msg = message;
+                            that.verifyCodeObj.flag = false;
+                        }
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            }
+        }
+    })
+</script>
+</body>
+</html>

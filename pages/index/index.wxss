@@ -82,6 +82,9 @@
   background : #fe4800;
   color:#fff;
 }
+.his-list .bottom .cancel-btn{
+  margin-left:10px;
+}
 .his-list .bottom .rob {
   text-align:center;
   background:red;

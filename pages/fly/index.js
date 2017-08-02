@@ -308,9 +308,11 @@ Page({
   // 判断点击的是选择提箱地还是目的地
   choiceType(e) {
     let title = e.target.dataset.title;
-    this.setData({
-      temp_addr: title,
-    });
+    if (title === 'take_attr' || title === 'dest_attr'){
+      this.setData({
+        temp_addr: title,
+      });
+    }
     if( title === 'take_attr' ) {
       // 提箱地
       var that = this;
@@ -336,13 +338,9 @@ Page({
 
           });
         }
-      });
-
-      
+      });      
     } else if (title === 'dest_attr') {
       // 目的
-
-
       var that = this;
       wx.request({
         url: getApp().globalData.url + "/emptybox/weChat/getAddr",
@@ -367,9 +365,58 @@ Page({
           });
         }
       });
+    } else if( title === '堆场'){
+      // 提箱地
+      var that = this;
+      wx.request({
+        url: getApp().globalData.url + "/emptybox/weChat/getAddr",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'POST',
+        data: {
+          type: 3
+        },
+        success: function (res) {
+          that.setData({
 
+            addresses: res.data.data,
+            addr_types: [
+              { text: '堆场', isActive: true },
+              { text: '码头', isActive: false },
+            ],
+            isShowAddress: true,
+            take_addr: res.data.data[0]
 
-      
+          });
+        }
+      });
+    } else if ( title === '码头' ) {
+      // 提箱地
+      var that = this;
+      wx.request({
+        url: getApp().globalData.url + "/emptybox/weChat/getAddr",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'POST',
+        data: {
+          type: 4
+        },
+        success: function (res) {
+          that.setData({
+
+            addresses: res.data.data,
+            addr_types: [
+              { text: '堆场', isActive: false },
+              { text: '码头', isActive: true },
+            ],
+            isShowAddress: true,
+            dest_addr: res.data.data[0]
+
+          });
+        }
+      });
     }
   },
 
@@ -386,6 +433,8 @@ Page({
       addr_types: this.data.addr_types,
       choiceType: this.data.addr_types[index]
     });
+    // 
+   this.choiceType(e);
   },
 
   toast: function () {

@@ -35,7 +35,7 @@ Page({
         let status = res.data.status;
         if ( status === 'success' ) {
           that.setData({
-            message : '抢单成功！',
+            message : '操作成功！',
             closeDialog : false
           });
         } else if (status === 'fail') {

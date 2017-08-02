@@ -35,6 +35,7 @@
     <view class="choice">
       <view wx:for="{{addr_types}}" 
         data-index="{{index}}"
+        data-title="{{item.text}}"
         bindtap="changeType"
         class="{{item.isActive ? 'active' : '' }}">{{item.text}}              </view>
     </view>
@@ -44,16 +45,12 @@
   
   
   <!--公共单子-->
-  <view class="list" wx:for="{{publicList}}" wx:for-item="list">
+  <!--<view class="list" wx:for="{{publicList}}" wx:for-item="list">
     <view class="top" bindtap="toast">
         <image src="../../images/public.png" class="public"></image>
         <text>{{list.addrStart}}</text>
         <image src="../../images/arrow-left.png" class="arrow-left"></image>
         <text>{{list.addrEnd}}</text>
-        <!-- <view class="progress" >
-            <progress percent="{{list.percent}}"stroke-width="{{list.undone}}"color="red" active/>
-            <text class="text">剩余{{list.undone}}</text>
-        </view> -->
     </view>    
     <view class="middle">
       <view class="main">
@@ -64,10 +61,6 @@
                 <text class="key">箱型：</text>
                 <text class="value">{{list.boxType}}</text>
             </view>
-            <!-- <view class="case">
-                <text class="key">箱量：</text>
-                <text class="value">{{list.boxNum}}箱</text>
-            </view> -->
         </view>
         <view class="content">
             <image src="../../images/ship.png"></image>
@@ -94,7 +87,7 @@
     <view class="bottom" wx:if="{{publicList.length === 0}}">
         <text class="rob" data-listid="{{list.id}}" bindtap="receiveListHandle">接单</text>
     </view> 
-  </view> 
+  </view>--> 
   <!--飞单-->
   <view class="list"  wx:for="{{flyList}}" wx:for-item="list">
     <view class="top" bindtap="toast">
@@ -113,10 +106,10 @@
             </view>
         </view>
         <view class="content">
-            <image src="../../images/ship.png"></image>
-            <text class="key">船名/航次：</text>
-            <text class="value">{{list.ship}}</text>
-        </view>
+              <image src="../../images/ship.png"></image>
+              <text class="key">发布公司：</text>
+              <text class="value">{{list.compName}}</text>
+          </view>
         <view class="content">
             <image src="../../images/clock.png"></image>
             <text class="key">计划驳箱开始时间：</text>

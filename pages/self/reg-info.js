@@ -232,21 +232,16 @@ Page({
     if (this.isRegister() && username){
       // 提交
       // 获取验证码
+      
       var url = getApp().globalData.url + '/emptybox/weChat/weChatTruckRegister';
-      var data = {
-          driverId: that.data.userid,
-          driverName: that.data.username,
-          idCard: that.data.IDCard,
-          truckCode: that.data.curProvince + that.data.lisence,
-          remark: that.data.fleet
-      };
+      
 
-      this.singleUpload(url, that.data.picture, data);
+      this.singleUpload(url, that.data.picture);
       
     }
   },
   // 上传图片
-  singleUpload(url, paths, data) {
+  singleUpload(url, paths) {
     var that = this;
     wx.uploadFile({
       url: url,    //服务器上传地址
@@ -259,6 +254,7 @@ Page({
       methods: 'POST',
       formData: {
         type: 'jpg',
+        driverTelInfoId : wx.getStorageSync('driverTelInfoId'),
         driverId: that.data.userid,
         driverName: that.data.username,
         idCard: that.data.IDCard,
@@ -268,8 +264,15 @@ Page({
       success: function (res, code) {
         res = JSON.parse(res.data);
         if (res.status === 'success') {
-          wx.navigateTo({
-            url: 'login?telphone=' + res.data,
+          console.log(999999, res.data);
+          wx.setStorageSync('driverInfo', res.data)
+          wx.switchTab({
+            url: '../index/index',
+            success() {
+              var page = getCurrentPages().pop();
+              if (page == undefined || page == null) return;
+              page.onLoad();
+            }
           })
         } else if ( res.status === 'fail') {
   

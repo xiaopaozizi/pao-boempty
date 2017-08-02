@@ -40,26 +40,32 @@ Page({
       data: {
         telphone: that.data.telphone,
         password : that.data.password,
-        openId : getApp().globalData.openid
+        //openId : getApp().globalData.openid
       },
       success: function (res) {
         if(res.data.status === 'success'){
-          wx.showToast({
-            title: res.data.message,
-            icon: 'success',
-            duratioin:2000
-          })
+          
+          
           wx.setStorageSync(
-            "driverInfo", res.data.data
+            "driverTelInfoId", res.data.data.driverTelInfoId
           )
-          wx.switchTab({
-            url: '../index/index',
-            success(){
-              var page = getCurrentPages().pop();
-              if (page == undefined || page == null) return;
-              page.onLoad();
-            }
-          })
+          if (res.data.data.boolean === 'true' ) {
+            wx.setStorageSync(
+              "driverInfo", res.data.data.driverInfo
+            )
+            wx.switchTab({
+              url: '../index/index',
+              success(){
+                var page = getCurrentPages().pop();
+                if (page == undefined || page == null) return;
+                page.onLoad();
+              }
+            })
+          } else {
+            wx.navigateTo({
+              url: './reg-info',
+            })
+          }
         } else if ( res.data.status === 'fail'){
           wx.showToast({
             title: res.data.message,

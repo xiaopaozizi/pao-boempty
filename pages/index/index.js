@@ -158,6 +158,50 @@ var indexPage = {
       }
     });
   },
+
+  // 取消单子
+  cancelHandle(e){
+    var that = this;
+    let listId = e.target.dataset.listid;
+    if(listId){
+      wx.showModal({
+        title: '',
+        content: '确定取消单子？',
+        success: function (res) {
+          if (res.confirm) {
+            wx.request({
+              url: getApp().globalData.url + "/emptybox/weChat/cancel",
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              method: 'POST',
+              data: {
+                odiId: listId
+              },
+              success: function (res) {
+                if (res.data.status === 'success') {
+                  wx.showToast({
+                    title: '取消成功',
+                    icon: 'success',
+                    duration: 2000
+                  })
+                } else {
+                  wx.showToast({
+                    title: '取消失败',
+                    icon: 'cancel',
+                    duration: 2000
+                  })
+                }
+                that.onLoad();
+              }
+            })
+          }
+        }
+      })
+     
+    }
+  },
+
   // 做
   doAgainHandle(e){
 
