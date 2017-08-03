@@ -20,6 +20,13 @@ Page({
       // 结果码
       code: false
     },
+    //定义分享
+    onShareAppMessage: function () {
+      return {
+        title: getApp().globalData.shareMsg,
+        path: '/pages/index/index'
+      }
+    },
     // 新密码---字符串
     checkNewPassResStr: {
       // 提示信息

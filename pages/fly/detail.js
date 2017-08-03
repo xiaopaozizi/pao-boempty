@@ -16,7 +16,13 @@ Page({
     // 关闭对话框
     closeDialog : true
   },
-
+  //定义分享
+  onShareAppMessage: function () {
+    return {
+      title: getApp().globalData.shareMsg,
+      path: '/pages/index/index'
+    }
+  },
   // 抢单
   robHandle(e){
     let id = e.target.dataset.id;

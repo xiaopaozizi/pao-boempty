@@ -12,6 +12,13 @@ Page({
       telphone : telphone
     })
   },
+  //定义分享
+  onShareAppMessage: function () {
+    return {
+      title: getApp().globalData.shareMsg,
+      path: '/pages/index/index'
+    }
+  },
   // 获取手机号
   phoneHandle(e){
     this.setData({

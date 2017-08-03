@@ -7,10 +7,18 @@ Page({
     isShowProvince : false,
 
   },
+  //定义分享
+  onShareAppMessage: function () {
+    return {
+      title: getApp().globalData.shareMsg,
+      path: '/pages/index/index'
+    }
+  },
   showProvince(){
     this.setData({
       isShowProvince: !this.data.isShowProvince
     });
   }
+
   
 })

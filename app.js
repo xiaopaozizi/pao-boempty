@@ -6,23 +6,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
   },
-  //定义分享
-  onShareAppMessage: function () {
-    return {
-      title: '微信小程序联盟',
-      desc: '最具人气的小程序开发联盟!',
-      path: '/pages/index/index',
-      success: function (res) {
-        // 转发成功
-        console.log('成功')
-      },
-      fail: function (res) {
-        // 转发失败
-        console.log('失败')
-      }
-
-    }
-  },
+  
   getUserInfo:function(cb){
     var that = this;
     let url = getApp().globalData.url;
@@ -83,15 +67,17 @@ App({
   },
   
   globalData:{
+    // 分享消息
+    shareMsg: '我的飞单我做主，集通港期待你的加入',
     userInfo:null,
     openid : '',
     //url : 'http://127.0.0.1:8080',
-    url: 'http://172.20.10.4:8080',
+    //url: 'http://172.20.10.4:8080',
     //url : 'http://192.168.10.127:8080',
     //url : 'http://192.168.1.101:8080',
    // url: 'http://192.168.16.166:8080',
     //url: 'http://10.16.20.210:8080',
-   // url: 'https://www.9entong.cn',
+    url: 'https://www.9entong.cn',
     //url: 'http://120.55.188.15:8080'
     //url: 'http://www.easy-mock.com/mock/596038ae9adc231f357bbb39'
   },

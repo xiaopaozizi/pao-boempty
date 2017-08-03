@@ -2,6 +2,13 @@
 //获取应用实例
 var app = getApp()
 Page({
+  //定义分享
+  onShareAppMessage: function () {
+    return {
+      title: getApp().globalData.shareMsg,
+      path: '/pages/index/index'
+    }
+  },
   data: {
     detail : { 
       title : '预录入成功', 

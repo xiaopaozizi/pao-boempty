@@ -5,6 +5,13 @@ Page({
   data: {
     
   },
+  //定义分享
+  onShareAppMessage: function () {
+    return {
+      title: getApp().globalData.shareMsg,
+      path: '/pages/index/index'
+    }
+  },
   onLoad() {
     var that = this;
     var url = getApp().globalData.url; 

@@ -12,6 +12,13 @@ Page({
       { icon : '../../images/service.png', text : '客服', url : 'about' },
     ]
   },
+  //定义分享
+  onShareAppMessage: function () {
+    return {
+      title: getApp().globalData.shareMsg,
+      path: '/pages/index/index'
+    }
+  },
   onLoad(){
     if (getApp().isLogin()) {}
   },
