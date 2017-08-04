@@ -1,6 +1,8 @@
 @import "../template/list2.wxss";
 
 
+
+
 .his-list{
   width : 100%;
   background:#f5f5f5;
@@ -96,9 +98,11 @@
   font-weight: bold;
   width:100%;
 }
+
 .his-list .bottom .rob:after{
   border:none;
 }
+
 
 
 

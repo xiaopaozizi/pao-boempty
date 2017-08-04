@@ -10,39 +10,26 @@
 
 .list .top {
   font-size:14px;
-  padding:10px 0 0 10px;
+  width:100%;
   display: flex;
-
+  justify-content: space-between;
+  margin-top:10px;
 }
 .list .top text{
   color:#fe9900;
   font-weight:bold;
+  font-size:34rpx;
+  text-indent: 0.6em;
 }
-.list .top .price{
+.list .top .phone{
   color : #fe4800;
   text-align: center;
   font-weight: bold;
-  margin-left:10px;
+  margin-right:20px;
+  font-size:20px;
 }
-.list .top .progress {
-  margin-left:15px;
-  width:40px;
-}
-.list .top .progress .text {
-  font-size:12px;
-  color:#999;
-  font-weight: bold;
 
-}
-.list .top image{
-  width:20px;
-  height:20px;
-  margin-right:0;
-  vertical-align: top;
-}
-.list .top image.arrow-left{
-  margin-right:5px;
-}
+
 
 
 .list .middle {
@@ -59,6 +46,7 @@
   display: flex;
   width:100%;
 }
+
 .list .middle .main .barcode{
   height:100px;
   
@@ -68,13 +56,28 @@
   height:100%;
   background-size:cover;
 }
-
+.list .middle .main .content .icon{
+  color:green;
+  font-size:28rpx;
+}
 .list .middle .main .content text{
-  font: bold 27rpx/50rpx Arial, Helvetica, sans-serif;
-  color:#999;
+  font: bold 35rpx/70rpx '黑体';
+}
+.list .middle .main .content text.key{
+  text-indent: 0.5em;
+  font-size:28rpx;
+  color:green;
+}
+.list .middle .main .content text.second{
+  text-indent: 2em;
 }
 .list .middle .main .content text.value{
   font-weight: normal;
+  font-size:28rpx;
+}
+.list .middle .main .content text.important{
+  font-weight: normal;
+  font-size:32rpx;
 }
 .list .middle .main .content text.order{
   color:red;
@@ -93,9 +96,22 @@
 
 .list .middle .picture{
   width:20%;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  margin-left:-60rpx;
+}
+.list .middle .picture .price{
+  font-size:50rpx;
+  font-weight:bold;
+  color:#f60;
+  margin-top:100rpx;
+}
+.list .middle .picture .box-size{
+  margin-top:50rpx;
 }
 .list .middle .picture image {
-  margin-top:20px;
+  margin-top:10px;
   margin-left:-10px;
 }
 .list .middle .picture wx-image.already-over {
@@ -103,10 +119,7 @@
   height:60px;
   margin-left:-50px;
 }
-.list .middle .picture wx-image.phone {
-  width : 40px;
-  height:40px;
-}
+
 
 
 

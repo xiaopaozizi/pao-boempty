@@ -44,72 +44,57 @@
   <view class="nav-text" wx:if="{{doingList.length > 0}}">
     <text>正在进行的单子</text>
   </view>
+
   <view class="his-list">
     <view class="list" wx:for="{{doingList}}" wx:for-item="list">
-      <view class="top" bindtap="toast">
-          <image wx:if="{{list.arrangeType === '1'}}" src="../../images/public.png" class="public"></image>
-          <text>{{list.addrStart}}</text>
-          <image src="../../images/arrow-left.png" class="arrow-left"></image>
-          <text>{{list.addrEnd}}</text>
-          <text class="price" wx:if="{{list.arrangeType === '2'&& list.undone }}">￥{{list.price}}</text>
-          
-          <view class="progress" wx:if="{{list.arrangeType === '1'&& list.undone > 0 }}">
-              <progress percent="{{list.percent}}"stroke-width="{{list.undone}}"color="red" active/>
-              <text class="text">剩余{{list.undone}}</text>
-          </view>
-      </view>    
+      <view class="top">
+          <text>{{list.compName}}</text>
+          <text class="phone fa fa-phone-square " bindtap="calling" data-phone="{{list.phone}}"></text>
+      </view>      
       <view class="middle">
         <view class="main">
           <view class="content">
-            <image src="../../images/ship.png"></image>
-            <text class="key">预约号：</text>
+            <text class="icon fa fa-bars"></text>
+            <text class="key">预：</text>
             <text class="value order">{{list.order}}</text>
           </view>
           <!--二维码-->
           <view class="content barcode">
             <!--<canvas canvas-id="barcode" />-->
             <image src="{{list.barCodeImgUrl}}" class="aaa"></image>
-            
           </view>
-          <view class="content">
-              <view class="case">
-                  <image src="../../images/box.png"></image>
-                  <text class="key">箱型：</text>
-                  <text class="value">{{list.boxType}}</text>
-              </view>
-              <view class="case"  wx:if="{{list.arrangeType === '1'&& list.undone > 0 }}">
-                  <text class="key">箱量：</text>
-                  <text class="value">{{list.boxNum}}箱</text>
-              </view>
+         <view class="content">
+              <text class="icon fa fa-taxi"></text>
+              <text class="key">提：</text>
+              <text class="value important">{{list.addrStart}}</text>
           </view>
-          <view class="content">
-              <image src="../../images/ship.png"></image>
-              <text class="key">发布公司：</text>
-              <text class="value">{{list.compName}}</text>
+          
+           <view class="content">
+              <text class="icon fa fa-truck"></text>
+              <text class="key">还：</text>
+              <text class="value important">{{list.addrEnd}}</text>
           </view>
+          
           <view class="content">
-              <image src="../../images/clock.png"></image>
-              <text class="key">计划驳箱开始时间：</text>
-              <text class="value">{{list.startTime}}</text>
-          </view>
-          <view class="content">
-              <image src="../../images/clock.png"></image>
-              <text class="key">计划驳箱结束时间：</text>
+              <text class="icon fa fa-calendar"></text>
+              <text class="key">始：</text>
+              <text class="value">{{list.startTime}}</text>  
+              <text class="key second">终：</text>
               <text class="value">{{list.endTime}}</text>
+          
           </view>
+          
           <view class="content">
-              <image src="../../images/flag.png"></image>
-              <text class="key">备注：</text>
+              <text class="icon fa fa-pencil"></text>
+              <text class="key">注：</text>
               <text class="value">{{list.remark}}</text>
           </view>
         </view>
         <view class="picture">
-          <image class="phone" src="../../images/phone.png" bindtap="calling" data-phone="{{list.phone}}"></image>
+          <view class="price fa fa-jpy">{{list.price}}</view>
+          <view class="box-size">{{list.boxType}}</view>
         </view>
       </view> 
-      <!-- <view class="bottom" style="margin-bottom:20px;">
-        <button size="mini" data-listid="{{list.id}}" bindtap="doAgainHandle" class="look-active" >做</button>
-      </view> -->
       <view class="bottom">
         <button size="mini" bindtap="cancelHandle" class="cancel-btn" data-listid="{{list.id}}">取消</button>
         <button size="mini" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage" class="look-active" >查看预约单</button>
@@ -124,111 +109,92 @@
   <view class="nav-text">
     <text>市场单子</text>
   </view>
+  
   <view class="his-list">
     <!--公共单子-->
     <view class="list" wx:for="{{publicList}}" wx:for-item="list">
-      <view class="top" bindtap="toast">
-          <image src="../../images/public.png" class="public"></image>
-          <text>{{list.addrStart}}</text>
-          <image src="../../images/arrow-left.png" class="arrow-left"></image>
-          <text>{{list.addrEnd}}</text>
-          <!-- <view class="progress" >
-              <progress percent="{{list.percent}}"stroke-width="{{list.undone}}"color="red" active/>
-              <text class="text">剩余{{list.undone}}</text>
-          </view> -->
-      </view>    
+      <view class="top">
+          <text>{{list.compName}}</text>
+          <text class="phone fa fa-phone-square " bindtap="calling" data-phone="{{list.phone}}"></text>
+      </view>      
       <view class="middle">
         <view class="main">
-          
-          <view class="content">
-              <view class="case">
-                  <image src="../../images/box.png"></image>
-                  <text class="key">箱型：</text>
-                  <text class="value">{{list.boxType}}</text>
-              </view>
-              <!-- <view class="case">
-                  <text class="key">箱量：</text>
-                  <text class="value">{{list.boxNum}}箱</text>
-              </view> -->
+         <view class="content">
+              <text class="icon fa fa-taxi"></text>
+              <text class="key">提：</text>
+              <text class="value important">{{list.addrStart}}</text>
           </view>
           
-          <view class="content">
-              <image src="../../images/ship.png"></image>
-              <text class="key">发布公司：</text>
-              <text class="value">{{list.compName}}</text>
+           <view class="content">
+              <text class="icon fa fa-truck"></text>
+              <text class="key">还：</text>
+              <text class="value important">{{list.addrEnd}}</text>
           </view>
+          
           <view class="content">
-              <image src="../../images/clock.png"></image>
-              <text class="key">计划驳箱开始时间：</text>
-              <text class="value">{{list.startTime}}</text>
-          </view>
-          <view class="content">
-              <image src="../../images/clock.png"></image>
-              <text class="key">计划驳箱结束时间：</text>
+              <text class="icon fa fa-calendar"></text>
+              <text class="key">始：</text>
+              <text class="value">{{list.startTime}}</text>  
+              <text class="key second">终：</text>
               <text class="value">{{list.endTime}}</text>
+          
           </view>
+          
           <view class="content">
-              <image src="../../images/flag.png"></image>
-              <text class="key">备注：</text>
+              <text class="icon fa fa-pencil"></text>
+              <text class="key">注：</text>
               <text class="value">{{list.remark}}</text>
           </view>
         </view>
         <view class="picture">
-          <image class="phone" src="../../images/phone.png" bindtap="calling" data-phone="{{list.phone}}"></image>
+          <view class="price fa fa-jpy">{{list.price}}</view>
+          <view class="box-size">{{list.boxType}}</view>
         </view>
       </view> 
       <view class="bottom" wx:if="{{doingList.length === 0}}">
-          <text class="rob" data-listid="{{list.id}}" bindtap="robListHandle">接单</text>
-      </view> 
-    </view> 
-
-
-
-
-    
+          <text style="background:blue;" class="rob" data-listid="{{list.id}}" bindtap="robListHandle">接单</text>
+      </view>
+    </view>
     <!--飞单-->
-    <view class="list"  wx:for="{{flyList}}" wx:for-item="list">
-      <view class="top" bindtap="toast">
-          <text>{{list.addrStart}}</text>
-          <image src="../../images/arrow-left.png" class="arrow-left"></image>
-          <text>{{list.addrEnd}}</text>
-          <text class="price">￥{{list.price}}</text>
-      </view>    
+    <view class="list" wx:for="{{flyList}}" wx:for-item="list">
+      <view class="top">
+          <text>{{list.compName}}</text>
+          <text class="phone fa fa-phone-square " bindtap="calling" data-phone="{{list.phone}}"></text>
+      </view>      
       <view class="middle">
         <view class="main">
-          <view class="content">
-              <view class="case">
-                  <image src="../../images/box.png"></image>
-                  <text class="key">箱型：</text>
-                  <text class="value">{{list.boxType}}</text>
-              </view>
+         <view class="content">
+              <text class="icon fa fa-taxi"></text>
+              <text class="key">提：</text>
+              <text class="value important">{{list.addrStart}}</text>
+          </view>
+          
+           <view class="content">
+              <text class="icon fa fa-truck"></text>
+              <text class="key">还：</text>
+              <text class="value important">{{list.addrEnd}}</text>
           </view>
           
           <view class="content">
-              <image src="../../images/ship.png"></image>
-              <text class="key">发布公司：</text>
-              <text class="value">{{list.compName}}</text>
-          </view>
-          <view class="content">
-              <image src="../../images/clock.png"></image>
-              <text class="key">计划驳箱开始时间：</text>
-              <text class="value">{{list.startTime}}</text>
-          </view>
-          <view class="content">
-              <image src="../../images/clock.png"></image>
-              <text class="key">计划驳箱结束时间：</text>
+              <text class="icon fa fa-calendar"></text>
+              <text class="key">始：</text>
+              <text class="value">{{list.startTime}}</text>  
+              <text class="key second">终：</text>
               <text class="value">{{list.endTime}}</text>
+          
           </view>
+          
           <view class="content">
-              <image src="../../images/flag.png"></image>
-              <text class="key">备注：</text>
+              <text class="icon fa fa-pencil"></text>
+              <text class="key">注：</text>
               <text class="value">{{list.remark}}</text>
           </view>
         </view>
         <view class="picture">
-          <image class="phone" src="../../images/phone.png" bindtap="calling" data-phone="{{list.phone}}"></image>
+          <view class="price fa fa-jpy">{{list.price}}</view>
+          <view class="box-size">{{list.boxType}}</view>
         </view>
-      </view>    
+      </view> 
       <view class="bottom"  wx:if="{{doingList.length === 0}}">
           <text class="rob" data-listid="{{list.id}}" bindtap="robListHandle">抢单</text>
       </view> 
