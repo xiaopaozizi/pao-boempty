@@ -114,7 +114,7 @@
     <!--公共单子-->
     <view class="list" wx:for="{{publicList}}" wx:for-item="list">
       <view class="top">
-          <text>{{list.compName}}</text>
+          <text class="fa fa-train"> {{list.compName}}</text>
           <text class="phone fa fa-phone-square " bindtap="calling" data-phone="{{list.phone}}"></text>
       </view>      
       <view class="middle">

@@ -10,7 +10,7 @@
   height:auto;
   font:normal noraml 38rpx/38rpx '黑体';
 }
-.his-list .title {
+.title {
   width : 100%;
   background:#fff;
   padding-top:20px;
@@ -19,16 +19,16 @@
   flex-direction: column;
   align-content: center;
 }
-.his-list .title text{
+.title text{
   width:100%;
   color : #fe4800;
   text-align: center;
   font-weight: bold;
 }
-.his-list .title text.num{
+.title text.num{
   font-size:40px;
 }
-.his-list .title text.text{
+ .title text.text{
   font-size:12px;
 }
 
@@ -47,8 +47,8 @@
 }
 
 
-.his-list .bottom-btn .look-over{
-  background : #838383;
+.his-list .bottom .look-active{
+  background : #fe4800;
   color:#fff;
 }
 

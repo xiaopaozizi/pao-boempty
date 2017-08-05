@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <import src="../template/list2.wxml" />
-<scroll-view scroll-y="true" style="height: {{windowHeight}}px" bindscrolltolower="more" class="his-list">
+<scroll-view scroll-y="true" style="height: {{windowHeight}}px" bindscrolltolower="more">
     <view class="title" wx:if="{{ count > 0 }}">
         <text class="num">{{count}}</text>
         <text class="text">累计单量</text>
@@ -15,57 +15,52 @@
           <button size="mini"  class="look-active" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage">查看预约单</button>
         </view> 
     </block>-->
-    <view class="list" wx:for="{{historyList}}" wx:for-item="list">
-      <view class="top" bindtap="toast">
-          <image wx:if="{{list.arrangeType === '1'}}" src="../../images/public.png" class="public"></image>
-          <text>{{list.addrStart}}</text>
-          <image src="../../images/arrow-left.png" class="arrow-left"></image>
-          <text>{{list.addrEnd}}</text>
-          <text class="price" wx:if="{{list.arrangeType === '2'&& list.undone }}">￥{{list.price}}</text>
-      </view>    
-      <view class="middle">
-        <view class="main">
-          
-          <view class="content">
-              <view class="case">
-                  <image src="../../images/box.png"></image>
-                  <text class="key">箱型：</text>
-                  <text class="value">{{list.boxType}}</text>
-              </view>
-              <!-- <view class="case"  wx:if="{{list.arrangeType === '1'}}">
-                  <text class="key">箱量：</text>
-                  <text class="value">{{list.boxNum}}箱</text>
-              </view> -->
+    <view class="his-list">
+      <view class="list" wx:for="{{historyList}}" wx:for-item="list">
+        <view class="top">
+            <text>{{list.compName}}</text>
+            <text class="phone fa fa-phone-square " bindtap="calling" data-phone="{{list.phone}}"></text>
+        </view>    
+        <view class="middle">
+          <view class="main">  
+            <view class="content">
+                <text class="icon fa fa-taxi"></text>
+                <text class="key">提：</text>
+                <text class="value important">{{list.addrStart}}</text>
+            </view>
+            
+            <view class="content">
+                <text class="icon fa fa-truck"></text>
+                <text class="key">还：</text>
+                <text class="value important">会计师健康的（刻录机就立刻）</text>
+            </view>
+            
+            <view class="content">
+                <text class="icon fa fa-calendar"></text>
+                <text class="key">始：</text>
+                <text class="value">{{list.startTime}}</text>  
+                <text class="key second">终：</text>
+                <text class="value">{{list.endTime}}</text>
+            
+            </view>
+            
+            <view class="content">
+                <text class="icon fa fa-pencil"></text>
+                <text class="key">注：</text>
+                <text class="value">{{list.remark}}</text>
+            </view>
           </view>
-          <view class="content">
-              <image src="../../images/ship.png"></image>
-              <text class="key">船名/航次：</text>
-              <text class="value">{{list.ship}}</text>
+          <view class="picture">
+            <view class="status">已结束</view>
+            <view class="price fa fa-jpy">100</view>
+            <view class="box-size">45GP</view>
           </view>
-          <view class="content">
-              <image src="../../images/clock.png"></image>
-              <text class="key">计划驳箱开始时间：</text>
-              <text class="value">{{list.startTime}}</text>
-          </view>
-          <view class="content">
-              <image src="../../images/clock.png"></image>
-              <text class="key">计划驳箱结束时间：</text>
-              <text class="value">{{list.endTime}}</text>
-          </view>
-          <view class="content">
-              <image src="../../images/flag.png"></image>
-              <text class="key">备注：</text>
-              <text class="value">{{list.remark}}</text>
-          </view>
-        </view>
-         <view class="picture">
-           <image class="already-over" src="../../images/already-over.png"></image>
-          </view>
+        </view> 
+        <view class="bottom">
+            <button size="mini"  class="look-over" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage">查看预约单</button>
+        </view> 
       </view> 
-      <view class="bottom">
-        <button size="mini"  class="look-active" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage">查看预约单</button>
-      </view>
-    </view> 
+    </view>
 </scroll-view>
 
         
