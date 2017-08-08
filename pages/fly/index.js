@@ -60,13 +60,16 @@ Page({
   onShow() {
     this.onLoad();
   },
+  refreshHandle(){
+    this.onLoad();
+  },
   // 页面加载
   onLoad: function () {
     var that = this;
     var driverInfo = wx.getStorageSync('driverInfo');
 
     // 公共单子----publicList
-   if (driverInfo) {
+   /**if (driverInfo) {
      
       wx.request({
         url: getApp().globalData.url + "/emptybox/weChat/getMyPublicList",
@@ -85,7 +88,7 @@ Page({
           }
         }
       })
-   }
+   }**/
 
 
     // 飞单----flyList

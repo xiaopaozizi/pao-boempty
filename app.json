@@ -1,14 +1,14 @@
 {
   "pages":[
-    "pages/self/his-list",
+    "pages/self/modify-lisence-plate-number",
+    "pages/fly/index",
     "pages/index/index",
+    "pages/self/his-list",
     "pages/index/upload-pre-enter",
     "pages/self/his-pre-enter",
     "pages/news/index",
     "pages/self/pre-enter-detail",
     "pages/news/detail",
-    "pages/self/modify-lisence-plate-number",
-    "pages/fly/index",
     "pages/self/reg-info",
     "pages/self/forget-pass",
     "pages/self/mod-pass",

@@ -12,6 +12,10 @@
 
 
 <scroll-view scroll-y="true"  style="height: {{windowHeight}}px" bindscrolltolower="more"  class="his-list">
+
+  
+
+
   <!--选择提箱地和选择目的地的框-->
   <view class="nav">
       <view class="pos pos-start">
@@ -88,7 +92,20 @@
         <text class="rob" data-listid="{{list.id}}" bindtap="receiveListHandle">接单</text>
     </view> 
   </view>--> 
+ <!--预录入-->
+   <view class="nav-btn">
+      <!--<view class="nav-item" bindtap="uploadPicHandle">
+          <text class="icon fa fa-camera"></text>
+          <text>预录入</text>
+      </view>-->
+      
+      <view class="nav-item" bindtap="refreshHandle">
+          <text class="icon fa fa-refresh"></text>
+          <text>刷新</text>
+      </view>
+  </view>
 
+ 
   <!--飞单-->
   <view class="list" wx:for="{{flyList}}" wx:for-item="list">
       <view class="top">
@@ -129,7 +146,7 @@
           <view class="box-size">{{list.boxType}}</view>
         </view>
       </view> 
-      <view class="bottom"  wx:if="{{doingList.length === 0}}">
+      <view class="bottom">
           <text class="rob" data-listid="{{list.id}}" bindtap="robListHandle">抢单</text>
       </view> 
     </view>

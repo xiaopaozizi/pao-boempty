@@ -18,7 +18,8 @@
     <view class="his-list">
       <view class="list" wx:for="{{historyList}}" wx:for-item="list">
         <view class="top">
-            <text>{{list.compName}}</text>
+        <text wx:if="{{list.arrangeType === '1'}}" class="fa fa-train"> {{list.compName}}</text>
+            <text wx:elif="{{list.arrangeType === '2'}}">{{list.compName}}</text>
             <text class="phone fa fa-phone-square " bindtap="calling" data-phone="{{list.phone}}"></text>
         </view>    
         <view class="middle">
@@ -32,7 +33,7 @@
             <view class="content">
                 <text class="icon fa fa-truck"></text>
                 <text class="key">还：</text>
-                <text class="value important">会计师健康的（刻录机就立刻）</text>
+                <text class="value important">{{list.addrEnd}}</text>
             </view>
             
             <view class="content">
@@ -51,7 +52,8 @@
             </view>
           </view>
           <view class="picture">
-            <view class="status">已结束</view>
+            <view class="status" wx:if="{{list.dataStatus === '2'}}">已结束</view>
+            <view class="status" wx:elif="{{list.dataStatus === '4'}}">已取消</view>
             <view class="price fa fa-jpy">100</view>
             <view class="box-size">45GP</view>
           </view>

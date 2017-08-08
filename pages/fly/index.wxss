@@ -7,6 +7,28 @@
   width : 100%;
   background:#f5f5f5;
 }
+
+.nav-btn {
+  display: flex;
+  font-family:'黑体';
+}
+.nav-btn .nav-item {
+  display: flex;
+  flex-direction: column;
+  margin:5px 10px 0px 10px;
+  text-align: center;
+}
+
+.nav-btn .nav-item text {
+  font-size : 12px;
+  color : #666;
+}
+.nav-btn .nav-item .icon{
+  font-size:20px;
+  color:#3385ff;
+}
+
+
 .his-list .nav {
   width : 100%;
   background:#fff;
@@ -91,12 +113,22 @@
   color:#fff;
 }
 .his-list .bottom .rob {
-  padding:10px 0;
-  text-align: center;
-  background : #fff;
-  color:#fe9900;
-  font-weight: bold;
-  width:100%;
+  text-align:center;
+  background:red;
+  color:#fff;
+  font-weight:bold;
+  margin:0 auto;
+  border-radius:100%;
+  padding:5px;
+  display:inline-block;
+  width:30px;
+  height:30px;
+  line-height:30px;
+  vertical-align:middle;
+  font-size:14px;
+}
+.his-list .bottom .rob:after{
+  border:none;
 }
 
 .his-list .bottom .rob:after{

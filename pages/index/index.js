@@ -43,7 +43,11 @@ var indexPage = {
       isHiddenModal : true
     })
   },
-  
+  // 刷新
+  refreshHandle(){
+    console.log('刷新啦')
+    this.onLoad();
+  },
   onShow(){
     this.onLoad();
   },

@@ -22,9 +22,14 @@
   width : 40px;
   height : 40px;
 }
+
 .nav .nav-item text {
   font-size : 14px;
   color : #666;
+}
+.nav .nav-item .icon{
+  font-size:40px;
+  color:#3385ff;
 }
 .nav-text {
   font-size:14px;

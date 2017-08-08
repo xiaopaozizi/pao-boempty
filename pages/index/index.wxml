@@ -22,12 +22,17 @@
 
 
   <!--预录入-->
-   <!--<view class="nav">
-      <view class="nav-item" bindtap="uploadPicHandle">
-          <image src="../../images/camera-active.png"></image>
+   <view class="nav">
+      <!--<view class="nav-item" bindtap="uploadPicHandle">
+          <text class="icon fa fa-camera"></text>
           <text>预录入</text>
+      </view>-->
+      
+      <view class="nav-item" bindtap="refreshHandle">
+          <text class="icon fa fa-refresh"></text>
+          <text>刷新</text>
       </view>
-  </view>-->
+  </view>
 
 
 
@@ -156,7 +161,7 @@
       </view>
     </view>
     <!--飞单-->
-    <view class="list" wx:for="{{flyList}}" wx:for-item="list">
+    <view class="list" wx:for="{{flyList}}" wx:for-item="list" wx:if="{{publicList.length > 0}}">
       <view class="top">
           <text>{{list.compName}}</text>
           <text class="phone fa fa-phone-square " bindtap="calling" data-phone="{{list.phone}}"></text>
