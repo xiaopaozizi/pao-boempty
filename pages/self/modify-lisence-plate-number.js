@@ -267,8 +267,8 @@ Page({
       success: function (res, code) {
         res = JSON.parse(res.data);
         if (res.status === 'success') {
-          wx.navigateTo({
-            url: 'login?telphone=' + res.data,
+          wx.switchTab({
+            url: 'index',
           })
         } else if ( res.status === 'fail') {
   

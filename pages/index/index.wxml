@@ -161,7 +161,7 @@
       </view>
     </view>
     <!--飞单-->
-    <view class="list" wx:for="{{flyList}}" wx:for-item="list" wx:if="{{publicList.length > 0}}">
+    <view class="list" wx:for="{{flyList}}" wx:for-item="list" wx:if="{{publicList.length == 0}}">
       <view class="top">
           <text>{{list.compName}}</text>
           <text class="phone fa fa-phone-square " bindtap="calling" data-phone="{{list.phone}}"></text>

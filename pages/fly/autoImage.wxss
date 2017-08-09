@@ -1,0 +1,107 @@
+.detail {
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  font: 12px/20px "黑体" ;
+  color:#666;
+}
+.detail .top{
+  display: flex;
+  width:100%;
+  margin-bottom:10px;
+  padding:10px;
+  background:#fff;
+}
+
+
+.detail .top .left{
+  width:75%;
+}
+.detail .top .right{
+  width:25%;
+  font-size:16px;
+  padding-right:10px;
+  text-align: center;
+
+}
+.detail .top .right .price{
+  color:red;
+}
+.detail .top .right .status{
+  color:blue;
+  font-size:14px;
+}
+
+
+.detail .middle{
+  width:100%;
+  background:#fff;
+  display: flex;
+  flex-direction: column;
+  padding:10px;
+  font-size:14px;
+}
+
+.detail .middle .list{
+  width:100%;
+  display: flex;
+  margin-bottom:5px;
+}
+.detail .middle .list .icon{
+  width:10%;
+}
+.detail .middle .list .icon image{
+  width:20px;
+  height:20px;
+}
+.detail .middle .list .content{
+  width:90%;
+  display: flex;
+  flex-direction: column;
+}
+.detail .middle .list .content .desc{
+  color:#999;
+}
+
+
+
+
+
+
+
+.detail .bottom {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  background:#fff;
+  border-top:2px solid #f5f5f5;
+  padding:20px 10px;
+}
+.detail .bottom .title{
+}
+.detail .bottom .title image {
+  width:20px;
+  height:20px;
+  vertical-align: bottom;
+}
+.detail .bottom .title text{
+  color:#fe9c0f;
+  font:20px/20px;
+  margin-left:5px;
+  font-size:14px;
+}
+.detail .bottom .content{
+  margin-top:10px;
+  display: flex;
+  flex-direction: column;
+  font:normal normal 12px/20px '微软雅黑';
+}
+.detail .bottom .content .record{
+  display: flex;
+  flex-direction: column;
+  margin-bottom:10px;
+}
+.detail .bottom .content .record text{
+  text-indent: 2em;
+}

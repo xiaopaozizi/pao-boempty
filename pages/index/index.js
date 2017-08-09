@@ -139,6 +139,7 @@ var indexPage = {
         }
       })
     }
+   // console.log(typeof this.data.publicList.length)
 
 
     // 飞单----flyList
