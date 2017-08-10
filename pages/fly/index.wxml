@@ -11,10 +11,9 @@
 
 
 
-<scroll-view scroll-y="true"  style="height: {{windowHeight}}px" bindscrolltolower="more"  class="his-list">
+<view class="his-list">
 
   
-
 
   <!--选择提箱地和选择目的地的框-->
   <view class="nav">
@@ -47,63 +46,7 @@
 
 
   
-  
-  <!--公共单子-->
-  <!--<view class="list" wx:for="{{publicList}}" wx:for-item="list">
-    <view class="top" bindtap="toast">
-        <image src="../../images/public.png" class="public"></image>
-        <text>{{list.addrStart}}</text>
-        <image src="../../images/arrow-left.png" class="arrow-left"></image>
-        <text>{{list.addrEnd}}</text>
-    </view>    
-    <view class="middle">
-      <view class="main">
-        
-        <view class="content">
-            <view class="case">
-                <image src="../../images/box.png"></image>
-                <text class="key">箱型：</text>
-                <text class="value">{{list.boxType}}</text>
-            </view>
-        </view>
-        <view class="content">
-            <image src="../../images/ship.png"></image>
-            <text class="key">船名/航次：</text>
-            <text class="value">{{list.ship}}</text>
-        </view>
-          <view class="content">
-              <image src="../../images/clock.png"></image>
-              <text class="key">计划驳箱开始时间：</text>
-              <text class="value">{{list.startTime}}</text>
-          </view>
-          <view class="content">
-              <image src="../../images/clock.png"></image>
-              <text class="key">计划驳箱结束时间：</text>
-              <text class="value">{{list.endTime}}</text>
-          </view>
-        <view class="content">
-            <image src="../../images/flag.png"></image>
-            <text class="key">备注：</text>
-            <text class="value">{{list.remark}}</text>
-        </view>
-      </view>
-    </view> 
-    <view class="bottom" wx:if="{{publicList.length === 0}}">
-        <text class="rob" data-listid="{{list.id}}" bindtap="receiveListHandle">接单</text>
-    </view> 
-  </view>--> 
- <!--预录入-->
-   <view class="nav-btn">
-      <!--<view class="nav-item" bindtap="uploadPicHandle">
-          <text class="icon fa fa-camera"></text>
-          <text>预录入</text>
-      </view>-->
-      
-      <view class="nav-item" bindtap="refreshHandle">
-          <text class="icon fa fa-refresh"></text>
-          <text>刷新</text>
-      </view>
-  </view>
+ 
 
  
   <!--飞单-->
@@ -155,7 +98,7 @@
 
  
 
-</scroll-view>
+</view>
 
         
            

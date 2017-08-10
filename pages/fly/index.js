@@ -50,7 +50,7 @@ Page({
     // 延时器
     timer : null,
     // 每页多少条
-    pageSize: 5,
+    pageSize: 2,
     // 第几页
     pageNo: 1,
 
@@ -63,11 +63,26 @@ Page({
   refreshHandle(){
     this.onLoad();
   },
+  // 加载数据函数
+  onReachBottom: function (event) {
+    console.log("滚到底了");
+    this.more();
+  },
+  onPullDownRefresh() {
+    console.log('我要刷新')
+    this.onLoad();
+    wx.stopPullDownRefresh()
+  },
   // 页面加载
   onLoad: function () {
     var that = this;
     var driverInfo = wx.getStorageSync('driverInfo');
 
+
+    // 设置当前刷新的页面
+    this.setData({
+      pageNo: 1
+    });
     // 公共单子----publicList
    /**if (driverInfo) {
      

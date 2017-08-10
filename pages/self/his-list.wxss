@@ -1,5 +1,7 @@
 @import "../template/list2.wxss";
-
+.scroll-view{
+  height:300rpx;
+}
 
 .his-list{
   width : 100%;

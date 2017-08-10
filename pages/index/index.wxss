@@ -1,5 +1,9 @@
 
 @import "../template/list2.wxss";
+
+.view-scroll{
+  height:800rpx;
+}
 .swiper {
   height: 400rpx;
   width: 100%;

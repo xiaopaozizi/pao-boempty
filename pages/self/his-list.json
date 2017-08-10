@@ -1,5 +1,7 @@
 {
   "navigationBarBackgroundColor": "#fe9900",
   "navigationBarTextStyle": "#fff",
-  "navigationBarTitleText": "历史单子"
+  "navigationBarTitleText": "历史单子",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true
 }

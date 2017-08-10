@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <import src="../template/list2.wxml" />
-<scroll-view scroll-y="true" style="height: {{windowHeight}}px" bindscrolltolower="more">
+<view class="scroll-view">
     <view class="title" wx:if="{{ count > 0 }}">
         <text class="num">{{count}}</text>
         <text class="text">累计单量</text>
@@ -63,7 +63,7 @@
         </view> 
       </view> 
     </view>
-</scroll-view>
+</view>
 
         
            

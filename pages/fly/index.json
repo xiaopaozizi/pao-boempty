@@ -1,5 +1,7 @@
 {
   "navigationBarBackgroundColor": "#fe9900",
   "navigationBarTextStyle": "#fff",
-  "navigationBarTitleText": "飞单"
+  "navigationBarTitleText": "飞单",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true
 }

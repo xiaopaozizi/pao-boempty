@@ -1,11 +1,11 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/self/his-list",
+    "pages/fly/index",
     "pages/self/index",
     "pages/self/modify-lisence-plate-number",
     "pages/fly/autoImage",
-    "pages/self/his-list",
-    "pages/fly/index",
     "pages/index/upload-pre-enter",
     "pages/self/his-pre-enter",
     "pages/news/index",

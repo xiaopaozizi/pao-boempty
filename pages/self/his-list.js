@@ -11,7 +11,7 @@ Page({//定义分享
   data: {
     count : 0,
     // 每页多少条
-    pageSize : 5,
+    pageSize : 2,
     // 第几页
     pageNo: 1,
     // 历史单子
@@ -29,12 +29,27 @@ Page({//定义分享
       url: '../fly/dealing'
     })
   },
-
+  // 加载数据函数
+  onReachBottom: function (event) {
+    console.log("滚到底了");
+    this.more();
+  },
+  onPullDownRefresh() {
+    console.log('我要刷新')
+    this.onLoad();
+    wx.stopPullDownRefresh()
+  },
   onLoad(){
     // 历史单子
     var that = this;
     var url = getApp().globalData.url;
     var driverInfo = wx.getStorageSync('driverInfo');
+    // 设置当前刷新的页面
+    this.setData({
+      pageNo: 1
+    });
+
+
     if (getApp().isLogin()) {
       wx.request({
         url: url + "/emptybox/weChat/getMyFinish",
@@ -79,7 +94,7 @@ Page({//定义分享
       data: {
         driverId: driverInfo.id,
         pageNo: 1,
-        pageSize: (that.data.pageNo++) * 2
+        pageSize: (that.data.pageNo++) * that.data.pageSize
       },
       success: function (res) {
 

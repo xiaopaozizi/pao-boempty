@@ -4,7 +4,7 @@
 
 
 
-<scroll-view scroll-y="true"  style="height: {{windowHeight}}px" bindscrolltolower="more" bindscroll="scroll">
+<view class="view-scroll">
 
 
 
@@ -28,10 +28,10 @@
           <text>预录入</text>
       </view>-->
       
-      <view class="nav-item" bindtap="refreshHandle">
+      <!--<view class="nav-item" bindtap="refreshHandle">
           <text class="icon fa fa-refresh"></text>
           <text>刷新</text>
-      </view>
+      </view>-->
   </view>
 
 
@@ -207,4 +207,4 @@
   </view>
 
 
-</scroll-view>
+</view>

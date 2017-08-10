@@ -19,7 +19,7 @@ var indexPage = {
     // 市场单子----飞单
     flyList : [],
     // 每页多少条
-    pageSize : 5,
+    pageSize : 2,
     // 是否可以加载更多
     hasMore : true,
     // 第几页
@@ -45,7 +45,6 @@ var indexPage = {
   },
   // 刷新
   refreshHandle(){
-    console.log('刷新啦')
     this.onLoad();
   },
   onShow(){
@@ -58,11 +57,24 @@ var indexPage = {
       path: '/pages/index/index'
     }
   },
+  // 加载数据函数
+  onReachBottom: function (event) {
+    console.log("滚到底了");
+    this.more();
+  },
+  onPullDownRefresh(){
+    console.log('我要刷新')
+    this.onLoad();
+    wx.stopPullDownRefresh()
+  },
   onLoad: function () {
 
     getApp().getUserInfo();
     //return;
-
+    // 设置当前刷新的页面
+    this.setData({
+      pageNo : 1
+    });
 
     var that = this;
     var driverInfo = wx.getStorageSync('driverInfo');
