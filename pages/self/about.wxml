@@ -2,7 +2,7 @@
 <view class="about">
     <view class="top">
       <image src="../../images/truck.png"></image>
-      <text>集港通-飞单</text>
+      <text>集港通-驳空箱</text>
     </view>
     <view class="middle">“集港通-飞单app”隶属于宁波恩通物流科技有限公司，旨在通过移动物联网的方式让司机货主更加方便配货，全程GPS精准定位，提高匹配效率，提升双防收益。</view>
     <view class="bottom">

@@ -53,7 +53,8 @@
   <view class="his-list">
     <view class="list" wx:for="{{doingList}}" wx:for-item="list">
       <view class="top">
-          <text>{{list.compName}}</text>
+          <text class="fa fa-train" wx:if="{{list.arrangeType === '1'}}"> {{list.compName}}</text>
+          <text wx:elif="{{list.arrangeType === '2'}}">{{list.compName}}</text>
           <text class="phone fa fa-phone-square " bindtap="calling" data-phone="{{list.phone}}"></text>
       </view>      
       <view class="middle">
@@ -96,7 +97,7 @@
           </view>
         </view>
         <view class="picture">
-          <view class="price fa fa-jpy">{{list.price}}</view>
+          <view class="price fa fa-jpy" wx:if="{{list.arrangeType === '2'}}">{{list.price}}</view>
           <view class="box-size">{{list.boxType}}</view>
         </view>
       </view> 
@@ -152,7 +153,7 @@
           </view>
         </view>
         <view class="picture">
-          <view class="price fa fa-jpy">{{list.price}}</view>
+          <view class="price fa fa-jpy" wx:if="{{list.arrangeType === '2'}}">{{list.price}}</view>
           <view class="box-size">{{list.boxType}}</view>
         </view>
       </view> 
@@ -196,7 +197,7 @@
           </view>
         </view>
         <view class="picture">
-          <view class="price fa fa-jpy">{{list.price}}</view>
+          <view class="price fa fa-jpy" >{{list.price}}</view>
           <view class="box-size">{{list.boxType}}</view>
         </view>
       </view> 

@@ -1,6 +1,9 @@
 <!--index.wxml-->
 <import src="../template/list2.wxml" />
 <view class="scroll-view">
+    
+    
+    
     <view class="title" wx:if="{{ count > 0 }}">
         <text class="num">{{count}}</text>
         <text class="text">累计单量</text>
@@ -54,8 +57,8 @@
           <view class="picture">
             <view class="status" wx:if="{{list.dataStatus === '2'}}">已结束</view>
             <view class="status" wx:elif="{{list.dataStatus === '4'}}">已取消</view>
-            <view class="price fa fa-jpy">100</view>
-            <view class="box-size">45GP</view>
+            <view class="price fa fa-jpy">{{list.price}}</view>
+            <view class="box-size">{{list.boxType}}</view>
           </view>
         </view> 
         <view class="bottom">
@@ -63,6 +66,10 @@
         </view> 
       </view> 
     </view>
+
+
+
+    
 </view>
 
         

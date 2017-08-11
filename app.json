@@ -37,11 +37,6 @@
      "iconPath": "images/index.png",  
      "pagePath": "pages/index/index",  
      "text": "首页"  
-   }, {  
-     "selectedIconPath": "images/list-active.png",  
-     "iconPath": "images/list.png",  
-     "pagePath": "pages/fly/index",  
-     "text": "飞单"  
    }, {
     "selectedIconPath": "images/news-active.png",
     "iconPath": "images/news.png",
