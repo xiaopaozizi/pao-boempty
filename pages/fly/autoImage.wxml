@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <!--图片宽大于屏幕宽-->
-<image style="width: {{imagewidth}}px; height: {{imageheight}}px;" src="{{imagefirstsrc}}" bindload="imageLoad"></image>
-<!--图片高大于屏幕高-->
-<!--<image style="width: {{imagewidth}}px; height: {{imageheight}}px;" src="{{imagesecondsrc}}" bindload="imageLoad"></image>-->
-<!--图片宽高大于屏幕宽高-->
-<!--<image style="width: {{imagewidth}}px; height: {{imageheight}}px;" src="{{imagethirdsrc}}" bindload="imageLoad"></image>-->
+<image 
+  style="width: {{imagewidth}}px; height: {{imageheight}}px;" 
+  src="{{imgSrc}}" 
+  bindtouchmove="touchmoveHandle">
+</image>

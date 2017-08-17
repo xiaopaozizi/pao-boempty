@@ -153,7 +153,7 @@ var indexPage = {
     }
    // console.log(typeof this.data.publicList.length)
 
-
+    return;
     // 飞单----flyList
     wx.request({
       url: getApp().globalData.url + "/emptybox/weChat/getFlyList",
@@ -165,7 +165,6 @@ var indexPage = {
         pageSize : that.data.pageSize
       },
       success: function (res) {
-
         that.setData({
           flyList: res.data.data.rows
         });

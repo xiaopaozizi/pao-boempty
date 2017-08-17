@@ -1,9 +1,8 @@
 <!--index.wxml-->
 <view class="self">
     <view class="my-list" wx:for="{{lists}}" wx:for-item="list">
-        <image class="icon" src="{{list.icon}}"></image>
+        <text class="{{list.icon}}"></text>
         <navigator class="text" url="{{list.url}}">{{list.text}}</navigator>
-        <image class="arrow" src="../../images/arrow-right.png"></image>
     </view>
     <button class="logout" size="default" type="primary" bindtap="logout">退出</button>
 </view>

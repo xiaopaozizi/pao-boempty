@@ -11,9 +11,10 @@
   margin-bottom:20px;
   display: flex;
 }
-.self .my-list image {
+.self .my-list text {
   width : 20px;
   height : 20px;
+  padding:3px;
 }
 .self .my-list .text {
   width :70%;

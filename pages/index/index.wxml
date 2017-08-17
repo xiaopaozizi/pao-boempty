@@ -97,7 +97,7 @@
           </view>
         </view>
         <view class="picture">
-          <view class="price fa fa-jpy" wx:if="{{list.arrangeType === '2'}}">{{list.price}}</view>
+          <view class="price fa fa-jpy">{{list.price}}</view>
           <view class="box-size">{{list.boxType}}</view>
         </view>
       </view> 
@@ -153,7 +153,7 @@
           </view>
         </view>
         <view class="picture">
-          <view class="price fa fa-jpy" wx:if="{{list.arrangeType === '2'}}">{{list.price}}</view>
+          <view class="price fa fa-jpy" >{{list.price}}</view>
           <view class="box-size">{{list.boxType}}</view>
         </view>
       </view> 

@@ -1,8 +1,47 @@
 @import "../template/list2.wxss";
 .scroll-view{
-  height:300rpx;
+  display:flex;
+  flex-direction: column;
 }
-
+.scroll-view .search-view{
+  width:100%;
+  display:flex;
+  flex-direction: column;
+}
+.scroll-view .search-view .search-btn{
+  width:80%;
+  display:flex;
+  justify-content: space-between;
+  margin:10px auto;
+}
+.scroll-view .search-view .search-btn text{
+  padding:5px 10px;
+  background:#fff;
+  border:1px solid #f90;
+  border-radius:5px;
+  text-align:center;
+}
+.scroll-view .search-view .search-datepicker {
+  width:90%;
+  margin:0 auto;
+  display:flex;
+  justify-content: space-between;
+}
+.scroll-view .search-view .search-datepicker picker{
+  border:1px solid #ccc;
+  border-radius: 5px;
+  width:35%;
+  height:23px;
+  vertical-align: middle;
+}
+.scroll-view .search-view .search-datepicker picker view{
+  width:100%;
+  height:19px;
+}
+.scroll-view .search-view .search-datepicker text{
+  margin-top:3px;
+  width:auto;
+}
 .his-list{
   width : 100%;
   display: flex;
@@ -18,6 +57,10 @@
   padding-top:20px;
   padding-bottom:10px;
   display: flex;
+}
+.title .line{
+  display:flex;
+  width:50%;
   flex-direction: column;
   align-content: center;
 }

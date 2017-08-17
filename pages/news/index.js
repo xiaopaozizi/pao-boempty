@@ -16,6 +16,11 @@ Page({
       path: '/pages/index/index'
     }
   },
+  onPullDownRefresh() {
+    console.log('我要刷新')
+    this.onLoad();
+    wx.stopPullDownRefresh()
+  },
   onLoad(){
     // 消息列表
     var that = this;

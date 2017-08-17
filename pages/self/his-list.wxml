@@ -1,12 +1,34 @@
 <!--index.wxml-->
 <import src="../template/list2.wxml" />
 <view class="scroll-view">
-    
-    
-    
+    <view class="search-view">
+      <view class="search-btn">
+        <text data-day="today" bindtap="changeDateHandle">今天</text>
+        <text data-day="week" bindtap="changeDateHandle">一周</text>
+        <text data-day="month" bindtap="changeDateHandle">一月</text>
+      </view>
+      <view class="search-datepicker">
+        <text class="fa fa-hourglass-start"></text>
+        <picker mode="date" value="{{startDate}}" start="2015-09-01" end="2017-09-01" bindchange="bindPickerChange" data-type="start">
+          <!--<input placeholder="开始时间" value="{{startDate}}"/>-->
+          <view>{{startDate}}</view>
+        </picker>
+        <text class="fa fa-hourglass-end"></text>
+        <picker mode="date" value="{{endDate}}" start="2015-09-01" end="2017-09-01" bindchange="bindPickerChange" data-type="end">
+          <!--<input placeholder="结束时间" value="{{endDate}}"/>-->
+          <view>{{endDate}}</view>
+        </picker>
+      </view>
+    </view>
     <view class="title" wx:if="{{ count > 0 }}">
-        <text class="num">{{count}}</text>
-        <text class="text">累计单量</text>
+        <view class="line">
+          <text class="num">{{count}}</text>
+          <text class="text">累计单量</text>
+        </view>
+        <view class="line">
+          <text class="num">{{totalMoney}}</text>
+          <text class="text">累计金额(￥)</text>
+        </view>
     </view>
     <!--图片查看-->
   <modal hidden="{{isHiddenModal}}" class="imageModal" title="" confirm-text="" cancel-text="" bindtap="hideImageHandle" no-cancel="{{nocancel}}" >
@@ -40,6 +62,17 @@
             </view>
             
             <view class="content">
+                <text class="icon fa fa-taxi"></text>
+                <text class="key">箱号：</text>
+                <text class="value important">{{list.containerNum}}</text>
+            </view>
+            <view class="content">
+                <text class="icon fa fa-calendar"></text>
+                <text class="key">出门时间：</text>
+                <text class="value">{{list.workingDate}}</text>  
+            
+            </view>
+            <view class="content">
                 <text class="icon fa fa-calendar"></text>
                 <text class="key">始：</text>
                 <text class="value">{{list.startTime}}</text>  
@@ -55,7 +88,7 @@
             </view>
           </view>
           <view class="picture">
-            <view class="status" wx:if="{{list.dataStatus === '2'}}">已结束</view>
+            <view class="status" wx:if="{{list.dataStatus === '2' || list.dataStatus === '3'}}">已结束</view>
             <view class="status" wx:elif="{{list.dataStatus === '4'}}">已取消</view>
             <view class="price fa fa-jpy">{{list.price}}</view>
             <view class="box-size">{{list.boxType}}</view>
@@ -66,10 +99,6 @@
         </view> 
       </view> 
     </view>
-
-
-
-    
 </view>
 
         
