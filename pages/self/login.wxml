@@ -6,11 +6,11 @@
     <view class="middle">
       <view class="content">
         <image src="../../images/tel_icon@2x.png"></image>
-        <input type="number" placeholder="请输入手机号码" placeholder-class='placeholder' value="{{telphone}}" bindblur="phoneHandle" value="{{telphone}}" />
+        <input type="number" placeholder="请输入手机号码" placeholder-class='placeholder' value="{{telphone}}" bindinput="phoneHandle" value="{{telphone}}" />
       </view>
       <view class="content">
         <image src="../../images/pas_icon@2x.png"></image>
-        <input type="password" placeholder="请输入密码" placeholder-class='placeholder' value="{{password}}" bindblur="passHandle"  />
+        <input type="password" placeholder="请输入密码" placeholder-class='placeholder' value="{{password}}" bindinput="passHandle"  />
       </view>
       <view class="forget-pass-tip">
       <navigator url="forget-pass">忘记密码？</navigator></view>

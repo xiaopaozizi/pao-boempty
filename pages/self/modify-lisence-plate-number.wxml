@@ -12,7 +12,7 @@
         <view class="form-item {{checkIDResStr.cssStyle}}" wx:if="{{!checkIDResStr.hidden}}">{{checkIDResStr.value}}</view>-->
         <view class="form-item">
             <label><text bindtap="showProvince" class="license-plate">{{curProvince}}▶</text></label>
-            <input type="number" placeholder-class='placeholder' placeholder="请输入车牌号" bindinput="checkLisence"/>
+            <input type="text" placeholder-class='placeholder' placeholder="请输入车牌号" bindinput="checkLisence"/>
         </view>
         <view class="form-item {{checkLicenseResStr.cssStyle}}" wx:if="{{!checkLicenseResStr.hidden}}">{{checkLicenseResStr.value}}</view>
         <view class="province" wx-if="{{isShow}}">

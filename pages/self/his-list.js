@@ -1,4 +1,5 @@
 //index.js
+var imageUtil = require('../../utils/imageUtil.js'); 
 //获取应用实例
 var app = getApp()
 Page({//定义分享
@@ -27,7 +28,10 @@ Page({//定义分享
     isHiddenModal: true,
     // 图片路径
     imageSrc: '',
+    imagewidth: 0,//缩放后的宽  
+    imageheight: 0,//缩放后的高 
   },
+   
   // 改变日期，今天，一周，一月
   changeDateHandle(e){
     let day = e.target.dataset.day;
@@ -173,16 +177,9 @@ Page({//定义分享
   // 点击显示图片
   showImage(e) {
     let src = getApp().globalData.url + '/upload/' + e.target.dataset.imgsrc;
-    this.setData({
-      imageSrc: src,
-      isHiddenModal: false
+    wx.navigateTo({
+      url: '../index/showImage?imagesrc=' + src,
     })
-  },
-  // 点击图片modal，并且隐藏
-  hideImageHandle() {
-    this.setData({
-      isHiddenModal: true
-    })
-  },
-  
+ 
+  }
 })

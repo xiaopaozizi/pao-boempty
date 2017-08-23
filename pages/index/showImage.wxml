@@ -1,0 +1,14 @@
+<view class="showImage">
+  <image 
+  wx:if="{{isCrossScreen}}"
+  mode='aspectFit' 
+  style="width:{{imagewidth}}px; height: {{imageheight}}px;transform-origin:0% 0%;transform: rotate(90deg) translate(0px, -{{screenWidth}}px);"  
+  bindload="imageLoad" 
+  src="{{imagesrc}}"></image>
+   <image 
+  wx:elif="{{!isCrossScreen}}"
+  mode='aspectFit' 
+  style="width:{{imagewidth}}px; height: {{imageheight}}px;;"  
+  bindload="imageLoad" 
+  src="{{imagesrc}}"></image>
+</view>

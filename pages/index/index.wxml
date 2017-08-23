@@ -22,8 +22,8 @@
 
 
   <!--预录入-->
-   <view class="nav">
-      <!--<view class="nav-item" bindtap="uploadPicHandle">
+   <!--<view class="nav">
+      <view class="nav-item" bindtap="uploadPicHandle">
           <text class="icon fa fa-camera"></text>
           <text>预录入</text>
       </view>-->
@@ -31,8 +31,8 @@
       <!--<view class="nav-item" bindtap="refreshHandle">
           <text class="icon fa fa-refresh"></text>
           <text>刷新</text>
-      </view>-->
-  </view>
+      </view>
+  </view>-->
 
 
 
@@ -46,15 +46,14 @@
 
 
   <!--我的单子-->
-  <view class="nav-text" wx:if="{{doingList.length > 0}}">
-    <text>正在进行的单子</text>
+  <view class="nav-text" wx:if="{{taskList.length > 0}}">
+    <text>我的任务</text>
   </view>
 
   <view class="his-list">
-    <view class="list" wx:for="{{doingList}}" wx:for-item="list">
+    <view class="list" wx:for="{{taskList}}" wx:for-item="list">
       <view class="top">
-          <text class="fa fa-train" wx:if="{{list.arrangeType === '1'}}"> {{list.compName}}</text>
-          <text wx:elif="{{list.arrangeType === '2'}}">{{list.compName}}</text>
+          <text>{{list.compName}}</text>
           <text class="phone fa fa-phone-square " bindtap="calling" data-phone="{{list.phone}}"></text>
       </view>      
       <view class="middle">
@@ -102,110 +101,13 @@
         </view>
       </view> 
       <view class="bottom">
-        <button size="mini" bindtap="cancelHandle" class="cancel-btn" data-listid="{{list.id}}">取消</button>
+        <!--<button size="mini" bindtap="cancelHandle" class="cancel-btn" data-listid="{{list.id}}">取消</button>-->
         <button size="mini" data-imgsrc="{{list.orderImgUrl}}" bindtap="showImage" class="look-active" >查看预约单</button>
       </view>
     </view>
   </view>
 
 
-
-
-  <!--市场单子-->
-  <view class="nav-text">
-    <text>市场单子</text>
-  </view>
-  
-  <view class="his-list">
-    <!--公共单子-->
-    <view class="list" wx:for="{{publicList}}" wx:for-item="list">
-      <view class="top">
-          <text class="fa fa-train"> {{list.compName}}</text>
-          <text class="phone fa fa-phone-square " bindtap="calling" data-phone="{{list.phone}}"></text>
-      </view>      
-      <view class="middle">
-        <view class="main">
-         <view class="content">
-              <text class="icon fa fa-taxi"></text>
-              <text class="key">提：</text>
-              <text class="value important">{{list.addrStart}}</text>
-          </view>
-          
-           <view class="content">
-              <text class="icon fa fa-truck"></text>
-              <text class="key">还：</text>
-              <text class="value important">{{list.addrEnd}}</text>
-          </view>
-          
-          <view class="content">
-              <text class="icon fa fa-calendar"></text>
-              <text class="key">始：</text>
-              <text class="value">{{list.startTime}}</text>  
-              <text class="key second">终：</text>
-              <text class="value">{{list.endTime}}</text>
-          
-          </view>
-          
-          <view class="content">
-              <text class="icon fa fa-pencil"></text>
-              <text class="key">注：</text>
-              <text class="value">{{list.remark}}</text>
-          </view>
-        </view>
-        <view class="picture">
-          <view class="price fa fa-jpy" >{{list.price}}</view>
-          <view class="box-size">{{list.boxType}}</view>
-        </view>
-      </view> 
-      <view class="bottom" wx:if="{{doingList.length === 0}}">
-          <text style="background:blue;" class="rob" data-listid="{{list.id}}" bindtap="robListHandle">接单</text>
-      </view>
-    </view>
-    <!--飞单-->
-    <view class="list" wx:for="{{flyList}}" wx:for-item="list" wx:if="{{publicList.length == 0}}">
-      <view class="top">
-          <text>{{list.compName}}</text>
-          <text class="phone fa fa-phone-square " bindtap="calling" data-phone="{{list.phone}}"></text>
-      </view>      
-      <view class="middle">
-        <view class="main">
-         <view class="content">
-              <text class="icon fa fa-taxi"></text>
-              <text class="key">提：</text>
-              <text class="value important">{{list.addrStart}}</text>
-          </view>
-          
-           <view class="content">
-              <text class="icon fa fa-truck"></text>
-              <text class="key">还：</text>
-              <text class="value important">{{list.addrEnd}}</text>
-          </view>
-          
-          <view class="content">
-              <text class="icon fa fa-calendar"></text>
-              <text class="key">始：</text>
-              <text class="value">{{list.startTime}}</text>  
-              <text class="key second">终：</text>
-              <text class="value">{{list.endTime}}</text>
-          
-          </view>
-          
-          <view class="content">
-              <text class="icon fa fa-pencil"></text>
-              <text class="key">注：</text>
-              <text class="value">{{list.remark}}</text>
-          </view>
-        </view>
-        <view class="picture">
-          <view class="price fa fa-jpy" >{{list.price}}</view>
-          <view class="box-size">{{list.boxType}}</view>
-        </view>
-      </view> 
-      <view class="bottom"  wx:if="{{doingList.length === 0}}">
-          <text class="rob" data-listid="{{list.id}}" bindtap="robListHandle">抢单</text>
-      </view> 
-    </view>
-  </view>
 
 
 </view>

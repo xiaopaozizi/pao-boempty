@@ -72,12 +72,12 @@ App({
     userInfo:null,
     openid : '',
     //url : 'http://127.0.0.1:8080',
-    //url: 'http://172.20.10.4:8080',
+   // url: 'http://172.20.10.4:8080',
    // url : 'http://192.168.10.127:8080',
     //url : 'http://192.168.1.101:8080',
      //url: 'http://192.168.16.166:8080',
     //url: 'http://10.16.20.210:8080',
-   url: 'https://www.9entong.cn',
+  url: 'https://www.9entong.cn',
     //url: 'http://120.55.188.15:8080'
     //url: 'http://www.easy-mock.com/mock/596038ae9adc231f357bbb39'
   },

@@ -1,7 +1,0 @@
-<!--index.wxml-->
-<!--图片宽大于屏幕宽-->
-<image 
-  style="width: {{imagewidth}}px; height: {{imageheight}}px;" 
-  src="{{imgSrc}}" 
-  bindtouchmove="touchmoveHandle">
-</image>

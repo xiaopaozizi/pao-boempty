@@ -26,13 +26,17 @@
           <text class="text">累计单量</text>
         </view>
         <view class="line">
-          <text class="num">{{totalMoney}}</text>
+          <text class="num">{{totalMoney.moneysum}}</text>
           <text class="text">累计金额(￥)</text>
+        </view>
+        <view class="line">
+          <text class="num">{{totalMoney.output}}</text>
+          <text class="text">产值(￥)</text>
         </view>
     </view>
     <!--图片查看-->
-  <modal hidden="{{isHiddenModal}}" class="imageModal" title="" confirm-text="" cancel-text="" bindtap="hideImageHandle" no-cancel="{{nocancel}}" >
-      <image src="{{imageSrc}}"></image>
+  <modal hidden="{{isHiddenModal}}" title="" confirm-text="" cancel-text="" bindtap="hideImageHandle" no-cancel="{{nocancel}}" >
+      <image style="width:100%; height: {{imageheight}}px;" bindload="imageLoad" src="{{imageSrc}}"></image>
   </modal>
     <!--<block wx:for="{{lists}}" wx:for-item="list">
         <template is="list" data="{{...list}}"></template>

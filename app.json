@@ -2,10 +2,10 @@
   "pages":[
     "pages/index/index",
     "pages/self/his-list",
+    "pages/index/showImage",
     "pages/self/index",
     "pages/news/index",
     "pages/fly/index",
-    "pages/fly/autoImage",
     "pages/self/modify-lisence-plate-number",
     "pages/index/upload-pre-enter",
     "pages/self/his-pre-enter",
@@ -37,7 +37,15 @@
      "iconPath": "images/index.png",  
      "pagePath": "pages/index/index",  
      "text": "首页"  
-   }, {
+   }, 
+   {
+    "selectedIconPath": "images/list-active.png",
+    "iconPath": "images/list.png",
+    "pagePath": "pages/self/his-list",
+    "text": "历史"
+  },
+  
+   {
     "selectedIconPath": "images/news-active.png",
     "iconPath": "images/news.png",
     "pagePath": "pages/news/index",

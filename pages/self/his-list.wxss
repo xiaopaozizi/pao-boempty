@@ -98,13 +98,3 @@
 }
 
 
-.imageModa{
-  display: flex;
-}
-.imageModal image{
-  width:100%;
-  height:200px;
-  background-size: cover;
-  margin:0 auto;
-  text-align: center;
-}
